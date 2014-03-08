@@ -1,0 +1,38 @@
+<div class="resources-inner">
+	<div class="resources-filter clearfix resources-col-{{return_column_layout_from_collection_length resources '_type'}}">
+		{{! If the resources collection contains only one type of resource (pdf, media or link) don't show anything}}
+		{{#if_collection_contains_one_item resources '_type'}}
+		{{else}}
+			<a href="#" class="resources-show-all selected" data-filter="all">
+				<span>{{model._filterButtons.all}}</span>
+			</a>
+			{{#if_collection_contains resources '_type' 'document'}}
+			<a href="#" class="resources-show-document" data-filter="document">
+				<span>{{model._filterButtons.document}}</span>
+			</a>
+			{{/if_collection_contains}}
+			{{#if_collection_contains resources '_type' 'media'}}
+			<a href="#" class="resources-show-media" data-filter="media">
+				<span>{{model._filterButtons.media}}</span>
+			</a>
+			{{/if_collection_contains}}
+			{{#if_collection_contains resources '_type' 'link'}}
+			<a href="#" class="resources-show-link" data-filter="link">
+				<span>{{model._filterButtons.link}}</span>
+			</a>
+			{{/if_collection_contains}}
+		{{/if_collection_contains_one_item}}
+	</div>
+	{{#each resources}}
+	<div class="resources-item drawer-item {{_type}}">
+		<a class="resources-item-open drawer-item-open" target="_blank" href="{{_link}}">
+			<div class="drawer-item-title">
+				<h5 class="drawer-item-title-inner">{{{title}}}</h5>
+			</div>
+			<div class="drawer-item-description">
+				<div class="drawer-item-description-inner">{{{description}}}</div>
+			</div>
+		</a>
+	</div>
+	{{/each}}
+</div>
