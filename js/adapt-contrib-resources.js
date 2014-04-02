@@ -16,6 +16,7 @@ define(function(require) {
 
 		initialize: function() {
 			this.listenTo(Adapt, 'remove', this.remove);
+			this.listenTo(Adapt, 'drawer:empty', this.remove);
 			this.render();
 		},
 
@@ -69,8 +70,6 @@ define(function(require) {
 
 	Adapt.once('app:dataReady', function() {
 
-		console.log('Data is ready');
-
 		var courseResources = Adapt.course.get('_resources');
 
 		if (courseResources) {
@@ -86,7 +85,7 @@ define(function(require) {
 			console.log('Sorry, no resources object is set on the course.json file');
 		}
 
-		setupResources(courseResources,courseResources._resourcesItems);
+		setupResources(courseResources, courseResources._resourcesItems);
 
 	});
 
@@ -115,8 +114,6 @@ define(function(require) {
 			}
 		});
 
-		console.log('attribute count', attributeCount.length);
-
 		if (attributeCount.length <= 1) {
 			return block.fn(this);
 		} else {
@@ -134,8 +131,6 @@ define(function(require) {
 				attributeCount.push(resourceAttribute);
 			}
 		});
-
-		console.log('attribute count cols', attributeCount.length);
 
 		return (attributeCount.length + 1);
 
