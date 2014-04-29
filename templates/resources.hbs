@@ -1,7 +1,7 @@
 <div class="resources-inner">
 	<div class="resources-filter clearfix resources-col-{{return_column_layout_from_collection_length resources '_type'}}">
 		{{! If the resources collection contains only one type of resource (pdf, media or link) don't show anything}}
-		{{#if_collection_contains_one_item resources '_type'}}
+		{{#if_collection_contains_only_one_item resources '_type'}}
 		{{else}}
 			<a href="#" class="resources-show-all selected" data-filter="all">
 				<span>{{model._filterButtons.all}}</span>
@@ -21,7 +21,7 @@
 				<span>{{model._filterButtons.link}}</span>
 			</a>
 			{{/if_collection_contains}}
-		{{/if_collection_contains_one_item}}
+		{{/if_collection_contains_only_one_item}}
 	</div>
 	{{#each resources}}
 	<div class="resources-item drawer-item {{_type}}">
