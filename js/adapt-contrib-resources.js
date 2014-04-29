@@ -40,7 +40,7 @@ define(function(require) {
 		    // Adapt.drawer.addItem([object], [callbackEvent]);
 		    Adapt.drawer.addItem(drawerObject, 'resources:showResources');
 		} else {
-			console.log('Sorry, no resources object is set on the course.json file');
+			return console.log('Sorry, no resources object is set on the course.json file');
 		}
 
 		setupResources(courseResources, courseResources._resourcesItems);
