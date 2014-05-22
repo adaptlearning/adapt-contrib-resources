@@ -8,7 +8,6 @@ define(function(require) {
 
 	var Adapt = require('coreJS/adapt');
 	var Backbone = require('backbone');
-	var Drawer = require('coreJS/drawer');
 	var ResourcesView = require('extensions/adapt-contrib-resources/js/adapt-contrib-resourcesView');
 	var ResourcesHelpers = require('extensions/adapt-contrib-resources/js/adapt-contrib-resourcesHelpers');
 
