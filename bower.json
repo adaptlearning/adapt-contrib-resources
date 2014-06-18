@@ -4,6 +4,8 @@
   "authors": [
     "Daryl Hedley <darylhedley@hotmail.com>, Dan Gray <dan@sinensis.co.uk>"
   ],
+  "displayName" : "Resources",
+  "extension" : "resources",
   "description": "An extension to allow learners to view resources",
   "main": "/js/adapt-contrib-resources.js",
   "keywords": [
