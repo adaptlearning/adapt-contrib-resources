@@ -4,14 +4,6 @@
   "id": "http://jsonschema.net",
   "required":false,
   "properties":{
-    "displayName": {
-      "type":"string",
-      "required":true
-    },
-    "name": {
-      "type":"string",
-      "required":true
-    },
     "pluginLocations": {
       "type":"object",
       "required":true,
@@ -97,10 +89,6 @@
           "type":"object"
         }
       }
-    },
-    "version": {
-      "type":"string",
-      "required":true
     }
   }
 }
