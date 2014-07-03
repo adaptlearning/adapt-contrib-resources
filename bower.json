@@ -13,5 +13,6 @@
     "adapt-plugin",
     "adapt-extension"
   ],
-  "license": "GPLv3"
+  "license": "GPLv3",
+  "targetAttribute": "_resources"
 }
