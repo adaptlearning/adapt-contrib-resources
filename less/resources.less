@@ -2,6 +2,9 @@
     .resources-filter a {
         display:block;
         float:left;
+	    .dir-rtl & {
+	        float:right;
+	    }
         text-align:center;
         text-decoration: none;
         color:@item-text-color;
@@ -11,6 +14,10 @@
             display:inline-block;
             padding:10px 0px;
             border-right:1px solid darken(@item-color, 10%);
+		    .dir-rtl & {
+		        border-right:inherit;
+		        border-left:1px solid darken(@item-color, 10%);
+		    }
         }
         &.selected {
             color:@drawer-item-text-hover-color;
