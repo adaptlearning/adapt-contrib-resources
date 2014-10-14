@@ -1,6 +1,6 @@
 {
   "name": "adapt-contrib-resources",
-  "version": "0.0.1",
+  "version": "1.1.1",
   "description": "An extension to allow learners to view resources",
   "main": "",
   "scripts": {
@@ -16,8 +16,8 @@
     "url": "https://github.com/adaptlearning/adapt-contrib-resources/issues"
   },
   "devDependencies": {
-    "karma": "~0.10",
-    "karma-mocha": "*",
-    "karma-expect": "*"
+    "karma": "0.10",
+    "karma-mocha": "0.1.0",
+    "karma-expect": "1.1.0"
   }
 }
