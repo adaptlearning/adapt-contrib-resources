@@ -8,6 +8,13 @@
         "media": "Media",
         "link": "Link"
     },
+    // _filterAria is to provide accessibility support for assistive technologies
+    "_filterAria": {
+        "allAria": "View all resources",
+        "documentAria": "View document resources",
+        "mediaAria": "View media resources",
+        "linkAria": "View resource links"
+    },
     "_resourcesItems": [
         {
             "_type":"document",
