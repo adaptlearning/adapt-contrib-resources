@@ -23,11 +23,12 @@
 			{{/if_collection_contains}}
 		{{/if_collection_contains_only_one_item}}
 	</div>
+	<div role="list">
 	{{#each resources}}
 	<div class="resources-item drawer-item {{_type}}">
-		<a class="resources-item-open drawer-item-open" target="_blank" href="{{_link}}">
+		<a role="listitem" class="resources-item-open drawer-item-open" target="_blank" href="{{_link}}">
 			<div class="drawer-item-title">
-				<h5 class="drawer-item-title-inner">{{{title}}}</h5>
+				<div class="drawer-item-title-inner h5">{{{title}}}</div>
 			</div>
 			<div class="drawer-item-description">
 				<div class="drawer-item-description-inner">{{{description}}}</div>
@@ -35,4 +36,5 @@
 		</a>
 	</div>
 	{{/each}}
+	</div>
 </div>
