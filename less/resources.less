@@ -8,15 +8,15 @@
         text-align:center;
         text-decoration: none;
         color:@item-text-color;
-        border-bottom:1px solid darken(@item-color, 10%);
+        border-bottom: 1px solid @drawer-item-color;
         span {
             width:100%;
             display:inline-block;
             padding:10px 0px;
-            border-right:1px solid darken(@item-color, 10%);
+            border-right: 1px solid @drawer-item-color;
 		    .dir-rtl & {
-		        border-right:inherit;
-		        border-left:1px solid darken(@item-color, 10%);
+		        border-left: 1px solid @drawer-item-color;
+		        border-right: inherit;
 		    }
         }
         &.selected {
