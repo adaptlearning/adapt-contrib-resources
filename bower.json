@@ -1,6 +1,7 @@
 {
   "name": "adapt-contrib-resources",
-  "version": "0.0.2",
+  "version": "2.0.0",
+  "framework": "^2.0.0",
   "homepage": "https://github.com/adaptlearning/adapt-contrib-resources",
   "authors": [
     "Daryl Hedley <darylhedley@hotmail.com>, Dan Gray <dan@sinensis.co.uk>"
