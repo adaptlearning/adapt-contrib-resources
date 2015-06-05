@@ -3,9 +3,6 @@
   "version": "2.0.0",
   "description": "An extension to allow learners to view resources",
   "main": "",
-  "scripts": {
-    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
-  },
   "repository": {
     "type": "git",
     "url": "git://github.com/adaptlearning/adapt-contrib-resources.git"
@@ -14,10 +11,5 @@
   "license": "GPL v3",
   "bugs": {
     "url": "https://github.com/adaptlearning/adapt-contrib-resources/issues"
-  },
-  "devDependencies": {
-    "karma": "~0.10",
-    "karma-mocha": "*",
-    "karma-expect": "*"
   }
 }
