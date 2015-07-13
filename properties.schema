@@ -16,7 +16,7 @@
           "properties":{
             "_resources": {
               "type": "object",
-              "require": false,
+              "required": false,
               "legend": "Resources",
               "properties": {
                 "title": {
