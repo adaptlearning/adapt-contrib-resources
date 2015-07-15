@@ -8,6 +8,7 @@ define(function(require) {
 
 	var Adapt = require('coreJS/adapt');
 	var Backbone = require('backbone');
+	var Handlebars = require('handlebars');
 	var ResourcesView = require('extensions/adapt-contrib-resources/js/adapt-contrib-resourcesView');
 	var ResourcesHelpers = require('extensions/adapt-contrib-resources/js/adapt-contrib-resourcesHelpers');
 
@@ -22,7 +23,11 @@ define(function(require) {
 				collection: resourcesCollection
 			}).$el);
 		});
-	
+
+		// used to add prefix to aria label of resources (see resources.hbs)
+		Handlebars.registerHelper('getFilterNameForResourceType', function(type) {
+			return resourcesModel.get("_filterButtons")[type] || "";
+		});
 	}
 
 	Adapt.once('app:dataReady', function() {
@@ -45,5 +50,4 @@ define(function(require) {
 		setupResources(courseResources, courseResources._resourcesItems);
 
 	});
-
 })
