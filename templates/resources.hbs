@@ -26,7 +26,7 @@
 	<div role="list">
 	{{#each resources}}
 	<div class="resources-item drawer-item {{_type}}">
-		<a role="listitem" class="resources-item-open drawer-item-open" target="_blank" href="{{_link}}" tabindex="0" aria-label="{{getFilterNameForResourceType _type}}. {{{title}}}. {{{description}}}">
+		<a role="listitem" class="resources-item-open drawer-item-open" target="_blank" href="{{_link}}" tabindex="0" aria-label="{{get_filter_name_for_resource_type ../model _type}}. {{{title}}}. {{{description}}}">
 			<div class="drawer-item-title">
 				<div class="drawer-item-title-inner h5">{{{title}}}</div>
 			</div>
