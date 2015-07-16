@@ -48,9 +48,4 @@ define(function(require) {
 		return (attributeCount.length + 1);
 
     });
-
-	// used to add prefix to aria label of resources (see resources.hbs)
-	Handlebars.registerHelper('get_filter_name_for_resource_type', function(model, type) {
-		return model._filterButtons[type] || "";
-	});
 })
