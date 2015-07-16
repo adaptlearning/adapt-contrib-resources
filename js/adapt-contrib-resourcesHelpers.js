@@ -48,6 +48,4 @@ define(function(require) {
 		return (attributeCount.length + 1);
 
     });
-
 })
-	

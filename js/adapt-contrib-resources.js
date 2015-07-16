@@ -22,7 +22,6 @@ define(function(require) {
 				collection: resourcesCollection
 			}).$el);
 		});
-	
 	}
 
 	Adapt.once('app:dataReady', function() {
@@ -45,5 +44,4 @@ define(function(require) {
 		setupResources(courseResources, courseResources._resourcesItems);
 
 	});
-
 })
