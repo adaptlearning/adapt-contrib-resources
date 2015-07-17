@@ -20,7 +20,7 @@ define(function(require) {
             var collectionData = this.collection.toJSON();
             var modelData = this.model.toJSON();
             var template = Handlebars.templates["resources"];
-            this.$el.html(template({model: modelData, resources:collectionData}));
+            this.$el.html(template({model: modelData, resources:collectionData, _globals: Adapt.course.get('_globals')}));
             return this;
         },
 
