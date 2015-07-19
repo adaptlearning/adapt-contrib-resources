@@ -21,6 +21,7 @@ define(function(require) {
             var modelData = this.model.toJSON();
             var template = Handlebars.templates["resources"];
             this.$el.html(template({model: modelData, resources:collectionData, _globals: Adapt.course.get('_globals')}));
+            _.defer(_.bind(this.postRender, this));
             return this;
         },
 
@@ -31,26 +32,21 @@ define(function(require) {
         onFilterClicked: function(event) {
             event.preventDefault();
             var $currentTarget = $(event.currentTarget);
-            if ($currentTarget.hasClass('selected')) {
-                return;
-            }
             this.$('.resources-filter a').removeClass('selected');
             var filter = $currentTarget.addClass('selected').attr('data-filter');
-            
+            var items = [];
+
             if (filter === 'all') {
-                var items = this.$('.resources-item').removeClass('display-none');
-                if (items.length === 0) return;
-                $(items[0]).a11y_focus();
-                return;
+                items = this.$('.resources-item').removeClass('display-none');
+            } else {
+                this.$('.resources-item').removeClass('display-none').not("." + filter).addClass('display-none');
+                items = this.$('.resources-item.' + filter);
             }
-            this.$('.resources-item').removeClass('display-none').not("." + filter).addClass('display-none');
-            var items = this.$('.resources-item.' + filter);
+
             if (items.length === 0) return;
             $(items[0]).a11y_focus();
         }
-
     });
 
     return ResourcesView;
 })
-    
