@@ -1,9 +1,3 @@
-/*
-* Page Level Progress
-* License - http://github.com/adaptlearning/adapt_framework/LICENSE
-* Maintainers - Daryl Hedley <darylhedley@hotmail.com>
-*/
-
 define(function(require) {
 
 	var Adapt = require('coreJS/adapt');

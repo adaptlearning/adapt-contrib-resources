@@ -3,9 +3,7 @@
   "version": "2.0.0",
   "framework": "^2.0.0",
   "homepage": "https://github.com/adaptlearning/adapt-contrib-resources",
-  "authors": [
-    "Daryl Hedley <darylhedley@hotmail.com>, Dan Gray <dan@sinensis.co.uk>"
-  ],
+  "issues": "https://adaptlearning.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=10100&issuetype=1&priority=6&components=10522",
   "displayName" : "Resources",
   "extension" : "resources",
   "description": "An extension to allow learners to view resources",
