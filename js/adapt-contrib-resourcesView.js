@@ -13,7 +13,7 @@ define(function(require) {
         },
 
         events: {
-            'click .resources-filter a': 'onFilterClicked'
+            'click .resources-filter button': 'onFilterClicked'
         },
 
         render: function() {
@@ -32,7 +32,7 @@ define(function(require) {
         onFilterClicked: function(event) {
             event.preventDefault();
             var $currentTarget = $(event.currentTarget);
-            this.$('.resources-filter a').removeClass('selected');
+            this.$('.resources-filter button').removeClass('selected');
             var filter = $currentTarget.addClass('selected').attr('data-filter');
             var items = [];
 
