@@ -54,6 +54,8 @@ The attributes listed below are used in *course.json* to configure **Resources**
 
 >>**linkAria** (string): This text is associated with the button that returns **_resourcesItems** with `"_type": "link"`and is read by assistive technologies.  
 
+>**_itemAriaExternal** (string): This text is associated with each resource item. It renders as part of the aria label to tell screen readers that the content will open in an external link.
+
 >**_resourcesItems** (object):  This object stores properties for each resource item. Multiple resource items may be created. Each contains values for **_type**, **title**, **description** (optional), and **_link**.
 
 >>**_type** (string):  This text is used to filter resources. If the resource is to be returned in a filtered group, this value must be one of the following: `document`, `media`, or `link`. (Note: There is no file type validation as part of **Resources**.)
