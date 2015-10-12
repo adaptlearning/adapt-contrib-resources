@@ -54,7 +54,7 @@ The attributes listed below are used in *course.json* to configure **Resources**
 
 >>**linkAria** (string): This text is associated with the button that returns **_resourcesItems** with `"_type": "link"`and is read by assistive technologies.  
 
->**_itemAriaExternal** (string): This text is associated with each resource item. It renders as part of the aria label to tell screen readers that the content will open in an external link.
+>**itemAriaExternal** (string): This text is associated with each resource item. It renders as part of the aria label to tell screen readers that the content will open in an external link.
 
 >**_resourcesItems** (object):  This object stores properties for each resource item. Multiple resource items may be created. Each contains values for **_type**, **title**, **description** (optional), and **_link**.
 
