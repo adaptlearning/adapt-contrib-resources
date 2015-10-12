@@ -13,7 +13,8 @@ define(function(require) {
         },
 
         events: {
-            'click .resources-filter button': 'onFilterClicked'
+            'click .resources-filter button': 'onFilterClicked',
+            'click .resources-item-container button': 'onResourceClicked'
         },
 
         render: function() {
@@ -45,6 +46,10 @@ define(function(require) {
 
             if (items.length === 0) return;
             $(items[0]).a11y_focus();
+        },
+
+        onResourceClicked: function(event) {
+            window.open($(event.currentTarget).data("href"));
         }
     });
 
