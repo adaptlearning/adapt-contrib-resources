@@ -13,7 +13,8 @@ define(function(require) {
         },
 
         events: {
-            'click .resources-filter a': 'onFilterClicked'
+            'click .resources-filter button': 'onFilterClicked',
+            'click .resources-item-container button': 'onResourceClicked'
         },
 
         render: function() {
@@ -32,7 +33,7 @@ define(function(require) {
         onFilterClicked: function(event) {
             event.preventDefault();
             var $currentTarget = $(event.currentTarget);
-            this.$('.resources-filter a').removeClass('selected');
+            this.$('.resources-filter button').removeClass('selected');
             var filter = $currentTarget.addClass('selected').attr('data-filter');
             var items = [];
 
@@ -45,6 +46,10 @@ define(function(require) {
 
             if (items.length === 0) return;
             $(items[0]).a11y_focus();
+        },
+
+        onResourceClicked: function(event) {
+            window.open($(event.currentTarget).data("href"));
         }
     });
 

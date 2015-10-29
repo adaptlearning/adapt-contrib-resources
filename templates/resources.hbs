@@ -3,37 +3,37 @@
 		{{! If the resources collection contains only one type of resource (pdf, media or link) don't show anything}}
 		{{#if_collection_contains_only_one_item resources '_type'}}
 		{{else}}
-			<a href="#" class="resources-show-all selected" data-filter="all" aria-label="{{model._filterAria.allAria}}" tabindex="0" role="button">
+			<button class="base resources-show-all selected" data-filter="all" aria-label="{{model._filterAria.allAria}}" tabindex="0" role="button">
 				<span>{{model._filterButtons.all}}</span>
-			</a>
+			</button>
 			{{#if_collection_contains resources '_type' 'document'}}
-			<a href="#" class="resources-show-document" data-filter="document" aria-label="{{model._filterAria.documentAria}}" tabindex="0" role="button">
+			<button class="base resources-show-document" data-filter="document" aria-label="{{model._filterAria.documentAria}}" tabindex="0" role="button">
 				<span>{{model._filterButtons.document}}</span>
-			</a>
+			</button>
 			{{/if_collection_contains}}
 			{{#if_collection_contains resources '_type' 'media'}}
-			<a href="#" class="resources-show-media" data-filter="media" aria-label="{{model._filterAria.mediaAria}}" tabindex="0" role="button">
+			<button class="base resources-show-media" data-filter="media" aria-label="{{model._filterAria.mediaAria}}" tabindex="0" role="button">
 				<span>{{model._filterButtons.media}}</span>
-			</a>
+			</button>
 			{{/if_collection_contains}}
 			{{#if_collection_contains resources '_type' 'link'}}
-			<a href="#" class="resources-show-link" data-filter="link" aria-label="{{model._filterAria.linkAria}}" tabindex="0" role="button">
+			<button class="base resources-show-link" data-filter="link" aria-label="{{model._filterAria.linkAria}}" tabindex="0" role="button">
 				<span>{{model._filterButtons.link}}</span>
-			</a>
+			</button>
 			{{/if_collection_contains}}
 		{{/if_collection_contains_only_one_item}}
 	</div>
-	<div role="list">
+	<div class="resources-item-container">
 	{{#each resources}}
 	<div class="resources-item drawer-item {{_type}}">
-		<a role="listitem" class="resources-item-open drawer-item-open" target="_blank" href="{{_link}}" tabindex="0" aria-label="{{lookup ../model._filterButtons _type}}. {{{title}}}. {{{description}}}">
+		<button class="base resources-item-open drawer-item-open" data-href="{{_link}}" tabindex="0" role="button" aria-label="{{lookup ../model._filterButtons _type}}. {{../model.itemAriaExternal}}. {{{title}}}. {{{description}}}">
 			<div class="drawer-item-title">
 				<div class="drawer-item-title-inner h5">{{{title}}}</div>
 			</div>
 			<div class="drawer-item-description">
 				<div class="drawer-item-description-inner">{{{description}}}</div>
 			</div>
-		</a>
+		</button>
 	</div>
 	{{/each}}
 	</div>
