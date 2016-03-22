@@ -23,18 +23,21 @@ define(function(require) {
 
 		var courseResources = Adapt.course.get('_resources');
 
-		if (courseResources) {
-			var drawerObject = {
-		        title: courseResources.title,
-		        description: courseResources.description,
-		        className: 'resources-drawer'
-		    };
-		    // Syntax for adding a Drawer item
-		    // Adapt.drawer.addItem([object], [callbackEvent]);
-		    Adapt.drawer.addItem(drawerObject, 'resources:showResources');
-		} else {
-			return console.log('Sorry, no resources object is set on the course.json file');
-		}
+        // do not proceed until resource set on course.json
+        if (!courseResources) {
+            return console.log('Sorry, no resources object is set on the course.json file');
+        } else if (courseResources._isEnabled !== undefined && courseResources._isEnabled !== true) {
+            return console.log('Sorry, resources object is not enabled on the course.json file');
+        }
+
+        var drawerObject = {
+            title: courseResources.title,
+            description: courseResources.description,
+            className: 'resources-drawer'
+        };
+        // Syntax for adding a Drawer item
+        // Adapt.drawer.addItem([object], [callbackEvent]);
+        Adapt.drawer.addItem(drawerObject, 'resources:showResources');
 
 		setupResources(courseResources, courseResources._resourcesItems);
 
