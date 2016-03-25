@@ -1,5 +1,6 @@
 // To go in the course.json file
-"_resources": { 
+"_resources": {
+    "_isEnabled": true,
     "title": "Resources",
     "description": "Click here to view resources for this course",
     "_filterButtons": {

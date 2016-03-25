@@ -19,6 +19,15 @@
               "required": false,
               "legend": "Resources",
               "properties": {
+                "_isEnabled": {
+                  "type": "boolean",
+                  "required":true,
+                  "default": true,
+                  "title": "Is enabled",
+                  "inputType": {"type": "Boolean", "options": [true, false]},
+                  "validators": [],
+                  "help": "If set to 'false', Resources will be disabled"
+                },
                 "title": {
                   "type": "string",
                   "default":"Resources",

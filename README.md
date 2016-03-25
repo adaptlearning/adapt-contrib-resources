@@ -30,6 +30,8 @@ The attributes listed below are used in *course.json* to configure **Resources**
 
 **_resources** (object): The Resources object that contains values for **title**, **description**, **_filterButtons**, **_filterAria**, and **_resourcesItems**.  
 
+>**_isEnabled** (boolean): Turns **Resources** on and off. Acceptable values are `true` and `false`. 
+
 >**title** (string): This text is displayed (along with the **description**) in the [Drawer](https://github.com/adaptlearning/adapt_framework/wiki/Core-modules#drawer) as part of a button that gives access to the resources.  
 
 >**description** (string): This text is displayed (along with the **title**) in the [Drawer](https://github.com/adaptlearning/adapt_framework/wiki/Core-modules#drawer) as part of a button that gives access to the resources.  
