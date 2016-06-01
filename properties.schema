@@ -34,7 +34,8 @@
                   "required": true,
                   "title": "",
                   "inputType": "Text",
-                  "validators": ["required"]
+                  "validators": ["required"],
+                  "translatable": true
                 },
                 "description": {
                   "type": "string",
@@ -42,7 +43,8 @@
                   "required": false,
                   "title": "",
                   "inputType": "Text",
-                  "validators": []
+                  "validators": [],
+                  "translatable": true
                 },
                 "_filterButtons": {
                   "type":"object",
@@ -53,28 +55,32 @@
                       "default": "All",
                       "title": "",
                       "inputType": "Text",
-                      "validators": []
+                      "validators": [],
+                      "translatable": true
                     },
                     "document": {
                       "type": "string",
                       "default": "Documents",
                       "title": "",
                       "inputType": "Text",
-                      "validators": []
+                      "validators": [],
+                      "translatable": true
                     },
                     "media": {
                       "type": "string",
                       "default": "Media",
                       "title": "",
                       "inputType": "Text",
-                      "validators": []
+                      "validators": [],
+                      "translatable": true
                     },
                     "link": {
                       "type": "string",
                       "default": "Links",
                       "title": "",
                       "inputType": "Text",
-                      "validators": []
+                      "validators": [],
+                      "translatable": true
                     }
                   }
                 },
@@ -87,28 +93,32 @@
                       "default": "View all resources",
                       "title": "All",
                       "inputType": "Text",
-                      "validators": []
+                      "validators": [],
+                      "translatable": true
                     },
                     "documentAria": {
                       "type": "string",
                       "default": "View document resources",
                       "title": "Documents",
                       "inputType": "Text",
-                      "validators": []
+                      "validators": [],
+                      "translatable": true
                     },
                     "mediaAria": {
                       "type": "string",
                       "default": "View media resources",
                       "title": "Media",
                       "inputType": "Text",
-                      "validators": []
+                      "validators": [],
+                      "translatable": true
                     },
                     "linkAria": {
                       "type": "string",
                       "default": "View resource links",
                       "title": "Links",
                       "inputType": "Text",
-                      "validators": []
+                      "validators": [],
+                      "translatable": true
                     }
                   }
                 },
@@ -119,6 +129,7 @@
                   "title": "External Link Aria Label",
                   "inputType": "Text",
                   "validators": [],
+                  "translatable": true,
                   "help": "This text is associated with each resource item. It renders as part of the aria label to tell screen readers that the content will open in an external link."
                 },
                 "_resourcesItems": {
@@ -142,14 +153,16 @@
                         "require": true,
                         "title": "Title",
                         "inputType": "Text",
-                        "validators": ["required"]
+                        "validators": ["required"],
+                        "translatable": true
                       },
                       "description": {
                         "type": "string",
                         "require": false,
                         "title": "Description",
                         "inputType": "Text",
-                        "validators": []
+                        "validators": [],
+                        "translatable": true
                       },
                       "_link": {
                         "type": "string",
