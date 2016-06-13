@@ -49,7 +49,7 @@ define(function(require) {
         },
 
         onResourceClicked: function(event) {
-            window.open($(event.currentTarget).data("href"));
+            window.top.open($(event.currentTarget).data("href"));
         }
     });
 
