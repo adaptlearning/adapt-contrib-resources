@@ -158,7 +158,7 @@
                         "type": "string",
                         "require": true,
                         "title": "Link",
-                        "inputType": "Asset:other",
+                        "inputType": "Asset",
                         "validators": ["required"]
                       }
                     }
