@@ -2,44 +2,50 @@
     .resources-filter button {
         display:block;
         float:left;
-	    .dir-rtl & {
-	        float:right;
-	    }
-        text-align:center;
+        color: @drawer-item-text-color;
+        border-bottom: 1px solid @drawer-border-color;
+        padding: 0px;
+        font-size: @body-text-font-size;
+        text-align: center;
         text-decoration: none;
-        color:@item-text-color;
-        border-bottom: 1px solid @drawer-item-color;
+
+  	    .dir-rtl & {
+  	        float:right;
+  	    }
+
         span {
             width:100%;
             display:inline-block;
-            padding:10px 0px;
-            border-right: 1px solid @drawer-item-color;
+            border: none;
+            padding: 15px 0px;
+
 		    .dir-rtl & {
 		        border-left: 1px solid @drawer-item-color;
 		        border-right: inherit;
 		    }
         }
         &.selected {
-            color:@drawer-item-text-hover-color;
-            background-color: @drawer-item-hover-color;
+            color: @drawer-item-text-color-selected;
+            background-color: @drawer-item-color-selected;
+            border-bottom: 1px solid @drawer-item-color-selected;
         }
         .no-touch &:hover {
-            color:@drawer-item-text-hover-color;
-            background-color: @drawer-item-hover-color;
+            color:  @drawer-item-text-color-hover;
+            background-color: @drawer-item-color-hover;
+            border-bottom: 1px solid @drawer-item-color-hover;
         }
     }
     .resources-col-4 {
         button {
             width:25%;
         }
-        
+
     }
     .resources-col-3 {
         button {
             width:33.3%;
         }
-        
-    }
-    
-}
 
+    }
+
+}
