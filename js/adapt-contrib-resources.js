@@ -40,6 +40,6 @@ define([
     }
 
     Adapt.once('app:dataReady', initRessources);
-    Adapt.once('languagePicker:languageChange', initRessources);
+    Adapt.on('languagePicker:languageChange', initRessources);
 
 });
