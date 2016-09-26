@@ -19,7 +19,7 @@ define([
 
     }
 
-    Adapt.once('app:dataReady', function() {
+    function initRessources() {
 
         var courseResources = Adapt.course.get('_resources');
 
@@ -37,6 +37,9 @@ define([
 
         setupResources(courseResources, courseResources._resourcesItems);
 
-    });
+    }
+
+    Adapt.once('app:dataReady', initRessources);
+    Adapt.once('languagePicker:languageChange', initRessources);
 
 });
