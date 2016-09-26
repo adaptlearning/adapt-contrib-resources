@@ -19,7 +19,7 @@ define([
 
     }
 
-    function initRessources() {
+    function initResources() {
 
         var courseResources = Adapt.course.get('_resources');
 
@@ -31,15 +31,14 @@ define([
             description: courseResources.description,
             className: 'resources-drawer'
         };
-        // Syntax for adding a Drawer item
-        // Adapt.drawer.addItem([object], [callbackEvent]);
+
         Adapt.drawer.addItem(drawerObject, 'resources:showResources');
 
         setupResources(courseResources, courseResources._resourcesItems);
 
     }
 
-    Adapt.once('app:dataReady', initRessources);
-    Adapt.on('languagePicker:languageChange', initRessources);
+    Adapt.once('app:dataReady', initResources);
+    Adapt.on('languagePicker:languageChange', initResources);
 
 });
