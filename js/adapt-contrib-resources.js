@@ -1,6 +1,6 @@
 define([
     'backbone',
-    'coreJS/adapt',
+    'core/js/adapt',
     './adapt-contrib-resourcesView',
     './adapt-contrib-resourcesHelpers'
 ], function(Backbone, Adapt, ResourcesView, ResourcesHelpers) {
