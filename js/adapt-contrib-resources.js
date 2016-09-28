@@ -38,7 +38,9 @@ define([
 
     }
 
-    Adapt.once('app:dataReady', initResources);
-    Adapt.on('app:languageChanged', initResources);
+    Adapt.once('app:dataReady', function() {
+        initResources();
+        Adapt.on('app:languageChanged', initResources);
+    });
 
 });
