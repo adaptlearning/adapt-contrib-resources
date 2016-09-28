@@ -5,10 +5,10 @@ define([
     './adapt-contrib-resourcesHelpers'
 ], function(Backbone, Adapt, ResourcesView, ResourcesHelpers) {
 
-    function setupResources(resourcesModel, resourcesItems) {
+    function setupResources(resourcesData) {
 
-        var resourcesCollection = new Backbone.Collection(resourcesItems);
-        var resourcesModel = new Backbone.Model(resourcesModel);
+        var resourcesModel = new Backbone.Model(resourcesData);
+        var resourcesCollection = new Backbone.Collection(resourcesModel.get('_resourcesItems'));
 
         Adapt.on('resources:showResources', function() {
             Adapt.drawer.triggerCustomView(new ResourcesView({
@@ -34,7 +34,7 @@ define([
 
         Adapt.drawer.addItem(drawerObject, 'resources:showResources');
 
-        setupResources(courseResources, courseResources._resourcesItems);
+        setupResources(courseResources);
 
     }
 
