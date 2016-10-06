@@ -1,7 +1,7 @@
 define(function(require) {
 
     var Backbone = require('backbone');
-    var Adapt = require('coreJS/adapt');
+    var Adapt = require('core/js/adapt');
 
     var ResourcesView = Backbone.View.extend({
 
@@ -54,4 +54,4 @@ define(function(require) {
     });
 
     return ResourcesView;
-})
+});
