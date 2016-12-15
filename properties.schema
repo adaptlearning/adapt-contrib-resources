@@ -133,22 +133,29 @@
                     "properties": {
                       "_type": {
                         "type": "string",
-                        "require": true,
+                        "required": true,
                         "title": "Type",
                         "inputType": { "type": "Select", "options": ["document", "media", "link"]},
                         "validators": ["required"]
                       },
                       "title": {
                         "type": "string",
-                        "require": true,
+                        "required": true,
                         "title": "Title",
                         "inputType": "Text",
                         "validators": ["required"],
                         "translatable": true
                       },
+                      "filename": {
+                        "type": "string",
+                        "required": false,
+                        "title": "Filename",
+                        "inputType": "Text",
+                        "translatable": true
+                      },
                       "description": {
                         "type": "string",
-                        "require": false,
+                        "required": false,
                         "title": "Description",
                         "inputType": "Text",
                         "validators": [],
@@ -156,7 +163,7 @@
                       },
                       "_link": {
                         "type": "string",
-                        "require": true,
+                        "required": true,
                         "title": "Link",
                         "inputType": "Asset",
                         "validators": ["required"]
