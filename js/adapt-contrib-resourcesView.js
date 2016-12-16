@@ -52,7 +52,7 @@ define(function(require) {
             var data = $(event.currentTarget).data();
 
             if ('document' !== data.type) {
-              window.top.open($(event.currentTarget).data("href"), 'MyFile.jpg');
+              window.top.open($(event.currentTarget).data("href"));
               return;
             }
             var dummyLink = document.createElement('a');
