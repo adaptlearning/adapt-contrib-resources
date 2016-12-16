@@ -151,7 +151,8 @@
                         "required": false,
                         "title": "Filename",
                         "inputType": "Text",
-                        "translatable": true
+                        "translatable": true,
+                        "help":"This can be used to set the name of the file when downloaded by the user, if different from the source filename."
                       },
                       "description": {
                         "type": "string",
