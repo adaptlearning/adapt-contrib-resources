@@ -52,9 +52,9 @@ define(function(require) {
             var data = $(event.currentTarget).data();
 
             if (data.type !== 'document') {
-              window.top.open(data.href);
+                window.top.open(data.href);
             } else {
-              $('<a/>', { href: data.href, download: data.filename })[0].click();
+                $('<a/>', { href: data.href, download: data.filename })[0].click();
             }
         }
     });
