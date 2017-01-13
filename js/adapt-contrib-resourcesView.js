@@ -51,7 +51,7 @@ define(function(require) {
         onResourceClicked: function(event) {
             var data = $(event.currentTarget).data();
 
-            if ('document' !== data.type) {
+            if (data.type !== 'document') {
               window.top.open(data.href);
               return;
             }
