@@ -53,9 +53,16 @@ define(function(require) {
 
             if (data.type !== 'document') {
                 window.top.open(data.href);
-            } else {
-                $('<a/>', { href: data.href, download: data.filename })[0].click();
+                return;
             }
+            var dummyLink = document.createElement('a');
+            dummyLink.download = data.filename;
+            dummyLink.href = data.href;
+
+            document.body.appendChild(dummyLink);
+            dummyLink.click();
+            document.body.removeChild(dummyLink);
+            delete dummyLink;
         }
     });
 
