@@ -66,6 +66,8 @@ The attributes listed below are used in *course.json* to configure **Resources**
 
 >>**description** (string):  This optional text appears (along with **title**) as a label on the button that links to the item.    
 
+>>**filename** (string): This can be used to set the name of the file when downloaded by the user, if different from the source filename. (This feature is not supported on IE8-IE11, or Safari 10.)
+
 >>**_link** (string):  This value is the URI that accesses the resource item, e.g., *course/en/pdf/diagram.pdf*.
 
 <div float align=right><a href="#top">Back to Top</a></div>

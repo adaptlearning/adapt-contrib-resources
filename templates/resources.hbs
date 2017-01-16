@@ -26,7 +26,7 @@
 	<div class="resources-item-container">
 	{{#each resources}}
 	<div class="resources-item drawer-item {{_type}}">
-		<button class="base resources-item-open drawer-item-open" data-href="{{_link}}" tabindex="0" role="button" aria-label="{{lookup ../model._filterButtons _type}}. {{../model.itemAriaExternal}}. {{{title}}}. {{{description}}}">
+		<button class="base resources-item-open drawer-item-open" data-type="{{_type}}" data-filename="{{filename}}" data-href="{{_link}}" tabindex="0" role="button" aria-label="{{lookup ../model._filterButtons _type}}. {{../model.itemAriaExternal}}. {{{title}}}. {{{description}}}">
 			<div class="drawer-item-title">
 				<div class="drawer-item-title-inner h5">{{{title}}}</div>
 			</div>
