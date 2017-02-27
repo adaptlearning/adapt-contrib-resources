@@ -7,7 +7,7 @@
     "resourcesEnd": {
       "type": "string",
       "required": true,
-      "default": "resourcesEnd",
+      "default": "You have reached the end of the list of resources.",
       "inputType": "Text",
       "validators": [],
       "translatable": true
