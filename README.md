@@ -7,7 +7,7 @@
 
 [Visit the **Resources** wiki](https://github.com/adaptlearning/adapt-contrib-resources/wiki) for more information about its functionality. 
 
-##Installation
+## Installation
 
 As one of Adapt's *[core extensions](https://github.com/adaptlearning/adapt_framework/wiki/Core-Plug-ins-in-the-Adapt-Learning-Framework#extensions),* **Resources** is included with the [installation of the Adapt framework](https://github.com/adaptlearning/adapt_framework/wiki/Manual-installation-of-the-Adapt-framework#installation) and the [installation of the Adapt authoring tool](https://github.com/adaptlearning/adapt_authoring/wiki/Installing-Adapt-Origin).
 
@@ -25,7 +25,7 @@ With the [Adapt CLI](https://github.com/adaptlearning/adapt-cli) installed, run 
 
 <div float align=right><a href="#top">Back to Top</a></div>
 
-##Settings  
+## Settings  
 The attributes listed below are used in *course.json* to configure **Resources**, and are properly formatted as JSON in [*example.json*](https://github.com/adaptlearning/adapt-contrib-resources/blob/master/example.json). Visit the [**Resources** wiki](https://github.com/adaptlearning/adapt-contrib-resources/wiki) for more information about how they appear in the [authoring tool](https://github.com/adaptlearning/adapt_authoring/wiki).  
 
 **_resources** (object): The Resources object that contains values for **title**, **description**, **_filterButtons**, **_filterAria**, and **_resourcesItems**.  
