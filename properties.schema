@@ -34,9 +34,9 @@
                   "required":true,
                   "default": true,
                   "title": "Is enabled",
-                  "inputType": {"type": "Boolean", "options": [true, false]},
+                  "inputType": "Checkbox",
                   "validators": [],
-                  "help": "If set to 'false', Resources will be disabled"
+                  "help": "Controls whether the Resources extension is enabled or disabled."
                 },
                 "title": {
                   "type": "string",
