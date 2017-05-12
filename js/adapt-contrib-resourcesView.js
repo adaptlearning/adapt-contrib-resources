@@ -56,7 +56,12 @@ define(function(require) {
                 return;
             }
             var dummyLink = document.createElement('a');
-            dummyLink.download = data.filename;
+            // Internet Explorer has no support for the 'download' attribute
+            if(Adapt.device.browser.toLowerCase() === "internet explorer") {
+                dummyLink.target = "_blank";
+            } else {
+                dummyLink.download = data.filename;
+            }
             dummyLink.href = data.href;
 
             document.body.appendChild(dummyLink);
