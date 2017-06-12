@@ -1,7 +1,6 @@
-define(function(require) {
-
-    var Backbone = require('backbone');
-    var Adapt = require('core/js/adapt');
+define([
+    'core/js/adapt'
+], function(Adapt) {
 
     var ResourcesView = Backbone.View.extend({
 
@@ -55,8 +54,14 @@ define(function(require) {
                 window.top.open(data.href);
                 return;
             }
+
             var dummyLink = document.createElement('a');
-            dummyLink.download = data.filename;
+            // Internet Explorer has no support for the 'download' attribute
+            if(Adapt.device.browser.toLowerCase() === "internet explorer") {
+                dummyLink.target = "_blank";
+            } else {
+                dummyLink.download = data.filename;
+            }
             dummyLink.href = data.href;
 
             document.body.appendChild(dummyLink);
