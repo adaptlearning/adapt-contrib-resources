@@ -38,7 +38,7 @@
             "title":"Community Site",
             "description":"Click here to view our community site",
             "_link":"https://community.adaptlearning.org",
-            "_forceDownload": true
+            "_forceDownload": false
         }
     ]
 }
