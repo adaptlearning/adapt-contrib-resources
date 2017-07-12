@@ -50,7 +50,7 @@ define([
         onResourceClicked: function(event) {
             var data = $(event.currentTarget).data();
 
-            if (!data.forceDownload) {
+            if (!data.forcedownload) {
                 window.top.open(data.href);
                 return;
             }

@@ -148,7 +148,7 @@
                         "inputType": { "type": "Select", "options": ["document", "media", "link"]},
                         "validators": ["required"]
                       },
-                      "_forceDownload": {
+                      "forceDownload": {
                         "type": "boolean",
                         "default": false,
                         "title": "Force download",
