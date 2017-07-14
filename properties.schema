@@ -148,6 +148,15 @@
                         "inputType": { "type": "Select", "options": ["document", "media", "link"]},
                         "validators": ["required"]
                       },
+                      "_forceDownload": {
+                        "type": "boolean",
+                        "default": false,
+                        "title": "Force download",
+                        "inputType": "Checkbox",
+                        "validators": [],
+                        "translatable": true,
+                        "help": "Controls whether the Resource is opened in a new window or downloaded."
+                      },
                       "title": {
                         "type": "string",
                         "required": true,
