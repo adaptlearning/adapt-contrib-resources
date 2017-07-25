@@ -29,7 +29,8 @@ define([
         var drawerObject = {
             title: courseResources.title,
             description: courseResources.description,
-            className: 'resources-drawer'
+            className: 'resources-drawer',
+            drawerOrder: courseResources._drawerOrder
         };
 
         Adapt.drawer.addItem(drawerObject, 'resources:showResources');

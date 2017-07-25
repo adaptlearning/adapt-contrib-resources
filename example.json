@@ -1,6 +1,7 @@
 // To go in the course.json file
 "_resources": {
     "_isEnabled": true,
+    "_drawerOrder": 1,
     "title": "Resources",
     "description": "Click here to view resources for this course",
     "_filterButtons": {
