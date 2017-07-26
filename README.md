@@ -32,7 +32,7 @@ The attributes listed below are used in *course.json* to configure **Resources**
 
 >**_isEnabled** (boolean): Turns **Resources** on and off. Acceptable values are `true` and `false`.
 
->**_drawerOrder** (boolean): Determines the order in which this extension appears as a drawer item. Acceptable values are numbers.
+>**_drawerOrder** (number): Determines the order in which this extension appears as a drawer item. Acceptable values are numbers.
 
 >**_forceDownload** (boolean): Forces a resource item to be downloaded when active. Otherwise it will open in a new window. Acceptable values are `true` and `false`.
 

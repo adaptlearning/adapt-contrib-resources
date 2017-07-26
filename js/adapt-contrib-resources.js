@@ -30,7 +30,7 @@ define([
             title: courseResources.title,
             description: courseResources.description,
             className: 'resources-drawer',
-            drawerOrder: courseResources._drawerOrder
+            drawerOrder: courseResources._drawerOrder || 0
         };
 
         Adapt.drawer.addItem(drawerObject, 'resources:showResources');
