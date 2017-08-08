@@ -30,7 +30,9 @@ The attributes listed below are used in *course.json* to configure **Resources**
 
 **_resources** (object): The Resources object that contains values for **title**, **description**, **_filterButtons**, **_filterAria**, and **_resourcesItems**.  
 
->**_isEnabled** (boolean): Turns **Resources** on and off. Acceptable values are `true` and `false`. 
+>**_isEnabled** (boolean): Turns **Resources** on and off. Acceptable values are `true` and `false`.
+
+>**_drawerOrder** (number): Determines the order in which this extension appears as a drawer item. Acceptable values are numbers.
 
 >**_forceDownload** (boolean): Forces a resource item to be downloaded when active. Otherwise it will open in a new window. Acceptable values are `true` and `false`.
 
