@@ -141,6 +141,16 @@
                     }
                   }
                 },
+                "itemAriaExternal": {
+                  "type": "string",
+                  "default": "This content will open in a new window",
+                  "required": false,  
+                  "title": "New Window ARIA",
+                  "inputType": "Text",
+                  "validators": [],
+                  "help": "Text to explain to assistive technology users that the Resource will open in a new window",
+                  "translatable": true
+                },
                 "_resourcesItems": {
                   "type": "array",
                   "required": false,
