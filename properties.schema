@@ -163,8 +163,7 @@
                         "title": "Force download",
                         "inputType": "Checkbox",
                         "validators": [],
-                        "translatable": true,
-                        "help": "Controls whether the Resource is opened in a new window or downloaded."
+                        "help": "Controls whether the Resource is opened in a new window or downloaded. Force download is only supported in browsers that support the 'download' attribute."
                       },
                       "title": {
                         "type": "string",
@@ -180,7 +179,7 @@
                         "title": "Filename",
                         "inputType": "Text",
                         "translatable": true,
-                        "help": "This can be used to set the name of the file when downloaded by the user, if different from the source filename."
+                        "help": "This can be used to set the name of the file when downloaded by the user, if different from the source filename (only supported in browsers that support the 'download' attribute)."
                       },
                       "description": {
                         "type": "string",
