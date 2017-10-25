@@ -57,7 +57,7 @@ define([
 
             var dummyLink = document.createElement('a');
             // Internet Explorer has no support for the 'download' attribute
-            if(Adapt.device.browser === "internet explorer") {
+            if (Adapt.device.browser === "internet explorer") {
                 dummyLink.target = "_blank";
             } else {
                 dummyLink.download = data.filename;
