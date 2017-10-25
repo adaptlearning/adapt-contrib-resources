@@ -50,7 +50,7 @@ define([
         onResourceClicked: function(event) {
             var data = $(event.currentTarget).data();
 
-            if (!data.forceDownload) {
+            if (!data.forceDownload || Adapt.device.OS.toLowerCase() == 'ios') {
                 window.top.open(data.href);
                 return;
             }
