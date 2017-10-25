@@ -50,14 +50,14 @@ define([
         onResourceClicked: function(event) {
             var data = $(event.currentTarget).data();
 
-            if (!data.forceDownload || Adapt.device.OS.toLowerCase() == 'ios') {
+            if (!data.forceDownload || Adapt.device.OS === 'ios') {
                 window.top.open(data.href);
                 return;
             }
 
             var dummyLink = document.createElement('a');
             // Internet Explorer has no support for the 'download' attribute
-            if(Adapt.device.browser.toLowerCase() === "internet explorer") {
+            if(Adapt.device.browser === "internet explorer") {
                 dummyLink.target = "_blank";
             } else {
                 dummyLink.download = data.filename;
