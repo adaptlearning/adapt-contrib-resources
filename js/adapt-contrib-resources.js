@@ -39,6 +39,6 @@ define([
 
     }
 
-    Adapt.on('adapt:start', initResources());
+    Adapt.on('adapt:start', initResources);
 
 });
