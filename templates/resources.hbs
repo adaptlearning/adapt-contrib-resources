@@ -1,4 +1,7 @@
-<div class="resources-inner" role="complementary">
+{{! make the _globals object in course.json available to this template}}
+{{import_globals}}
+<div class="resources-inner">
+	{{a11y_aria_label _globals._extensions._resources.resources}}
 	<div class="resources-filter clearfix resources-col-{{return_column_layout_from_collection_length resources '_type'}}">
 		{{! If the resources collection contains only one type of resource (pdf, media or link) don't show anything}}
 		{{#if_collection_contains_only_one_item resources '_type'}}
@@ -23,9 +26,9 @@
 			{{/if_collection_contains}}
 		{{/if_collection_contains_only_one_item}}
 	</div>
-	<div class="resources-item-container">
+	<div class="resources-item-container" role="list">
 	{{#each resources}}
-	<div class="resources-item drawer-item {{_type}}">
+	<div class="resources-item drawer-item {{_type}}" role="listitem">
 		<button class="base resources-item-open drawer-item-open"
 			data-type="{{_type}}"
 			data-filename="{{filename}}"
@@ -42,5 +45,4 @@
 	</div>
 	{{/each}}
 	</div>
-	{{a11y_aria_label _globals._extensions._resources.resourcesEnd}}
 </div>
