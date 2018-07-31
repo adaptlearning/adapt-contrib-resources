@@ -7,7 +7,7 @@
     "resources": {
       "type": "string",
       "required": true,
-      "default": "Additional Resources.",
+      "default": "Additional resources.",
       "inputType": "Text",
       "validators": [],
       "translatable": true
