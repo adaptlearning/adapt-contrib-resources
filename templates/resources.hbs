@@ -29,12 +29,12 @@
 	<div class="resources-item-container" role="list">
 	{{#each resources}}
 	<div class="resources-item drawer-item {{_type}}" role="listitem">
-		<button class="base resources-item-open drawer-item-open"
+		<button role="link" class="base resources-item-open drawer-item-open"
 			data-type="{{_type}}"
 			data-filename="{{filename}}"
 			data-href="{{_link}}"
 			data-force-download="{{_forceDownload}}"
-			aria-label="{{{title}}}. {{lookup ../model._filterButtons _type}}.{{#if description}} {{{description}}}.{{/if}} {{../model.itemAriaExternal}}.">
+			aria-label="{{{title}}}. {{lookup ../model._filterButtons _type}}.{{#if description}} {{{description}}}.{{/if}}">
 			<div class="drawer-item-title">
 				<div class="drawer-item-title-inner h5">{{{title}}}</div>
 			</div>
