@@ -1,31 +1,34 @@
-<div class="resources-inner" role="complementary">
+{{! make the _globals object in course.json available to this template}}
+{{import_globals}}
+<div class="resources-inner">
+	{{a11y_aria_label _globals._extensions._resources.resources}}
 	<div class="resources-filter clearfix resources-col-{{return_column_layout_from_collection_length resources '_type'}}">
 		{{! If the resources collection contains only one type of resource (pdf, media or link) don't show anything}}
 		{{#if_collection_contains_only_one_item resources '_type'}}
 		{{else}}
-			<button class="base resources-show-all selected" data-filter="all" aria-label="{{model._filterAria.allAria}}" tabindex="0">
+			<button class="base resources-show-all selected" data-filter="all" aria-label="{{model._filterAria.allAria}}">
 				<span>{{model._filterButtons.all}}</span>
 			</button>
 			{{#if_collection_contains resources '_type' 'document'}}
-			<button class="base resources-show-document" data-filter="document" aria-label="{{model._filterAria.documentAria}}" tabindex="0">
+			<button class="base resources-show-document" data-filter="document" aria-label="{{model._filterAria.documentAria}}">
 				<span>{{model._filterButtons.document}}</span>
 			</button>
 			{{/if_collection_contains}}
 			{{#if_collection_contains resources '_type' 'media'}}
-			<button class="base resources-show-media" data-filter="media" aria-label="{{model._filterAria.mediaAria}}" tabindex="0">
+			<button class="base resources-show-media" data-filter="media" aria-label="{{model._filterAria.mediaAria}}">
 				<span>{{model._filterButtons.media}}</span>
 			</button>
 			{{/if_collection_contains}}
 			{{#if_collection_contains resources '_type' 'link'}}
-			<button class="base resources-show-link" data-filter="link" aria-label="{{model._filterAria.linkAria}}" tabindex="0">
+			<button class="base resources-show-link" data-filter="link" aria-label="{{model._filterAria.linkAria}}">
 				<span>{{model._filterButtons.link}}</span>
 			</button>
 			{{/if_collection_contains}}
 		{{/if_collection_contains_only_one_item}}
 	</div>
-	<div class="resources-item-container">
+	<div class="resources-item-container" role="list">
 	{{#each resources}}
-	<div class="resources-item drawer-item {{_type}}">
+	<div class="resources-item drawer-item {{_type}}" role="listitem">
 		<button role="link" class="base resources-item-open drawer-item-open"
 			data-type="{{_type}}"
 			data-filename="{{filename}}"
@@ -42,5 +45,4 @@
 	</div>
 	{{/each}}
 	</div>
-	<div class="aria-label a11y-ignore-focus prevent-default" tabindex="0" aria-label="{{_globals._extensions._resources.resourcesEnd}}"/>
 </div>
