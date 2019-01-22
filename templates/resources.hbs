@@ -41,10 +41,10 @@
     <div class="resources__item-container-inner">
 
       {{#each resources}}
-      <div class="resources__item resources__drawer-item {{_type}} js-resources-item" role="listitem">
-        <div class="resources__item-inner resources__drawer-item-inner">
+      <div class="resources__item drawer__item {{_type}} js-resources-item" role="listitem">
+        <div class="resources__item-inner drawer__item-inner">
 
-          <button role="link" class="resources__item-open resources__drawer-item-open js-resources-item-btn-click"
+          <button role="link" class="resources__item-open drawer__item-open js-resources-item-btn-click"
             data-type="{{_type}}"
             data-filename="{{filename}}"
             data-href="{{_link}}"
