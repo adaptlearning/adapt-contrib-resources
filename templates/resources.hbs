@@ -1,5 +1,6 @@
 {{! make the _globals object in course.json available to this template}}
 {{import_globals}}
+
 <div class="resources__inner">
   {{a11y_aria_label _globals._extensions._resources.resources}}
 
@@ -41,7 +42,7 @@
     <div class="resources__item-container-inner">
 
       {{#each resources}}
-      <div class="resources__item drawer__item {{_type}} js-resources-item" role="listitem">
+      <div class="resources__item drawer__item is-{{_type}} js-resources-item" role="listitem">
         <div class="resources__item-inner drawer__item-inner">
 
           <button role="link" class="resources__item-open drawer__item-open js-resources-item-btn-click"
@@ -52,16 +53,16 @@
             aria-label="{{{title}}}. {{lookup ../model._filterButtons _type}}.{{#if description}} {{{description}}}.{{/if}}">
 
             {{#if title}}
-            <div class="resources__drawer-item-title">
-              <div class="resources__drawer-item-title-inner">
+            <div class="resources__item-title drawer__item-title">
+              <div class="resources__item-title-inner drawer__item-title-inner">
                 {{{title}}}
               </div>
             </div>
             {{/if}}
 
             {{#if description}}
-            <div class="resources__drawer-item-description">
-              <div class="resources__drawer-item-description-inner">
+            <div class="resources__item-body drawer__item-body">
+              <div class="resources__item-body-inner drawer__item-body-inner">
                 {{{description}}}
               </div>
             </div>
