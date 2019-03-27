@@ -1,53 +1,36 @@
-define(function(require) {
+define([
+	'handlebars',
+	'core/js/adapt'
+], function(Handlebars, Adapt) {
 
-	var Handlebars = require('handlebars');
+	Handlebars.registerHelper('if_has_type', function(resources, type, block) {
+		var hasType = _.some(resources, _.matcher({_type: type}));
+		return hasType ? block.fn(this) : block.inverse(this);
+  });
 
-	Handlebars.registerHelper('if_collection_contains', function(collection, attribute, value, block) {
-		var makeBlockVisible = false;
+	Handlebars.registerHelper('if_has_multiple_types', function(resources, block) {
+		if (resources.length === 1) return block.inverse(this);
 
-		_.each(collection, function(resource) {
-			if (resource[attribute] === value) {
-				makeBlockVisible = true;
-			}
-		});
-		if(makeBlockVisible) {
-            return block.fn(this);
-        } else {
-            return block.inverse();
-        }
-    });
+		var allSameType = _.every(resources, _.matcher({_type: resources[0]._type}));
+		return allSameType ? block.inverse(this) : block.fn(this);
+	});
 
-    Handlebars.registerHelper('if_collection_contains_only_one_item', function(collection, attribute, block) {
-		var attributeCount = [];
+	Handlebars.registerHelper('get_column_count', function(resources) {
+		return _.uniq(_.pluck(resources, '_type')).length + 1;// add 1 for the 'All' button column
+	});
 
-		_.each(collection, function(resource) {
-			var resourceAttribute = resource[attribute];
-			if (_.indexOf(attributeCount, resourceAttribute) === -1) {
-				attributeCount.push(resourceAttribute);
-			}
-		});
-
-		if (attributeCount.length <= 1) {
-			return block.fn(this);
-		} else {
+	Handlebars.registerHelper('if_force_download', function(resource, block) {
+		/*
+		IE doesn't support the 'download' attribute
+		https://github.com/adaptlearning/adapt_framework/issues/1559
+		and iOS just opens links with that attribute in the same window
+		https://github.com/adaptlearning/adapt_framework/issues/1852
+		*/
+		if (Adapt.device.browser === 'internet explorer' || Adapt.device.OS === 'ios') {
 			return block.inverse(this);
 		}
 
-    });
+		return resource._forceDownload ? block.fn(this) : block.inverse(this);
+	});
 
-    Handlebars.registerHelper('return_column_layout_from_collection_length', function(collection, attribute) {
-		var attributeCount = [];
-
-		_.each(collection, function(resource) {
-			var resourceAttribute = resource[attribute];
-			if (_.indexOf(attributeCount, resourceAttribute) === -1) {
-				attributeCount.push(resourceAttribute);
-			}
-		});
-
-		return (attributeCount.length + 1);
-
-    });
-
-})
-	
+});
