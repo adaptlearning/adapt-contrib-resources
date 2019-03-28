@@ -32,7 +32,7 @@ define([
                 return block.inverse(this);
             }
 
-            return resource._forceDownload ? block.fn(this) : block.inverse(this);
+            return (resource._forceDownload || resource.filename) ? block.fn(this) : block.inverse(this);
         }
 
     };
