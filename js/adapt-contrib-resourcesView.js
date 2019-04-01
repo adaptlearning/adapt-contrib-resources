@@ -4,7 +4,7 @@ define([
 
     var ResourcesView = Backbone.View.extend({
 
-        className: "resources",
+        className: 'resources',
 
         initialize: function() {
             this.listenTo(Adapt, 'remove', this.remove);
@@ -12,62 +12,37 @@ define([
         },
 
         events: {
-            'click .resources-filter button': 'onFilterClicked',
-            'click .resources-item-container button': 'onResourceClicked'
+            'click .resources-filter button': 'onFilterClicked'
         },
 
         render: function() {
-            var collectionData = this.collection.toJSON();
-            var modelData = this.model.toJSON();
-            var template = Handlebars.templates["resources"];
-            this.$el.html(template({model: modelData, resources:collectionData, _globals: Adapt.course.get('_globals')}));
-            _.defer(_.bind(this.postRender, this));
+            this.$el.html(Handlebars.templates.resources({
+                model: this.model.toJSON(),
+                resources: this.collection.toJSON()
+            }));
+
+            _.defer(function() {
+                this.listenTo(Adapt, 'drawer:triggerCustomView', this.remove);
+            }.bind(this));
+
             return this;
         },
 
-        postRender: function() {
-            this.listenTo(Adapt, 'drawer:triggerCustomView', this.remove);
-        },
+        onFilterClicked: function(e) {
+            if (e && e.preventDefault) e.preventDefault();
 
-        onFilterClicked: function(event) {
-            event.preventDefault();
-            var $currentTarget = $(event.currentTarget);
             this.$('.resources-filter button').removeClass('selected');
-            var filter = $currentTarget.addClass('selected').attr('data-filter');
-            var items = [];
 
+            var items;
+            var filter = $(e.currentTarget).addClass('selected').attr('data-filter');
             if (filter === 'all') {
                 items = this.$('.resources-item').removeClass('display-none');
             } else {
-                this.$('.resources-item').removeClass('display-none').not("." + filter).addClass('display-none');
+                this.$('.resources-item').removeClass('display-none').not('.' + filter).addClass('display-none');
                 items = this.$('.resources-item.' + filter);
             }
 
-            if (items.length === 0) return;
-            $(items[0]).a11y_focus();
-        },
-
-        onResourceClicked: function(event) {
-            var data = $(event.currentTarget).data();
-
-            if (!data.forceDownload || Adapt.device.OS === 'ios') {
-                window.top.open(data.href);
-                return;
-            }
-
-            var dummyLink = document.createElement('a');
-            // Internet Explorer has no support for the 'download' attribute
-            if (Adapt.device.browser === "internet explorer") {
-                dummyLink.target = "_blank";
-            } else {
-                dummyLink.download = data.filename;
-            }
-            dummyLink.href = data.href;
-
-            document.body.appendChild(dummyLink);
-            dummyLink.click();
-            document.body.removeChild(dummyLink);
-            delete dummyLink;
+            if (items.length > 0) $(items[0]).a11y_focus();
         }
     });
 

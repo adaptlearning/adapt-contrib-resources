@@ -2,38 +2,37 @@
 {{import_globals}}
 <div class="resources-inner">
 	{{{a11y_aria_label _globals._extensions._resources.resources}}}
-	<div class="resources-filter clearfix resources-col-{{return_column_layout_from_collection_length resources '_type'}}">
-		{{! If the resources collection contains only one type of resource (pdf, media or link) don't show anything}}
-		{{#if_collection_contains_only_one_item resources '_type'}}
-		{{else}}
-			<button class="base resources-show-all selected" data-filter="all" aria-label="{{model._filterAria.allAria}}">
-				<span>{{model._filterButtons.all}}</span>
-			</button>
-			{{#if_collection_contains resources '_type' 'document'}}
-			<button class="base resources-show-document" data-filter="document" aria-label="{{model._filterAria.documentAria}}">
-				<span>{{model._filterButtons.document}}</span>
-			</button>
-			{{/if_collection_contains}}
-			{{#if_collection_contains resources '_type' 'media'}}
-			<button class="base resources-show-media" data-filter="media" aria-label="{{model._filterAria.mediaAria}}">
-				<span>{{model._filterButtons.media}}</span>
-			</button>
-			{{/if_collection_contains}}
-			{{#if_collection_contains resources '_type' 'link'}}
-			<button class="base resources-show-link" data-filter="link" aria-label="{{model._filterAria.linkAria}}">
-				<span>{{model._filterButtons.link}}</span>
-			</button>
-			{{/if_collection_contains}}
-		{{/if_collection_contains_only_one_item}}
+	{{#resources_has_multiple_types resources}}
+	<div class="resources-filter clearfix resources-col-{{resources_get_column_count resources}}">
+		<button class="base resources-show-all selected" data-filter="all" aria-label="{{model._filterAria.allAria}}">
+			<span>{{model._filterButtons.all}}</span>
+		</button>
+		{{#resources_has_type resources 'document'}}
+		<button class="base resources-show-document" data-filter="document" aria-label="{{model._filterAria.documentAria}}">
+			<span>{{model._filterButtons.document}}</span>
+		</button>
+		{{/resources_has_type}}
+		{{#resources_has_type resources 'media'}}
+		<button class="base resources-show-media" data-filter="media" aria-label="{{model._filterAria.mediaAria}}">
+			<span>{{model._filterButtons.media}}</span>
+		</button>
+		{{/resources_has_type}}
+		{{#resources_has_type resources 'link'}}
+		<button class="base resources-show-link" data-filter="link" aria-label="{{model._filterAria.linkAria}}">
+			<span>{{model._filterButtons.link}}</span>
+		</button>
+		{{/resources_has_type}}
 	</div>
+	{{/resources_has_multiple_types}}
 	<div class="resources-item-container" role="list">
 	{{#each resources}}
 	<div class="resources-item drawer-item {{_type}}" role="listitem">
-		<button role="link" class="base resources-item-open drawer-item-open"
+		<a href="{{_link}}" class="base resources-item-open drawer-item-open"
 			data-type="{{_type}}"
-			data-filename="{{filename}}"
-			data-href="{{_link}}"
-			data-force-download="{{_forceDownload}}"
+			{{#resources_force_download this}}
+			download="{{filename}}"
+			{{/resources_force_download}}
+			target="_blank"
 			aria-label="{{{title}}}. {{lookup ../model._filterButtons _type}}.{{#if description}} {{{description}}}.{{/if}}">
 			<div class="drawer-item-title">
 				<div class="drawer-item-title-inner h5">{{{title}}}</div>
@@ -41,7 +40,7 @@
 			<div class="drawer-item-description">
 				<div class="drawer-item-description-inner">{{{description}}}</div>
 			</div>
-		</button>
+		</a>
 	</div>
 	{{/each}}
 	</div>

@@ -19,25 +19,25 @@
     },
     "_resourcesItems": [
         {
-            "_type":"document",
-            "title":"Button idea",
-            "description":"Click here to see a proposed button idea",
-            "filename":"Buttons.pdf",
-            "_link":"course/en/pdf/adapt-framework-prototypes-buttons.pdf",
+            "_type": "document",
+            "title": "Button idea",
+            "description": "Click here to see a proposed button idea",
+            "_link": "course/en/pdf/adapt-framework-prototypes-buttons.pdf",
+            "filename": "Buttons.pdf",
             "_forceDownload": true
         },
         {
-            "_type":"media",
-            "title":"Adapt Learning YouTube Channel",
-            "description":"Fancy catching up on some Adapt material",
-            "_link":"https://www.youtube.com/channel/UCW8SlSFuCc--B66Gf9fAEcQ",
+            "_type": "media",
+            "title": "Adapt Learning YouTube Channel",
+            "description": "Fancy catching up on some Adapt material",
+            "_link": "https://www.youtube.com/channel/UCW8SlSFuCc--B66Gf9fAEcQ",
             "_forceDownload": false
         },
         {
-            "_type":"link",
-            "title":"Community Site",
-            "description":"Click here to view our community site",
-            "_link":"https://community.adaptlearning.org",
+            "_type": "link",
+            "title": "Community Site",
+            "description": "Click here to view our community site",
+            "_link": "https://community.adaptlearning.org",
             "_forceDownload": false
         }
     ]
