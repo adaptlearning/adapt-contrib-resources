@@ -4,39 +4,35 @@
 <div class="resources__inner">
   {{{a11y_aria_label _globals._extensions._resources.resources}}}
 
-  <div class="resources__filter has-{{return_column_layout_from_collection_length resources '_type'}}-columns">
+  {{#resources_has_multiple_types resources}}
+  <div class="resources__filter has-{{resources_get_column_count resources}}-columns">
     <div class="resources__filter-inner">
 
-    {{! If the resources collection contains only one type of resource (pdf, media or link) don't show anything}}
-    {{#if_collection_contains_only_one_item resources '_type'}}
-
-    {{else}}
       <button class="resources__filter-btn resources__show-all is-selected js-resources-filter-btn-click" data-filter="all" aria-label="{{model._filterAria.allAria}}">
         <span>{{model._filterButtons.all}}</span>
       </button>
 
-      {{#if_collection_contains resources '_type' 'document'}}
+      {{#resources_has_type resources 'document'}}
       <button class="resources__filter-btn resources__show-document js-resources-filter-btn-click" data-filter="document" aria-label="{{model._filterAria.documentAria}}">
         <span>{{model._filterButtons.document}}</span>
       </button>
-      {{/if_collection_contains}}
+      {{/resources_has_type}}
 
-      {{#if_collection_contains resources '_type' 'media'}}
+      {{#resources_has_type resources 'media'}}
       <button class="resources__filter-btn resources__show-media js-resources-filter-btn-click" data-filter="media" aria-label="{{model._filterAria.mediaAria}}">
         <span>{{model._filterButtons.media}}</span>
       </button>
-      {{/if_collection_contains}}
+      {{/resources_has_type}}
 
-      {{#if_collection_contains resources '_type' 'link'}}
+      {{#resources_has_type resources 'link'}}
       <button class="resources__filter-btn resources__show-link js-resources-filter-btn-click" data-filter="link" aria-label="{{model._filterAria.linkAria}}">
         <span>{{model._filterButtons.link}}</span>
       </button>
-      {{/if_collection_contains}}
-
-      {{/if_collection_contains_only_one_item}}
+      {{/resources_has_type}}
 
     </div>
   </div>
+  {{/resources_has_multiple_types}}
 
   <div class="resources__item-container" role="list">
     <div class="resources__item-container-inner">
@@ -45,11 +41,12 @@
       <div class="resources__item drawer__item is-{{_type}} js-resources-item" role="listitem">
         <div class="resources__item-inner drawer__item-inner">
 
-          <button role="link" class="resources__item-open drawer__item-open js-resources-item-btn-click"
+          <a href="{{_link}}" class="resources__item-open drawer__item-open js-resources-item-btn-click"
             data-type="{{_type}}"
-            data-filename="{{filename}}"
-            data-href="{{_link}}"
-            data-force-download="{{_forceDownload}}"
+            {{#resources_force_download this}}
+            download="{{filename}}"
+            {{/resources_force_download}}
+            target="_blank"
             aria-label="{{{title}}}. {{lookup ../model._filterButtons _type}}.{{#if description}} {{{description}}}.{{/if}}">
 
             {{#if title}}
@@ -68,7 +65,7 @@
             </div>
             {{/if}}
 
-          </button>
+          </a>
 
         </div>
       </div>

@@ -1,9 +1,8 @@
 define([
-  'backbone',
   'core/js/adapt',
   './adapt-contrib-resourcesView',
   './adapt-contrib-resourcesHelpers'
-], function(Backbone, Adapt, ResourcesView, ResourcesHelpers) {
+], function(Adapt, ResourcesView, ResourcesHelpers) {
 
   function setupResources(resourcesData) {
 
