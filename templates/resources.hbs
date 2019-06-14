@@ -9,24 +9,24 @@
     <div class="resources__filter-inner">
 
       <button class="resources__filter-btn resources__show-all is-selected js-resources-filter-btn-click" data-filter="all" aria-label="{{model._filterAria.allAria}}">
-        <span>{{model._filterButtons.all}}</span>
+        {{{model._filterButtons.all}}}
       </button>
 
       {{#resources_has_type resources 'document'}}
       <button class="resources__filter-btn resources__show-document js-resources-filter-btn-click" data-filter="document" aria-label="{{model._filterAria.documentAria}}">
-        <span>{{model._filterButtons.document}}</span>
+        {{{model._filterButtons.document}}}
       </button>
       {{/resources_has_type}}
 
       {{#resources_has_type resources 'media'}}
       <button class="resources__filter-btn resources__show-media js-resources-filter-btn-click" data-filter="media" aria-label="{{model._filterAria.mediaAria}}">
-        <span>{{model._filterButtons.media}}</span>
+        {{{model._filterButtons.media}}}
       </button>
       {{/resources_has_type}}
 
       {{#resources_has_type resources 'link'}}
       <button class="resources__filter-btn resources__show-link js-resources-filter-btn-click" data-filter="link" aria-label="{{model._filterAria.linkAria}}">
-        <span>{{model._filterButtons.link}}</span>
+        {{{model._filterButtons.link}}}
       </button>
       {{/resources_has_type}}
 
@@ -39,9 +39,8 @@
 
       {{#each resources}}
       <div class="resources__item drawer__item is-{{_type}} js-resources-item" role="listitem">
-        <div class="resources__item-inner drawer__item-inner">
 
-          <a href="{{_link}}" class="resources__item-open drawer__item-open js-resources-item-btn-click"
+          <a href="{{_link}}" class="resources__item-btn drawer__item-btn js-resources-item-btn-click"
             data-type="{{_type}}"
             {{#resources_force_download this}}
             download="{{filename}}"
@@ -67,7 +66,6 @@
 
           </a>
 
-        </div>
       </div>
       {{/each}}
 
