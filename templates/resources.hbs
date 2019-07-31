@@ -35,41 +35,39 @@
   {{/resources_has_multiple_types}}
 
   <div class="resources__item-container" role="list">
-    <div class="resources__item-container-inner">
 
-      {{#each resources}}
-      <div class="resources__item drawer__item is-{{_type}} js-resources-item" role="listitem">
+    {{#each resources}}
+    <div class="resources__item drawer__item is-{{_type}} js-resources-item" role="listitem">
 
-          <a href="{{_link}}" class="resources__item-btn drawer__item-btn js-resources-item-btn-click"
-            data-type="{{_type}}"
-            {{#resources_force_download this}}
-            download="{{filename}}"
-            {{/resources_force_download}}
-            target="_blank"
-            aria-label="{{{title}}}. {{lookup ../model._filterButtons _type}}.{{#if description}} {{{description}}}.{{/if}}">
+      <a href="{{_link}}" class="resources__item-btn drawer__item-btn js-resources-item-btn-click"
+        data-type="{{_type}}"
+        {{#resources_force_download this}}
+        download="{{filename}}"
+        {{/resources_force_download}}
+        target="_blank"
+        aria-label="{{{title}}}. {{lookup ../model._filterButtons _type}}.{{#if description}} {{{description}}}.{{/if}}">
 
-            {{#if title}}
-            <div class="resources__item-title drawer__item-title">
-              <div class="resources__item-title-inner drawer__item-title-inner">
-                {{{title}}}
-              </div>
-            </div>
-            {{/if}}
+        {{#if title}}
+        <div class="resources__item-title drawer__item-title">
+          <div class="resources__item-title-inner drawer__item-title-inner">
+            {{{title}}}
+          </div>
+        </div>
+        {{/if}}
 
-            {{#if description}}
-            <div class="resources__item-body drawer__item-body">
-              <div class="resources__item-body-inner drawer__item-body-inner">
-                {{{description}}}
-              </div>
-            </div>
-            {{/if}}
+        {{#if description}}
+        <div class="resources__item-body drawer__item-body">
+          <div class="resources__item-body-inner drawer__item-body-inner">
+            {{{description}}}
+          </div>
+        </div>
+        {{/if}}
 
-          </a>
-
-      </div>
-      {{/each}}
+      </a>
 
     </div>
+    {{/each}}
+
   </div>
 
 </div>
