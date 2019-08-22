@@ -1,4 +1,4 @@
-// To go in the course.json file
+    // To go in the course.json file
     "_resources": {
         "_isEnabled": true,
         "_drawerOrder": 1,
@@ -10,7 +10,7 @@
             "media": "Media",
             "link": "Link"
         },
-        // _filterAria is to provide accessibility support for assistive technologies
+        "_comment": "_filterAria is to provide accessibility support for assistive technologies",
         "_filterAria": {
             "allAria": "View all resources",
             "documentAria": "View document resources",
