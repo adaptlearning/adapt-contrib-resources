@@ -33,7 +33,7 @@ define([
       
       this.$('.js-resources-filter-btn-click').removeClass('is-selected');
       
-      var items = [];
+      var items;
       var filter = $(e.currentTarget).addClass('is-selected').attr('data-filter');
       if (filter === 'all') {
         items = this.$('.js-resources-item').removeClass('u-display-none');
