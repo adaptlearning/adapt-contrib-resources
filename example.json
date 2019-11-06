@@ -3,7 +3,7 @@
         "_isEnabled": true,
         "_drawerOrder": 1,
         "title": "Resources",
-        "description": "Click here to view resources for this course",
+        "description": "Select here to view resources for this course",
         "_filterButtons": {
             "all": "All",
             "document": "PDF",
@@ -21,7 +21,7 @@
             {
                 "_type": "document",
                 "title": "Button idea",
-                "description": "Click here to see a proposed button idea",
+                "description": "Select here to see a proposed button idea",
                 "_link": "course/en/pdf/adapt-framework-prototypes-buttons.pdf",
                 "filename": "Buttons.pdf",
                 "_forceDownload": true
@@ -36,7 +36,7 @@
             {
                 "_type": "link",
                 "title": "Community Site",
-                "description": "Click here to view our community site",
+                "description": "Select here to view our community site",
                 "_link": "https://community.adaptlearning.org",
                 "_forceDownload": false
             }
