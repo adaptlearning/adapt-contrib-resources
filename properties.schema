@@ -13,7 +13,7 @@
       "translatable": true
     }
   },
-  "properties":{
+  "properties": {
     "pluginLocations": {
       "type": "object",
       "required": true,
@@ -58,7 +58,7 @@
                 },
                 "description": {
                   "type": "string",
-                  "default": "Click here to view resources for this course",
+                  "default": "Select here to view resources for this course",
                   "required": false,
                   "title": "",
                   "inputType": "Text",

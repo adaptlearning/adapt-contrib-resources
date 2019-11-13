@@ -1,50 +1,50 @@
 define([
-    'core/js/adapt'
+  'core/js/adapt'
 ], function(Adapt) {
 
-    var ResourcesView = Backbone.View.extend({
+  var ResourcesView = Backbone.View.extend({
 
-        className: 'resources',
+    className: 'resources',
 
-        initialize: function() {
-            this.listenTo(Adapt, 'remove', this.remove);
-            this.render();
-        },
+    initialize: function() {
+      this.listenTo(Adapt, 'remove', this.remove);
+      this.render();
+    },
 
-        events: {
-            'click .resources-filter button': 'onFilterClicked'
-        },
+    events: {
+      'click .js-resources-filter-btn-click': 'onFilterClicked',
+    },
 
-        render: function() {
-            this.$el.html(Handlebars.templates.resources({
-                model: this.model.toJSON(),
-                resources: this.collection.toJSON()
-            }));
+    render: function() {
+      this.$el.html(Handlebars.templates.resources({
+        model: this.model.toJSON(),
+        resources: this.collection.toJSON()
+      }));
+      
+      _.defer(function() {
+        this.listenTo(Adapt, 'drawer:triggerCustomView', this.remove);
+      }.bind(this));
 
-            _.defer(function() {
-                this.listenTo(Adapt, 'drawer:triggerCustomView', this.remove);
-            }.bind(this));
+      return this;
+    },
 
-            return this;
-        },
+    onFilterClicked: function(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      
+      this.$('.js-resources-filter-btn-click').removeClass('is-selected');
+      
+      var items;
+      var filter = $(e.currentTarget).addClass('is-selected').attr('data-filter');
+      if (filter === 'all') {
+        items = this.$('.js-resources-item').removeClass('u-display-none');
+      } else {
+        this.$('.js-resources-item').removeClass('u-display-none').not('.is-' + filter).addClass('u-display-none');
+        items = this.$('.js-resources-item.is-' + filter);
+      }
 
-        onFilterClicked: function(e) {
-            if (e && e.preventDefault) e.preventDefault();
+      if (items.length > 0) $(items[0]).a11y_focus();
+    }
+  });
 
-            this.$('.resources-filter button').removeClass('selected');
-
-            var items;
-            var filter = $(e.currentTarget).addClass('selected').attr('data-filter');
-            if (filter === 'all') {
-                items = this.$('.resources-item').removeClass('display-none');
-            } else {
-                this.$('.resources-item').removeClass('display-none').not('.' + filter).addClass('display-none');
-                items = this.$('.resources-item.' + filter);
-            }
-
-            if (items.length > 0) $(items[0]).a11y_focus();
-        }
-    });
-
-    return ResourcesView;
+  return ResourcesView;
 });

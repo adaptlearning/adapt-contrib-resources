@@ -1,17 +1,17 @@
 {
   "name": "adapt-contrib-resources",
-  "version": "3.0.2",
-  "framework": ">=2.2",
+  "version": "4.0.0",
+  "framework": ">=5",
   "homepage": "https://github.com/adaptlearning/adapt-contrib-resources",
   "issues": "https://github.com/adaptlearning/adapt_framework/issues/new",
-  "displayName" : "Resources",
   "extension" : "resources",
+  "displayName" : "Resources",
   "description": "An extension to allow learners to view resources",
   "main": "/js/adapt-contrib-resources.js",
   "keywords": [
     "adapt-plugin",
     "adapt-extension"
   ],
-  "license": "GPLv3",
+  "license": "GPL-3.0",
   "targetAttribute": "_resources"
 }

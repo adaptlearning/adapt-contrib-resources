@@ -1,47 +1,73 @@
 {{! make the _globals object in course.json available to this template}}
 {{import_globals}}
-<div class="resources-inner">
-	{{{a11y_aria_label _globals._extensions._resources.resources}}}
-	{{#resources_has_multiple_types resources}}
-	<div class="resources-filter clearfix resources-col-{{resources_get_column_count resources}}">
-		<button class="base resources-show-all selected" data-filter="all" aria-label="{{model._filterAria.allAria}}">
-			<span>{{model._filterButtons.all}}</span>
-		</button>
-		{{#resources_has_type resources 'document'}}
-		<button class="base resources-show-document" data-filter="document" aria-label="{{model._filterAria.documentAria}}">
-			<span>{{model._filterButtons.document}}</span>
-		</button>
-		{{/resources_has_type}}
-		{{#resources_has_type resources 'media'}}
-		<button class="base resources-show-media" data-filter="media" aria-label="{{model._filterAria.mediaAria}}">
-			<span>{{model._filterButtons.media}}</span>
-		</button>
-		{{/resources_has_type}}
-		{{#resources_has_type resources 'link'}}
-		<button class="base resources-show-link" data-filter="link" aria-label="{{model._filterAria.linkAria}}">
-			<span>{{model._filterButtons.link}}</span>
-		</button>
-		{{/resources_has_type}}
-	</div>
-	{{/resources_has_multiple_types}}
-	<div class="resources-item-container" role="list">
-	{{#each resources}}
-	<div class="resources-item drawer-item {{_type}}" role="listitem">
-		<a href="{{_link}}" class="base resources-item-open drawer-item-open"
-			data-type="{{_type}}"
-			{{#resources_force_download this}}
-			download="{{filename}}"
-			{{/resources_force_download}}
-			target="_blank"
-			aria-label="{{{title}}}. {{lookup ../model._filterButtons _type}}.{{#if description}} {{{description}}}.{{/if}}">
-			<div class="drawer-item-title">
-				<div class="drawer-item-title-inner h5">{{{title}}}</div>
-			</div>
-			<div class="drawer-item-description">
-				<div class="drawer-item-description-inner">{{{description}}}</div>
-			</div>
-		</a>
-	</div>
-	{{/each}}
-	</div>
+
+<div class="resources__inner">
+  {{{a11y_aria_label _globals._extensions._resources.resources}}}
+
+  {{#resources_has_multiple_types resources}}
+  <div class="resources__filter has-{{resources_get_column_count resources}}-columns">
+    <div class="resources__filter-inner">
+
+      <button class="resources__filter-btn resources__show-all is-selected js-resources-filter-btn-click" data-filter="all" aria-label="{{model._filterAria.allAria}}">
+        {{{model._filterButtons.all}}}
+      </button>
+
+      {{#resources_has_type resources 'document'}}
+      <button class="resources__filter-btn resources__show-document js-resources-filter-btn-click" data-filter="document" aria-label="{{model._filterAria.documentAria}}">
+        {{{model._filterButtons.document}}}
+      </button>
+      {{/resources_has_type}}
+
+      {{#resources_has_type resources 'media'}}
+      <button class="resources__filter-btn resources__show-media js-resources-filter-btn-click" data-filter="media" aria-label="{{model._filterAria.mediaAria}}">
+        {{{model._filterButtons.media}}}
+      </button>
+      {{/resources_has_type}}
+
+      {{#resources_has_type resources 'link'}}
+      <button class="resources__filter-btn resources__show-link js-resources-filter-btn-click" data-filter="link" aria-label="{{model._filterAria.linkAria}}">
+        {{{model._filterButtons.link}}}
+      </button>
+      {{/resources_has_type}}
+
+    </div>
+  </div>
+  {{/resources_has_multiple_types}}
+
+  <div class="resources__item-container" role="list">
+
+    {{#each resources}}
+    <div class="resources__item drawer__item is-{{_type}} js-resources-item" role="listitem">
+
+      <a href="{{_link}}" class="resources__item-btn drawer__item-btn js-resources-item-btn-click"
+        data-type="{{_type}}"
+        {{#resources_force_download this}}
+        download="{{filename}}"
+        {{/resources_force_download}}
+        target="_blank"
+        aria-label="{{{title}}}. {{lookup ../model._filterButtons _type}}.{{#if description}} {{{description}}}.{{/if}}">
+
+        {{#if title}}
+        <div class="resources__item-title drawer__item-title">
+          <div class="resources__item-title-inner drawer__item-title-inner">
+            {{{title}}}
+          </div>
+        </div>
+        {{/if}}
+
+        {{#if description}}
+        <div class="resources__item-body drawer__item-body">
+          <div class="resources__item-body-inner drawer__item-body-inner">
+            {{{description}}}
+          </div>
+        </div>
+        {{/if}}
+
+      </a>
+
+    </div>
+    {{/each}}
+
+  </div>
+
 </div>
