@@ -1,0 +1,212 @@
+{
+  "$anchor": "resources-course",
+  "$schema": "http://json-schema.org/draft/2019-09/schema#",
+  "type": "object",
+  "$merge": {
+    "source": {
+      "$ref": "course"
+    },
+    "with": {
+      "properties": {
+        "_globals": {
+          "type": "object",
+          "default": {},
+          "properties": {
+            "_resources": {
+              "type": "object",
+              "default": {},
+              "properties": {
+                "resources": {
+                  "type": "string",
+                  "title": "Resources",
+                  "default": "Additional resources.",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "_resources": {
+          "type": "object",
+          "title": "Resources",
+          "default": {},
+          "required": [
+            "title"
+          ],
+          "properties": {
+            "_isEnabled": {
+              "type": "boolean",
+              "title": "Is enabled",
+              "description": "Controls whether the Resources extension is enabled or disabled.",
+              "default": true
+            },
+            "_drawerOrder": {
+              "type": "number",
+              "title": "Drawer order",
+              "description": "The order in which this extension should appear as a drawer item",
+              "default": 0,
+              "_backboneForms": {
+                "validators": [
+                  "number"
+                ]
+              }
+            },
+            "title": {
+              "type": "string",
+              "title": "Title",
+              "default": "Resources",
+              "_adapt": {
+                "translatable": true
+              }
+            },
+            "description": {
+              "type": "string",
+              "title": "Description",
+              "default": "Select here to view resources for this course",
+              "_adapt": {
+                "translatable": true
+              }
+            },
+            "_filterButtons": {
+              "type": "object",
+              "title": "Filter Buttons",
+              "default": {},
+              "properties": {
+                "all": {
+                  "type": "string",
+                  "title": "All",
+                  "default": "All",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "document": {
+                  "type": "string",
+                  "title": "Document",
+                  "default": "Documents",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "media": {
+                  "type": "string",
+                  "title": "Media",
+                  "default": "Media",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "link": {
+                  "type": "string",
+                  "title": "Link",
+                  "default": "Links",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                }
+              }
+            },
+            "_filterAria": {
+              "type": "object",
+              "title": "Aria Labels",
+              "default": {},
+              "properties": {
+                "allAria": {
+                  "type": "string",
+                  "title": "All",
+                  "default": "View all resources",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "documentAria": {
+                  "type": "string",
+                  "title": "Documents",
+                  "default": "View document resources",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "mediaAria": {
+                  "type": "string",
+                  "title": "Media",
+                  "default": "View media resources",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "linkAria": {
+                  "type": "string",
+                  "title": "Links",
+                  "default": "View resource links",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                }
+              }
+            },
+            "_resourcesItems": {
+              "type": "array",
+              "title": "Resources Items",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "_type": {
+                    "type": "string",
+                    "title": "Type",
+                    "enum": [
+                      "document",
+                      "media",
+                      "link"
+                    ],
+                    "_backboneForms": "Select"
+                  },
+                  "_forceDownload": {
+                    "type": "boolean",
+                    "title": "Force download",
+                    "description": "Forces the resource to be downloaded rather than opened in the browser. Only supported in browsers that support the 'download' attribute and for resources that are part of the course content/hosted on the same URL.",
+                    "default": false
+                  },
+                  "title": {
+                    "type": "string",
+                    "title": "Title",
+                    "_adapt": {
+                      "translatable": true
+                    }
+                  },
+                  "filename": {
+                    "type": "string",
+                    "title": "Filename",
+                    "description": "Used to set the name of the downloaded file to something different to the source filename. Only supported in browsers that support the 'download' attribute and for resources that are part of the course content/hosted on the same URL. Forces the file to be downloaded regardless of what 'Force download' is set to.",
+                    "default": "",
+                    "_adapt": {
+                      "translatable": true
+                    }
+                  },
+                  "description": {
+                    "type": "string",
+                    "title": "Description",
+                    "default": "",
+                    "_adapt": {
+                      "translatable": true
+                    }
+                  },
+                  "_link": {
+                    "type": "string",
+                    "title": "Link",
+                    "_backboneForms": {
+                      "type": "Asset",
+                      "media": "other"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
