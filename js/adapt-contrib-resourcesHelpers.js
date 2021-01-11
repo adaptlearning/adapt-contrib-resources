@@ -6,14 +6,14 @@ define([
   const helpers = {
 
     resources_has_type(resources, type, block) {
-      const hasType = _.some(resources, _.matcher({ _type: type }));
+      const hasType = resources.some(_.matcher({ _type: type }));
       return hasType ? block.fn(this) : block.inverse(this);
     },
 
     resources_has_multiple_types(resources, block) {
       if (resources.length === 1) return block.inverse(this);
 
-      const allSameType = _.every(resources, _.matcher({ _type: resources[0]._type }));
+      const allSameType = resources.every(_.matcher({ _type: resources[0]._type }));
       return allSameType ? block.inverse(this) : block.fn(this);
     },
 
