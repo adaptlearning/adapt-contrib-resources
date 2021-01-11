@@ -38,9 +38,7 @@ define([
   };
 
   for (const name in helpers) {
-    if (helpers.hasOwnProperty(name)) {
-      Handlebars.registerHelper(name, helpers[name]);
-    }
+    Handlebars.registerHelper(name, helpers[name]);
   }
 
   return helpers;
