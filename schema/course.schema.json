@@ -1,6 +1,6 @@
 {
   "$anchor": "resources-course",
-  "$schema": "http://json-schema.org/draft/2019-09/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "$merge": {
     "source": {
@@ -46,12 +46,7 @@
               "type": "number",
               "title": "Drawer order",
               "description": "The order in which this extension should appear as a drawer item",
-              "default": 0,
-              "_backboneForms": {
-                "validators": [
-                  "number"
-                ]
-              }
+              "default": 0
             },
             "title": {
               "type": "string",
