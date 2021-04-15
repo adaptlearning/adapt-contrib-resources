@@ -174,7 +174,7 @@
                   "filename": {
                     "type": "string",
                     "title": "Filename",
-                    "description": "Used to set the name of the downloaded file to something different to the source filename. Only supported in browsers that support the 'download' attribute and for resources that are part of the course content/hosted on the same URL. Forces the file to be downloaded regardless of what 'Force download' is set to.",
+                    "description": "Used to set the name of the downloaded file to something different to the source filename. Only supported in browsers that support the 'download' attribute and for resources that are part of the course content/hosted on the same URL. Forces the file to be downloaded regardless of what 'Force download' is set to",
                     "default": "",
                     "_adapt": {
                       "translatable": true
@@ -190,6 +190,7 @@
                   },
                   "_link": {
                     "type": "string",
+                    "isObjectId": true,
                     "title": "Source",
                     "_backboneForms": "Asset"
                   }
