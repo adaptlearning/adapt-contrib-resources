@@ -1,31 +1,15 @@
-define([
-  'core/js/adapt',
-  './adapt-contrib-resourcesView',
-  './adapt-contrib-resourcesHelpers'
-], function(Adapt, ResourcesView, ResourcesHelpers) {
+import Adapt from 'core/js/adapt';
+import ResourcesView from './ResourcesView';
+import ResourcesHelpers from './ResourcesHelpers';
 
-  function setupResources(resourcesData) {
-
-    var resourcesModel = new Backbone.Model(resourcesData);
-    var resourcesCollection = new Backbone.Collection(resourcesModel.get('_resourcesItems'));
-
-    Adapt.on('resources:showResources', function() {
-      Adapt.drawer.triggerCustomView(new ResourcesView({
-        model: resourcesModel,
-        collection: resourcesCollection
-      }).$el);
-    });
-
-  }
-
-  function initResources() {
-
-    var courseResources = Adapt.course.get('_resources');
+class Resources {
+  initResources() {
+    const courseResources = Adapt.course.get('_resources');
 
     // do not proceed until resource set on course.json
     if (!courseResources || courseResources._isEnabled === false) return;
 
-    var drawerObject = {
+    const drawerObject = {
       title: courseResources.title,
       description: courseResources.description,
       className: 'is-resources',
@@ -34,10 +18,22 @@ define([
 
     Adapt.drawer.addItem(drawerObject, 'resources:showResources');
 
-    setupResources(courseResources);
-
+    this.setupResources(courseResources);
   }
+  
+  setupResources(resourcesData) {
+    const model = new Backbone.Model(resourcesData);
+    const collection = new Backbone.Collection(model.get('_resourcesItems'));
 
-  Adapt.on('adapt:start', initResources);
+    Adapt.on('resources:showResources', () => {
+      Adapt.drawer.triggerCustomView(new ResourcesView({
+        model,
+        collection
+      }).$el);
+    });
+  }
+}
 
-});
+Adapt.on('adapt:start', _.bind(new Resources().initResources, new Resources()));
+
+export default Resources;
