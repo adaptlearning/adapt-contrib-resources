@@ -1,4 +1,5 @@
 import Adapt from 'core/js/adapt';
+
 export default class ResourcesView extends Backbone.View {
 
   className() {

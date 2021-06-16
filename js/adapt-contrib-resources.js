@@ -2,7 +2,12 @@ import Adapt from 'core/js/adapt';
 import ResourcesView from './ResourcesView';
 import ResourcesHelpers from './ResourcesHelpers';
 
-class Resources {
+class Resources extends Backbone.Controller {
+  
+  initialize() {
+    this.listenTo(Adapt, 'adapt:start', this.initResources); 
+  }
+  
   initResources() {
     const courseResources = Adapt.course.get('_resources');
 
@@ -34,6 +39,4 @@ class Resources {
   }
 }
 
-Adapt.on('adapt:start', _.bind(new Resources().initResources, new Resources()));
-
-export default Resources;
+export default new Resources();
