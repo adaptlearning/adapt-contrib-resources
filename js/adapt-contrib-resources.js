@@ -30,7 +30,7 @@ class Resources extends Backbone.Controller {
     const model = new Backbone.Model(resourcesData);
     const collection = new Backbone.Collection(model.get('_resourcesItems'));
 
-    Adapt.on('resources:showResources', () => {
+    this.listenTo(Adapt, 'resources:showResources', () => {
       Adapt.drawer.triggerCustomView(new ResourcesView({
         model,
         collection
