@@ -1,5 +1,6 @@
 import Handlebars from 'handlebars';
 import Adapt from 'core/js/adapt';
+
 const helpers = {
 
   resources_has_type(resources, type, block) {
