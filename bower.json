@@ -1,6 +1,6 @@
 {
   "name": "adapt-contrib-resources",
-  "version": "4.2.0-beta.1",
+  "version": "4.1.0",
   "framework": ">=5.8.0",
   "homepage": "https://github.com/adaptlearning/adapt-contrib-resources",
   "issues": "https://github.com/adaptlearning/adapt_framework/issues/new",
