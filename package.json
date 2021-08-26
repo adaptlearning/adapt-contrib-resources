@@ -1,9 +1,9 @@
 {
   "name": "adapt-contrib-resources",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "framework": ">=5.8.0",
   "homepage": "https://github.com/adaptlearning/adapt-contrib-resources",
-  "issues": "https://github.com/adaptlearning/adapt_framework/issues/new",
+  "bugs": "https://github.com/adaptlearning/adapt-contrib-resources/issues",
   "extension" : "resources",
   "displayName" : "Resources",
   "description": "An extension to allow learners to view resources",
