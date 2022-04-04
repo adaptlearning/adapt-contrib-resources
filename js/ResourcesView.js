@@ -1,4 +1,5 @@
 import Adapt from 'core/js/adapt';
+import a11y from 'core/js/a11y';
 
 export default class ResourcesView extends Backbone.View {
 
@@ -22,7 +23,7 @@ export default class ResourcesView extends Backbone.View {
       model: this.model.toJSON(),
       resources: this.collection.toJSON()
     }));
-    
+
     _.defer(() => {
       this.listenTo(Adapt, 'drawer:triggerCustomView', this.remove);
     });
@@ -32,9 +33,9 @@ export default class ResourcesView extends Backbone.View {
 
   onFilterClicked(e) {
     if (e && e.preventDefault) e.preventDefault();
-    
+
     this.$('.js-resources-filter-btn-click').removeClass('is-selected');
-    
+
     let items;
     const filter = $(e.currentTarget).addClass('is-selected').attr('data-filter');
     if (filter === 'all') {
@@ -47,6 +48,6 @@ export default class ResourcesView extends Backbone.View {
     }
 
     if (items.length < 0) return;
-    Adapt.a11y.focusFirst($(items[0]));
+    a11y.focusFirst($(items[0]));
   }
 }

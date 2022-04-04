@@ -1,13 +1,14 @@
 import Adapt from 'core/js/adapt';
+import drawer from 'core/js/drawer';
 import ResourcesView from './ResourcesView';
-import ResourcesHelpers from './ResourcesHelpers';
+import './ResourcesHelpers';
 
 class Resources extends Backbone.Controller {
-  
+
   initialize() {
-    this.listenTo(Adapt, 'adapt:start', this.initResources); 
+    this.listenTo(Adapt, 'adapt:start', this.initResources);
   }
-  
+
   initResources() {
     const courseResources = Adapt.course.get('_resources');
 
@@ -21,17 +22,17 @@ class Resources extends Backbone.Controller {
       drawerOrder: courseResources._drawerOrder || 0
     };
 
-    Adapt.drawer.addItem(drawerObject, 'resources:showResources');
+    drawer.addItem(drawerObject, 'resources:showResources');
 
     this.setupResources(courseResources);
   }
-  
+
   setupResources(resourcesData) {
     const model = new Backbone.Model(resourcesData);
     const collection = new Backbone.Collection(model.get('_resourcesItems'));
 
     this.listenTo(Adapt, 'resources:showResources', () => {
-      Adapt.drawer.triggerCustomView(new ResourcesView({
+      drawer.triggerCustomView(new ResourcesView({
         model,
         collection
       }).$el);

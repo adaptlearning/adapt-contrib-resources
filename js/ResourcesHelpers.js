@@ -1,5 +1,5 @@
 import Handlebars from 'handlebars';
-import Adapt from 'core/js/adapt';
+import device from 'core/js/device';
 
 const helpers = {
 
@@ -26,7 +26,7 @@ const helpers = {
    * https://github.com/adaptlearning/adapt_framework/issues/1852
    */
   resources_force_download(resource, block) {
-    if (Adapt.device.browser === 'internet explorer' || Adapt.device.OS === 'ios') {
+    if (device.browser === 'internet explorer' || device.OS === 'ios') {
       return block.inverse(this);
     }
 
