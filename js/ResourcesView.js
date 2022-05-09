@@ -7,6 +7,12 @@ export default class ResourcesView extends Backbone.View {
     return 'resources';
   }
 
+  attributes() {
+    return {
+      role: 'group'
+    };
+  }
+
   initialize() {
     this.listenTo(Adapt, 'remove', this.remove);
     this.render();
