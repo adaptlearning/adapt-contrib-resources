@@ -6,26 +6,26 @@
 
   {{#resources_has_multiple_types resources}}
   <div class="resources__filter has-{{resources_get_column_count resources}}-columns">
-    <div class="resources__filter-inner">
+    <div class="resources__filter-inner" role="tablist">
 
-      <button class="resources__filter-btn resources__show-all is-selected js-resources-filter-btn-click" data-filter="all" aria-label="{{model._filterAria.allAria}}">
+      <button class="resources__filter-btn resources__show-all is-selected js-resources-filter-btn-click" data-filter="all" aria-label="{{model._filterAria.allAria}}" role="tab" aria-selected="true">
         {{{model._filterButtons.all}}}
       </button>
 
       {{#resources_has_type resources 'document'}}
-      <button class="resources__filter-btn resources__show-document js-resources-filter-btn-click" data-filter="document" aria-label="{{model._filterAria.documentAria}}">
+      <button class="resources__filter-btn resources__show-document js-resources-filter-btn-click" data-filter="document" aria-label="{{model._filterAria.documentAria}}" role="tab" aria-selected="false">
         {{{model._filterButtons.document}}}
       </button>
       {{/resources_has_type}}
 
       {{#resources_has_type resources 'media'}}
-      <button class="resources__filter-btn resources__show-media js-resources-filter-btn-click" data-filter="media" aria-label="{{model._filterAria.mediaAria}}">
+      <button class="resources__filter-btn resources__show-media js-resources-filter-btn-click" data-filter="media" aria-label="{{model._filterAria.mediaAria}}" role="tab" aria-selected="false">
         {{{model._filterButtons.media}}}
       </button>
       {{/resources_has_type}}
 
       {{#resources_has_type resources 'link'}}
-      <button class="resources__filter-btn resources__show-link js-resources-filter-btn-click" data-filter="link" aria-label="{{model._filterAria.linkAria}}">
+      <button class="resources__filter-btn resources__show-link js-resources-filter-btn-click" data-filter="link" aria-label="{{model._filterAria.linkAria}}" role="tab" aria-selected="false">
         {{{model._filterButtons.link}}}
       </button>
       {{/resources_has_type}}
