@@ -10,59 +10,12 @@ export default class ResourcesView extends Backbone.View {
   initialize() {
     this.listenTo(Adapt, 'remove', this.remove);
     this.render();
-    this.addEventListeners();
-  }
-
-  remove() {
-    this.removeEventListeners();
-    super.remove();
   }
 
   events() {
     return {
       'click .js-resources-filter-btn-click': 'onFilterClicked'
     };
-  }
-
-  addEventListeners() {
-    this.removeEventListeners();
-    $(window).on('keyup', this.onKeyUp);
-  }
-
-  removeEventListeners() {
-    $(window).off('keyup', this.onKeyUp);
-  }
-
-  onKeyUp(event) {
-    if (event.which === 9) return; // tab key
-    if (!$(document.activeElement).is('.js-resources-filter-btn-click')) return;
-
-    const prevAll = $(document.activeElement).prevAll('.js-resources-filter-btn-click');
-    const nextAll = $(document.activeElement).nextAll('.js-resources-filter-btn-click');
-
-    if (this.$('[role="tablist"]').attr('aria-orientation') === 'vertical') {
-      switch (event.which) {
-        case 38: // ↑ up
-          event.preventDefault();
-          a11y.focus(prevAll.length > 0 ? prevAll.first() : nextAll.last());
-          break;
-        case 40: // ↓ down
-          event.preventDefault();
-          a11y.focus(nextAll.length > 0 ? nextAll.first() : prevAll.last());
-          break;
-      }
-    } else {
-      switch (event.which) {
-        case 37: // ← left
-          event.preventDefault();
-          a11y.focus(prevAll.length > 0 ? prevAll.first() : nextAll.last());
-          break;
-        case 39: // → right
-          event.preventDefault();
-          a11y.focus(nextAll.length > 0 ? nextAll.first() : prevAll.last());
-          break;
-      }
-    }
   }
 
   render() {
