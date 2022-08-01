@@ -34,11 +34,17 @@ export default class ResourcesView extends Backbone.View {
   onFilterClicked(e) {
     if (e && e.preventDefault) e.preventDefault();
 
+    const $resources = this.$('#resources');
+    const $clickedButton = this.$(e.currentTarget);
+    const clickedTabId = $clickedButton.attr('id');
+
     this.$('.js-resources-filter-btn-click').removeClass('is-selected').attr('aria-selected', false);
-    this.$(e.currentTarget).attr('aria-selected', true);
+    
+    $resources.attr('aria-labelledby', clickedTabId);
+    $clickedButton.attr('aria-selected', true);
 
     let items;
-    const filter = $(e.currentTarget).addClass('is-selected').attr('data-filter');
+    const filter = $clickedButton.addClass('is-selected').attr('data-filter');
     if (filter === 'all') {
       items = this.$('.js-resources-item').removeClass('u-display-none');
     } else {

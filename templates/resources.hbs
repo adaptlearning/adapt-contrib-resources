@@ -2,30 +2,31 @@
 {{import_globals}}
 
 <div class="resources__inner">
-  {{{a11y_aria_label _globals._extensions._resources.resources}}}
 
   {{#resources_has_multiple_types resources}}
   <div class="resources__filter has-{{resources_get_column_count resources}}-columns">
     <div class="resources__filter-inner" role="tablist">
 
-      <button class="resources__filter-btn resources__show-all is-selected js-resources-filter-btn-click" data-filter="all" aria-label="{{model._filterAria.allAria}}" role="tab" aria-selected="true">
+      <div class="aria-label" aria-label="{{{ _globals._extensions._resources.resources}}}"></div>
+
+      <button id="resources__show-all" class="resources__filter-btn resources__show-all is-selected js-resources-filter-btn-click" data-filter="all" aria-label="{{model._filterAria.allAria}}" role="tab" aria-selected="true" aria-controls="resources">
         {{{model._filterButtons.all}}}
       </button>
 
       {{#resources_has_type resources 'document'}}
-      <button class="resources__filter-btn resources__show-document js-resources-filter-btn-click" data-filter="document" aria-label="{{model._filterAria.documentAria}}" role="tab" aria-selected="false">
+      <button id="resources__document" class="resources__filter-btn resources__show-document js-resources-filter-btn-click" data-filter="document" aria-label="{{model._filterAria.documentAria}}" role="tab" aria-selected="false" aria-controls="resources">
         {{{model._filterButtons.document}}}
       </button>
       {{/resources_has_type}}
 
       {{#resources_has_type resources 'media'}}
-      <button class="resources__filter-btn resources__show-media js-resources-filter-btn-click" data-filter="media" aria-label="{{model._filterAria.mediaAria}}" role="tab" aria-selected="false">
+      <button id="resources__media" class="resources__filter-btn resources__show-media js-resources-filter-btn-click" data-filter="media" aria-label="{{model._filterAria.mediaAria}}" role="tab" aria-selected="false" aria-controls="resources">
         {{{model._filterButtons.media}}}
       </button>
       {{/resources_has_type}}
 
       {{#resources_has_type resources 'link'}}
-      <button class="resources__filter-btn resources__show-link js-resources-filter-btn-click" data-filter="link" aria-label="{{model._filterAria.linkAria}}" role="tab" aria-selected="false">
+      <button id="resources__link" class="resources__filter-btn resources__show-link js-resources-filter-btn-click" data-filter="link" aria-label="{{model._filterAria.linkAria}}" role="tab" aria-selected="false" aria-controls="resources">
         {{{model._filterButtons.link}}}
       </button>
       {{/resources_has_type}}
@@ -34,39 +35,43 @@
   </div>
   {{/resources_has_multiple_types}}
 
-  <div class="resources__item-container" role="list">
+  <div id="resources" class="resources__item-container" role="tabpanel" aria-labelledby="resources__show-all">
 
-    {{#each resources}}
-    <div class="resources__item drawer__item is-{{_type}} js-resources-item" role="listitem">
+    <div role="list">
 
-      <a href="{{_link}}" class="resources__item-btn drawer__item-btn js-resources-item-btn-click"
-        data-type="{{_type}}"
-        {{#resources_force_download this}}
-        download="{{filename}}"
-        {{/resources_force_download}}
-        target="_blank"
-        aria-label="{{{title}}}. {{lookup ../model._filterButtons _type}}.{{#if description}} {{{description}}}.{{/if}}">
+      {{#each resources}}
+      <div class="resources__item drawer__item is-{{_type}} js-resources-item" role="listitem">
 
-        {{#if title}}
-        <div class="resources__item-title drawer__item-title">
-          <div class="resources__item-title-inner drawer__item-title-inner">
-            {{{compile title}}}
+        <a href="{{_link}}" class="resources__item-btn drawer__item-btn js-resources-item-btn-click"
+          data-type="{{_type}}"
+          {{#resources_force_download this}}
+          download="{{filename}}"
+          {{/resources_force_download}}
+          target="_blank"
+          aria-label="{{{title}}}. {{lookup ../model._filterButtons _type}}.{{#if description}} {{{description}}}.{{/if}}">
+
+          {{#if title}}
+          <div class="resources__item-title drawer__item-title">
+            <div class="resources__item-title-inner drawer__item-title-inner">
+              {{{compile title}}}
+            </div>
           </div>
-        </div>
-        {{/if}}
+          {{/if}}
 
-        {{#if description}}
-        <div class="resources__item-body drawer__item-body">
-          <div class="resources__item-body-inner drawer__item-body-inner">
-            {{{compile description}}}
+          {{#if description}}
+          <div class="resources__item-body drawer__item-body">
+            <div class="resources__item-body-inner drawer__item-body-inner">
+              {{{compile description}}}
+            </div>
           </div>
-        </div>
-        {{/if}}
+          {{/if}}
 
-      </a>
+        </a>
+
+      </div>
+      {{/each}}
 
     </div>
-    {{/each}}
 
   </div>
 
