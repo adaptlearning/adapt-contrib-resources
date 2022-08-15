@@ -28,14 +28,16 @@ class Resources extends Backbone.Controller {
   }
 
   setupResources(resourcesData) {
-    const model = new Backbone.Model(resourcesData);
-    const collection = new Backbone.Collection(model.get('_resourcesItems'));
-
     this.listenTo(Adapt, 'resources:showResources', () => {
-      drawer.triggerCustomView(new ResourcesView({
-        model,
-        collection
-      }).$el);
+      const model = new Backbone.Model(resourcesData);
+      let resources = model.get('_resourcesItems');
+      const contentObjectModel = Adapt.parentView?.model;
+      const contentObjectConfig = contentObjectModel?.get('_resources');
+      const isContentObjectNotCourseModel = (contentObjectModel !== Adapt.course);
+      const contentObjectResourceItems = isContentObjectNotCourseModel && contentObjectConfig?._isEnabled && contentObjectConfig?._resourcesItems;
+      if (contentObjectResourceItems) resources = resources.concat(contentObjectResourceItems ?? []);
+      model.set('_resources', resources);
+      drawer.triggerCustomView(new ResourcesView({ model }).$el);
     });
   }
 }
