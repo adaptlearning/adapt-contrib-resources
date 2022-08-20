@@ -1,5 +1,5 @@
 # adapt-contrib-resources
-
+ 
 **Resources** is an *extension* bundled with the [Adapt framework](https://github.com/adaptlearning/adapt_framework).
 <img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/resources01.gif" alt="Resources in action">
 
