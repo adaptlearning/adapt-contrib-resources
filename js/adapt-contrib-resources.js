@@ -36,6 +36,9 @@ class Resources extends Backbone.Controller {
       const isContentObjectNotCourseModel = (contentObjectModel !== Adapt.course);
       const contentObjectResourceItems = isContentObjectNotCourseModel && contentObjectConfig?._isEnabled && contentObjectConfig?._resourcesItems;
       if (contentObjectResourceItems) resources = resources.concat(contentObjectResourceItems ?? []);
+      if (isContentObjectNotCourseModel) {
+        resources = resources.filter(resource => resource._isGlobal !== false);
+      }
       model.set('_resources', resources);
       drawer.triggerCustomView(new ResourcesView({ model }).$el);
     });

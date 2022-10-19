@@ -193,6 +193,11 @@
                     "isObjectId": true,
                     "title": "Source",
                     "_backboneForms": "Asset"
+                  },
+                  "_isGlobal": {
+                    "type": "boolean",
+                    "title": "Is displayed on every page",
+                    "default": true
                   }
                 }
               }

@@ -195,6 +195,14 @@
                         "title": "Link",
                         "inputType": "Asset",
                         "validators": ["required"]
+                      },
+                      "_isGlobal": {
+                        "type": "boolean",
+                        "required":true,
+                        "default": true,
+                        "title": "Is displayed on every page?",
+                        "inputType": "Checkbox",
+                        "validators": []
                       }
                     }
                   }
@@ -219,7 +227,7 @@
                   "inputType": "Checkbox",
                   "validators": [],
                   "help": "Controls whether the Resources extension is enabled or disabled."
-                }
+                },
                 "_resourcesItems": {
                   "type": "array",
                   "required": false,
