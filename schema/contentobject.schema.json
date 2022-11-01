@@ -1,0 +1,85 @@
+{
+  "$anchor": "pageLevelProgress-contentobject",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$patch": {
+    "source": {
+      "$ref": "contentobject"
+    },
+    "with": {
+      "properties": {
+        "_resources": {
+          "type": "object",
+          "title": "Resources",
+          "default": {},
+          "required": [
+            "title"
+          ],
+          "properties": {
+            "_isEnabled": {
+              "type": "boolean",
+              "title": "Add resource links to the drawer",
+              "description": "Controls whether the Resources extension is enabled or disabled",
+              "default": true
+            },
+            "_resourcesItems": {
+              "type": "array",
+              "title": "Items",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "_type": {
+                    "type": "string",
+                    "title": "Type",
+                    "enum": [
+                      "document",
+                      "media",
+                      "link"
+                    ],
+                    "_backboneForms": "Select"
+                  },
+                  "_forceDownload": {
+                    "type": "boolean",
+                    "title": "Force download",
+                    "description": "Forces the resource to be downloaded rather than opened in the browser. Only supported in browsers that support the 'download' attribute and for resources that are part of the course content/hosted on the same URL",
+                    "default": false
+                  },
+                  "title": {
+                    "type": "string",
+                    "title": "Title",
+                    "_adapt": {
+                      "translatable": true
+                    }
+                  },
+                  "filename": {
+                    "type": "string",
+                    "title": "Filename",
+                    "description": "Used to set the name of the downloaded file to something different to the source filename. Only supported in browsers that support the 'download' attribute and for resources that are part of the course content/hosted on the same URL. Forces the file to be downloaded regardless of what 'Force download' is set to",
+                    "default": "",
+                    "_adapt": {
+                      "translatable": true
+                    }
+                  },
+                  "description": {
+                    "type": "string",
+                    "title": "Description",
+                    "default": "",
+                    "_adapt": {
+                      "translatable": true
+                    }
+                  },
+                  "_link": {
+                    "type": "string",
+                    "isObjectId": true,
+                    "title": "Source",
+                    "_backboneForms": "Asset"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

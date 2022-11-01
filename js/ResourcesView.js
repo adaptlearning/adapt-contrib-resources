@@ -21,11 +21,11 @@ export default class ResourcesView extends Backbone.View {
   render() {
     this.$el.html(Handlebars.templates.resources({
       model: this.model.toJSON(),
-      resources: this.collection.toJSON()
+      resources: this.model.get('_resources')
     }));
 
     _.defer(() => {
-      this.listenTo(Adapt, 'drawer:triggerCustomView', this.remove);
+      this.listenTo(Adapt, 'drawer:closed', this.remove);
     });
 
     return this;
@@ -39,7 +39,7 @@ export default class ResourcesView extends Backbone.View {
     const clickedTabId = $clickedButton.attr('id');
 
     this.$('.js-resources-filter-btn-click').removeClass('is-selected').attr('aria-selected', false);
-    
+
     $resources.attr('aria-labelledby', clickedTabId);
     $clickedButton.attr('aria-selected', true);
 

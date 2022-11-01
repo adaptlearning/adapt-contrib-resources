@@ -195,6 +195,14 @@
                         "title": "Link",
                         "inputType": "Asset",
                         "validators": ["required"]
+                      },
+                      "_isGlobal": {
+                        "type": "boolean",
+                        "required":true,
+                        "default": true,
+                        "title": "Is displayed on every page?",
+                        "inputType": "Checkbox",
+                        "validators": []
                       }
                     }
                   }
@@ -204,7 +212,83 @@
           }
         },
         "contentobject": {
-          "type": "object"
+          "type": "object",
+          "properties": {
+            "_resources": {
+              "type": "object",
+              "required": false,
+              "legend": "Resources",
+              "properties": {
+                "_isEnabled": {
+                  "type": "boolean",
+                  "required":true,
+                  "default": true,
+                  "title": "Is enabled",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Controls whether the Resources extension is enabled or disabled."
+                },
+                "_resourcesItems": {
+                  "type": "array",
+                  "required": false,
+                  "title": "Resources Items",
+                  "items": {
+                    "type": "object",
+                    "required": false,
+                    "title": "Items",
+                    "properties": {
+                      "_type": {
+                        "type": "string",
+                        "required": true,
+                        "title": "Type",
+                        "inputType": { "type": "Select", "options": ["document", "media", "link"]},
+                        "validators": ["required"]
+                      },
+                      "_forceDownload": {
+                        "type": "boolean",
+                        "default": false,
+                        "title": "Force download",
+                        "inputType": "Checkbox",
+                        "validators": [],
+                        "help": "Forces the resource to be downloaded rather than opened in the browser. Only supported in browsers that support the 'download' attribute and for resources that are part of the course content/hosted on the same URL."
+                      },
+                      "title": {
+                        "type": "string",
+                        "required": true,
+                        "title": "Title",
+                        "inputType": "Text",
+                        "validators": ["required"],
+                        "translatable": true
+                      },
+                      "filename": {
+                        "type": "string",
+                        "required": false,
+                        "title": "Filename",
+                        "inputType": "Text",
+                        "translatable": true,
+                        "help": "Used to set the name of the downloaded file to something different to the source filename. Only supported in browsers that support the 'download' attribute and for resources that are part of the course content/hosted on the same URL. Forces the file to be downloaded regardless of what 'Force download' is set to."
+                      },
+                      "description": {
+                        "type": "string",
+                        "required": false,
+                        "title": "Description",
+                        "inputType": "Text",
+                        "validators": [],
+                        "translatable": true
+                      },
+                      "_link": {
+                        "type": "string",
+                        "required": true,
+                        "title": "Link",
+                        "inputType": "Asset",
+                        "validators": ["required"]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         "article": {
           "type": "object"
