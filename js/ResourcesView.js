@@ -1,5 +1,8 @@
 import Adapt from 'core/js/adapt';
 import a11y from 'core/js/a11y';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { templates } from 'core/js/reactHelpers';
 
 export default class ResourcesView extends Backbone.View {
 
@@ -19,10 +22,8 @@ export default class ResourcesView extends Backbone.View {
   }
 
   render() {
-    this.$el.html(Handlebars.templates.resources({
-      model: this.model.toJSON(),
-      resources: this.model.get('_resources')
-    }));
+    const data = { model: this.model.toJSON(), resources: this.model.get('_resources') };
+    ReactDOM.render(<templates.resources {...data} />, this.el);
 
     _.defer(() => {
       this.listenTo(Adapt, 'drawer:closed', this.remove);
