@@ -5,21 +5,36 @@ import { classes, templates } from 'core/js/reactHelpers';
 export default function Resources (props) {
   const {
     model,
-    view,
     resources
   } = props;
 
   const _globals = Adapt.course.get('_globals');
+
+  function resourcesHasType(resources, type) {
+    const hasType = resources.some(_.matcher({ _type: type }));
+    return hasType;
+  }
+
+  function resourcesHasMultipleTypes(resources) {
+    if (resources.length === 1) return false;
+
+    const allSameType = resources.every(_.matcher({ _type: resources[0]._type }));
+    return !allSameType;
+  }
+
+  function resourcesGetColumnCount(resources) {
+    return _.uniq(_.pluck(resources, '_type')).length + 1;// add 1 for the 'All' button column
+  }
 
   return (
     <div className="component__inner resources__inner">
 
       <templates.header {...props} />
 
-      {view.resourcesHasMultipleTypes(resources) &&
+      {resourcesHasMultipleTypes(resources) &&
       <div className={classes([
         'resources__filter',
-        `has-${view.resourcesGetColumnCount(resources)}-columns`
+        `has-${resourcesGetColumnCount(resources)}-columns`
       ])}>
         <div className="resources__filter-inner" role="tablist">
 
@@ -27,15 +42,15 @@ export default function Resources (props) {
 
           <button id="resources__show-all" className="resources__filter-btn resources__show-all is-selected js-resources-filter-btn-click" data-filter="all" aria-label={model._filterAria.allAria} role="tab" aria-selected="true" aria-controls="resources" dangerouslySetInnerHTML={{ __html: model._filterButtons.all }} />
 
-          {view.resourcesHasType(resources, 'document') &&
+          {resourcesHasType(resources, 'document') &&
           <button id="resources__document" className="resources__filter-btn resources__show-document js-resources-filter-btn-click" data-filter="document" aria-label={model._filterAria.documentAria} role="tab" aria-selected="false" aria-controls="resources" dangerouslySetInnerHTML={{ __html: model._filterButtons.document }} />
           }
 
-          {view.resourcesHasType(resources, 'media') &&
+          {resourcesHasType(resources, 'media') &&
           <button id="resources__media" className="resources__filter-btn resources__show-media js-resources-filter-btn-click" data-filter="media" aria-label={model._filterAria.mediaAria} role="tab" aria-selected="false" aria-controls="resources" dangerouslySetInnerHTML={{ __html: model._filterButtons.media }} />
           }
 
-          {view.resourcesHasType(resources, 'link') &&
+          {resourcesHasType(resources, 'link') &&
           <button id="resources__link" className="resources__filter-btn resources__show-link js-resources-filter-btn-click" data-filter="link" aria-label={model._filterAria.linkAria} role="tab" aria-selected="false" aria-controls="resources" dangerouslySetInnerHTML={{ __html: model._filterButtons.link }} />
           }
 
