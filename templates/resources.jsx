@@ -1,10 +1,11 @@
 import React from 'react';
 import Adapt from 'core/js/adapt';
-import { classes, helper, templates } from 'core/js/reactHelpers';
+import { classes, templates } from 'core/js/reactHelpers';
 
 export default function Resources (props) {
   const {
     model,
+    view,
     resources
   } = props;
 
@@ -15,10 +16,10 @@ export default function Resources (props) {
 
       <templates.header {...props} />
 
-      {helper('resources_has_multiple_types', resources) &&
+      {view.resourcesHasMultipleTypes(resources) &&
       <div className={classes([
         'resources__filter',
-        `has-${helper('resources_get_column_count', resources)}-columns`
+        `has-${view.resourcesGetColumnCount(resources)}-columns`
       ])}>
         <div className="resources__filter-inner" role="tablist">
 
@@ -26,15 +27,15 @@ export default function Resources (props) {
 
           <button id="resources__show-all" className="resources__filter-btn resources__show-all is-selected js-resources-filter-btn-click" data-filter="all" aria-label={model._filterAria.allAria} role="tab" aria-selected="true" aria-controls="resources" dangerouslySetInnerHTML={{ __html: model._filterButtons.all }} />
 
-          {helper('resources_has_type', resources, 'document') &&
+          {view.resourcesHasType(resources, 'document') &&
           <button id="resources__document" className="resources__filter-btn resources__show-document js-resources-filter-btn-click" data-filter="document" aria-label={model._filterAria.documentAria} role="tab" aria-selected="false" aria-controls="resources" dangerouslySetInnerHTML={{ __html: model._filterButtons.document }} />
           }
 
-          {helper('resources_has_type', resources, 'media') &&
+          {view.resourcesHasType(resources, 'media') &&
           <button id="resources__media" className="resources__filter-btn resources__show-media js-resources-filter-btn-click" data-filter="media" aria-label={model._filterAria.mediaAria} role="tab" aria-selected="false" aria-controls="resources" dangerouslySetInnerHTML={{ __html: model._filterButtons.media }} />
           }
 
-          {helper('resources_has_type', resources, 'link') &&
+          {view.resourcesHasType(resources, 'link') &&
           <button id="resources__link" className="resources__filter-btn resources__show-link js-resources-filter-btn-click" data-filter="link" aria-label={model._filterAria.linkAria} role="tab" aria-selected="false" aria-controls="resources" dangerouslySetInnerHTML={{ __html: model._filterButtons.link }} />
           }
 

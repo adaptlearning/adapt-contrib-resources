@@ -1,7 +1,6 @@
 import Adapt from 'core/js/adapt';
 import drawer from 'core/js/drawer';
 import ResourcesView from './ResourcesView';
-import './ResourcesHelpers';
 
 class Resources extends Backbone.Controller {
 

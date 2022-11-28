@@ -22,7 +22,11 @@ export default class ResourcesView extends Backbone.View {
   }
 
   render() {
-    const data = { model: this.model.toJSON(), resources: this.model.get('_resources') };
+    const data = {
+      model: this.model.toJSON(),
+      view: this,
+      resources: this.model.get('_resources')
+    };
     ReactDOM.render(<templates.resources {...data} />, this.el);
 
     _.defer(() => {
@@ -58,4 +62,21 @@ export default class ResourcesView extends Backbone.View {
     if (items.length < 0) return;
     a11y.focusFirst($(items[0]));
   }
+
+  resourcesHasType(resources, type) {
+    const hasType = resources.some(_.matcher({ _type: type }));
+    return hasType;
+  }
+
+  resourcesHasMultipleTypes(resources) {
+    if (resources.length === 1) return false;
+
+    const allSameType = resources.every(_.matcher({ _type: resources[0]._type }));
+    return !allSameType;
+  }
+
+  resourcesGetColumnCount(resources) {
+    return _.uniq(_.pluck(resources, '_type')).length + 1;// add 1 for the 'All' button column
+  }
+
 }
