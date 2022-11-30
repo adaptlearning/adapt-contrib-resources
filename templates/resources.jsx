@@ -1,5 +1,6 @@
 import React from 'react';
 import Adapt from 'core/js/adapt';
+import device from 'core/js/device';
 import { classes, templates } from 'core/js/reactHelpers';
 
 export default function Resources (props) {
@@ -25,6 +26,20 @@ export default function Resources (props) {
 
   function resourcesGetColumnCount(resources) {
     return _.uniq(_.pluck(resources, '_type')).length + 1;// add 1 for the 'All' button column
+  }
+
+  /**
+   * IE doesn't support the 'download' attribute
+   * https://github.com/adaptlearning/adapt_framework/issues/1559
+   * and iOS just opens links with that attribute in the same window
+   * https://github.com/adaptlearning/adapt_framework/issues/1852
+   */
+  function resourcesForceDownload(filename, _forceDownload) {
+    if (device.browser === 'internet explorer' || device.OS === 'ios') {
+      return false;
+    }
+
+    return (_forceDownload || filename);
   }
 
   return (
@@ -63,7 +78,7 @@ export default function Resources (props) {
 
         <div role="list">
 
-          {resources.map(({ title, description, _link, _type, _isGlobal, _forceDownload, filename }, index) =>
+          {resources.map(({ title, description, _link, _type, _isGlobal, filename, _forceDownload }, index) =>
             <div className={classes([
               'resources__item drawer__item js-resources-item',
               `is-${_type}`,
@@ -74,7 +89,7 @@ export default function Resources (props) {
 
               <a href={_link} className="resources__item-btn drawer__item-btn js-resources-item-btn-click"
                 data-type={_type}
-                download={_forceDownload && filename }
+                download={resourcesForceDownload(filename, _forceDownload) && filename }
                 target="_blank"
                 rel="noreferrer"
                 aria-label={title}>
