@@ -15,16 +15,11 @@ export default class ResourcesView extends Backbone.View {
     this.render();
   }
 
-  events() {
-    return {
-      'click .js-resources-filter-btn-click': 'onFilterClicked'
-    };
-  }
-
   render() {
     const data = {
       model: this.model.toJSON(),
-      resources: this.model.get('_resources')
+      resources: this.model.get('_resources'),
+      onFilterClicked: this.onFilterClicked.bind(this)
     };
     ReactDOM.render(<templates.resources {...data} />, this.el);
 

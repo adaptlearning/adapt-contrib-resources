@@ -5,7 +5,8 @@ import { classes, templates } from 'core/js/reactHelpers';
 export default function Resources (props) {
   const {
     model,
-    resources
+    resources,
+    onFilterClicked
   } = props;
 
   const _globals = Adapt.course.get('_globals');
@@ -40,18 +41,18 @@ export default function Resources (props) {
 
           <div className="aria-label" aria-label={_globals._extensions._resources.resources} />
 
-          <button id="resources__show-all" className="resources__filter-btn resources__show-all is-selected js-resources-filter-btn-click" data-filter="all" aria-label={model._filterAria.allAria} role="tab" aria-selected="true" aria-controls="resources" dangerouslySetInnerHTML={{ __html: model._filterButtons.all }} />
+          <button id="resources__show-all" className="resources__filter-btn resources__show-all is-selected js-resources-filter-btn-click" onClick={onFilterClicked} data-filter="all" aria-label={model._filterAria.allAria} role="tab" aria-selected="true" aria-controls="resources" dangerouslySetInnerHTML={{ __html: model._filterButtons.all }} />
 
           {resourcesHasType(resources, 'document') &&
-          <button id="resources__document" className="resources__filter-btn resources__show-document js-resources-filter-btn-click" data-filter="document" aria-label={model._filterAria.documentAria} role="tab" aria-selected="false" aria-controls="resources" dangerouslySetInnerHTML={{ __html: model._filterButtons.document }} />
+          <button id="resources__document" className="resources__filter-btn resources__show-document js-resources-filter-btn-click" onClick={onFilterClicked} data-filter="document" aria-label={model._filterAria.documentAria} role="tab" aria-selected="false" aria-controls="resources" dangerouslySetInnerHTML={{ __html: model._filterButtons.document }} />
           }
 
           {resourcesHasType(resources, 'media') &&
-          <button id="resources__media" className="resources__filter-btn resources__show-media js-resources-filter-btn-click" data-filter="media" aria-label={model._filterAria.mediaAria} role="tab" aria-selected="false" aria-controls="resources" dangerouslySetInnerHTML={{ __html: model._filterButtons.media }} />
+          <button id="resources__media" className="resources__filter-btn resources__show-media js-resources-filter-btn-click" onClick={onFilterClicked} data-filter="media" aria-label={model._filterAria.mediaAria} role="tab" aria-selected="false" aria-controls="resources" dangerouslySetInnerHTML={{ __html: model._filterButtons.media }} />
           }
 
           {resourcesHasType(resources, 'link') &&
-          <button id="resources__link" className="resources__filter-btn resources__show-link js-resources-filter-btn-click" data-filter="link" aria-label={model._filterAria.linkAria} role="tab" aria-selected="false" aria-controls="resources" dangerouslySetInnerHTML={{ __html: model._filterButtons.link }} />
+          <button id="resources__link" className="resources__filter-btn resources__show-link js-resources-filter-btn-click" onClick={onFilterClicked} data-filter="link" aria-label={model._filterAria.linkAria} role="tab" aria-selected="false" aria-controls="resources" dangerouslySetInnerHTML={{ __html: model._filterButtons.link }} />
           }
 
         </div>
