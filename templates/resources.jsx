@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Adapt from 'core/js/adapt';
+import a11y from 'core/js/a11y';
 import device from 'core/js/device';
 import { classes, templates } from 'core/js/reactHelpers';
 
 export default function Resources (props) {
   const {
     model,
-    resources,
-    onFilterClicked
+    resources
   } = props;
 
   const _globals = Adapt.course.get('_globals');
+
+  const [selectedType, updateSelectedType] = useState('all');
 
   function resourcesHasType(resources, type) {
     const hasType = resources.some(_.matcher({ _type: type }));
@@ -42,6 +44,36 @@ export default function Resources (props) {
     return (_forceDownload || filename);
   }
 
+  function onFilterClicked(e) {
+    if (e && e.preventDefault) e.preventDefault();
+
+    const $clickedButton = this.$(e.currentTarget);
+    const type = $clickedButton.data('filter');
+
+    updateSelectedType(type);
+
+    // const clickedTabId = $clickedButton.attr('id');
+
+    // this.$('.js-resources-filter-btn-click').removeClass('is-selected').attr('aria-selected', false);
+
+    // $resources.attr('aria-labelledby', clickedTabId);
+    // $clickedButton.attr('aria-selected', true);
+
+    // let items;
+    // const filter = $clickedButton.addClass('is-selected').attr('data-filter');
+    // if (filter === 'all') {
+    //   items = this.$('.js-resources-item').removeClass('u-display-none');
+    // } else {
+    //   this.$('.js-resources-item')
+    //     .removeClass('u-display-none').not('.is-' + filter)
+    //     .addClass('u-display-none');
+    //   items = this.$('.js-resources-item.is-' + filter);
+    // }
+
+    // if (items.length < 0) return;
+    // a11y.focusFirst($(items[0]));
+  }
+
   return (
     <div className="component__inner resources__inner">
 
@@ -56,18 +88,66 @@ export default function Resources (props) {
 
           <div className="aria-label" aria-label={_globals._extensions._resources.resources} />
 
-          <button id="resources__show-all" className="resources__filter-btn resources__show-all is-selected js-resources-filter-btn-click" onClick={onFilterClicked} data-filter="all" aria-label={model._filterAria.allAria} role="tab" aria-selected="true" aria-controls="resources" dangerouslySetInnerHTML={{ __html: model._filterButtons.all }} />
+          <button
+            id="resources__show-all"
+            className={classes([
+              'resources__filter-btn',
+              selectedType === 'all' && 'is-selected'
+            ])}
+            onClick={onFilterClicked}
+            data-filter="all"
+            aria-label={model._filterAria.allAria}
+            role="tab"
+            aria-selected="true"
+            aria-controls="resources"
+            dangerouslySetInnerHTML={{ __html: model._filterButtons.all }} />
 
           {resourcesHasType(resources, 'document') &&
-          <button id="resources__document" className="resources__filter-btn resources__show-document js-resources-filter-btn-click" onClick={onFilterClicked} data-filter="document" aria-label={model._filterAria.documentAria} role="tab" aria-selected="false" aria-controls="resources" dangerouslySetInnerHTML={{ __html: model._filterButtons.document }} />
+          <button
+            id="resources__document"
+            className={classes([
+              'resources__filter-btn',
+              selectedType === 'document' && 'is-selected'
+            ])}
+            onClick={onFilterClicked}
+            data-filter="document"
+            aria-label={model._filterAria.documentAria}
+            role="tab"
+            aria-selected="false"
+            aria-controls="resources"
+            dangerouslySetInnerHTML={{ __html: model._filterButtons.document }} />
           }
 
           {resourcesHasType(resources, 'media') &&
-          <button id="resources__media" className="resources__filter-btn resources__show-media js-resources-filter-btn-click" onClick={onFilterClicked} data-filter="media" aria-label={model._filterAria.mediaAria} role="tab" aria-selected="false" aria-controls="resources" dangerouslySetInnerHTML={{ __html: model._filterButtons.media }} />
+          <button
+            id="resources__media"
+            className={classes([
+              'resources__filter-btn',
+              selectedType === 'media' && 'is-selected'
+            ])}
+            onClick={onFilterClicked}
+            data-filter="media"
+            aria-label={model._filterAria.mediaAria}
+            role="tab"
+            aria-selected="false"
+            aria-controls="resources"
+            dangerouslySetInnerHTML={{ __html: model._filterButtons.media }} />
           }
 
           {resourcesHasType(resources, 'link') &&
-          <button id="resources__link" className="resources__filter-btn resources__show-link js-resources-filter-btn-click" onClick={onFilterClicked} data-filter="link" aria-label={model._filterAria.linkAria} role="tab" aria-selected="false" aria-controls="resources" dangerouslySetInnerHTML={{ __html: model._filterButtons.link }} />
+          <button
+            id="resources__link"
+            className={classes([
+              'resources__filter-btn',
+              selectedType === 'link' && 'is-selected'
+            ])}
+            onClick={onFilterClicked}
+            data-filter="link"
+            aria-label={model._filterAria.linkAria}
+            role="tab"
+            aria-selected="false"
+            aria-controls="resources"
+            dangerouslySetInnerHTML={{ __html: model._filterButtons.link }} />
           }
 
         </div>
