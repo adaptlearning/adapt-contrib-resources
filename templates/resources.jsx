@@ -11,8 +11,8 @@ export default function Resources (props) {
   } = props;
 
   const _globals = Adapt.course.get('_globals');
-
-  const [selectedType, updateSelectedType] = useState('all');
+  const [selectedFilter, updateSelectedFilter] = useState('all');
+  const [selectedId, updateSelectedId] = useState('resources__show-all');
 
   function resourcesHasType(resources, type) {
     const hasType = resources.some(_.matcher({ _type: type }));
@@ -48,30 +48,23 @@ export default function Resources (props) {
     if (e && e.preventDefault) e.preventDefault();
 
     const $clickedButton = this.$(e.currentTarget);
-    const type = $clickedButton.data('filter');
+    const filter = $clickedButton.data('filter');
+    const id = $clickedButton.attr('id');
 
-    updateSelectedType(type);
+    updateSelectedFilter(filter);
+    updateSelectedId(id);
 
-    // const clickedTabId = $clickedButton.attr('id');
-
-    // this.$('.js-resources-filter-btn-click').removeClass('is-selected').attr('aria-selected', false);
-
-    // $resources.attr('aria-labelledby', clickedTabId);
-    // $clickedButton.attr('aria-selected', true);
-
-    // let items;
-    // const filter = $clickedButton.addClass('is-selected').attr('data-filter');
+    // let $items;
     // if (filter === 'all') {
-    //   items = this.$('.js-resources-item').removeClass('u-display-none');
+    //   $items = $('.resources__item');
     // } else {
-    //   this.$('.js-resources-item')
-    //     .removeClass('u-display-none').not('.is-' + filter)
-    //     .addClass('u-display-none');
-    //   items = this.$('.js-resources-item.is-' + filter);
+    //   $items = $('.resources__item.is-' + filter);
     // }
 
-    // if (items.length < 0) return;
-    // a11y.focusFirst($(items[0]));
+    // if ($items.length < 0) return;
+    // console.log('$items is:');
+    // console.log($items);
+    // a11y.focusFirst($items);
   }
 
   return (
@@ -92,13 +85,13 @@ export default function Resources (props) {
             id="resources__show-all"
             className={classes([
               'resources__filter-btn',
-              selectedType === 'all' && 'is-selected'
+              selectedFilter === 'all' && 'is-selected'
             ])}
             onClick={onFilterClicked}
             data-filter="all"
             aria-label={model._filterAria.allAria}
             role="tab"
-            aria-selected="true"
+            aria-selected={selectedFilter === 'all'}
             aria-controls="resources"
             dangerouslySetInnerHTML={{ __html: model._filterButtons.all }} />
 
@@ -107,13 +100,13 @@ export default function Resources (props) {
             id="resources__document"
             className={classes([
               'resources__filter-btn',
-              selectedType === 'document' && 'is-selected'
+              selectedFilter === 'document' && 'is-selected'
             ])}
             onClick={onFilterClicked}
             data-filter="document"
             aria-label={model._filterAria.documentAria}
             role="tab"
-            aria-selected="false"
+            aria-selected={selectedFilter === 'document'}
             aria-controls="resources"
             dangerouslySetInnerHTML={{ __html: model._filterButtons.document }} />
           }
@@ -123,13 +116,13 @@ export default function Resources (props) {
             id="resources__media"
             className={classes([
               'resources__filter-btn',
-              selectedType === 'media' && 'is-selected'
+              selectedFilter === 'media' && 'is-selected'
             ])}
             onClick={onFilterClicked}
             data-filter="media"
             aria-label={model._filterAria.mediaAria}
             role="tab"
-            aria-selected="false"
+            aria-selected={selectedFilter === 'media'}
             aria-controls="resources"
             dangerouslySetInnerHTML={{ __html: model._filterButtons.media }} />
           }
@@ -139,13 +132,13 @@ export default function Resources (props) {
             id="resources__link"
             className={classes([
               'resources__filter-btn',
-              selectedType === 'link' && 'is-selected'
+              selectedFilter === 'link' && 'is-selected'
             ])}
             onClick={onFilterClicked}
             data-filter="link"
             aria-label={model._filterAria.linkAria}
             role="tab"
-            aria-selected="false"
+            aria-selected={selectedFilter === 'link'}
             aria-controls="resources"
             dangerouslySetInnerHTML={{ __html: model._filterButtons.link }} />
           }
@@ -154,20 +147,21 @@ export default function Resources (props) {
       </div>
       }
 
-      <div id="resources" className="resources__item-container" role="tabpanel" aria-labelledby="resources__show-all">
+      <div id="resources" className="resources__item-container" role="tabpanel" aria-labelledby={selectedId}>
 
         <div role="list">
 
           {resources.map(({ title, description, _link, _type, _isGlobal, filename, _forceDownload }, index) =>
             <div className={classes([
-              'resources__item drawer__item js-resources-item',
+              'resources__item drawer__item',
               `is-${_type}`,
-              _isGlobal && 'is-global'
+              _isGlobal && 'is-global',
+              (!['all', _type].includes(selectedFilter)) && 'u-display-none'
             ])}
             role="listitem"
             key={index}>
 
-              <a href={_link} className="resources__item-btn drawer__item-btn js-resources-item-btn-click"
+              <a href={_link} className="resources__item-btn drawer__item-btn"
                 data-type={_type}
                 download={resourcesForceDownload(filename, _forceDownload) && filename }
                 target="_blank"
