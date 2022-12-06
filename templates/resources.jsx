@@ -54,17 +54,15 @@ export default function Resources (props) {
     updateSelectedFilter(filter);
     updateSelectedId(id);
 
-    // let $items;
-    // if (filter === 'all') {
-    //   $items = $('.resources__item');
-    // } else {
-    //   $items = $('.resources__item.is-' + filter);
-    // }
+    let $items;
+    if (filter === 'all') {
+      $items = $('.resources__item');
+    } else {
+      $items = $('.resources__item.is-' + filter);
+    }
 
-    // if ($items.length < 0) return;
-    // console.log('$items is:');
-    // console.log($items);
-    // a11y.focusFirst($items);
+    if ($items.length < 0) return;
+    a11y.focusFirst($items);
   }
 
   return (
