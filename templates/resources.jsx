@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Adapt from 'core/js/adapt';
 import a11y from 'core/js/a11y';
 import device from 'core/js/device';
@@ -11,8 +11,6 @@ export default function Resources (props) {
   } = props;
 
   const _globals = Adapt.course.get('_globals');
-  const [selectedFilter, updateSelectedFilter] = useState('all');
-  const [selectedId, updateSelectedId] = useState('resources__show-all');
 
   function resourcesHasType(resources, type) {
     const hasType = resources.some(_.matcher({ _type: type }));
@@ -44,6 +42,27 @@ export default function Resources (props) {
     return (_forceDownload || filename);
   }
 
+  const [selectedFilter, setSelectedFilter] = useState('all');
+  const [selectedId, setSelectedId] = useState('resources__show-all');
+  const [focusFlag, setFocusFlag] = useState(false);
+
+  useEffect(() => {
+    if (focusFlag) {
+      let $items;
+      if (selectedFilter === 'all') {
+        $items = $('.resources__item');
+      } else {
+        $items = $('.resources__item.is-' + selectedFilter);
+      }
+
+      if ($items.length < 0) return;
+
+      a11y.focusFirst($items);
+
+      setFocusFlag(false);
+    }
+  }, [focusFlag]);
+
   function onFilterClicked(e) {
     if (e && e.preventDefault) e.preventDefault();
 
@@ -51,18 +70,10 @@ export default function Resources (props) {
     const filter = $clickedButton.data('filter');
     const id = $clickedButton.attr('id');
 
-    updateSelectedFilter(filter);
-    updateSelectedId(id);
+    setSelectedFilter(filter);
+    setSelectedId(id);
 
-    let $items;
-    if (filter === 'all') {
-      $items = $('.resources__item');
-    } else {
-      $items = $('.resources__item.is-' + filter);
-    }
-
-    if ($items.length < 0) return;
-    a11y.focusFirst($items);
+    setFocusFlag(true);
   }
 
   return (
