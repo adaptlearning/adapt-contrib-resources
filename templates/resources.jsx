@@ -9,11 +9,7 @@ export default function Resources (props) {
   } = props;
 
   const _globals = Adapt.course.get('_globals');
-
-  function resourcesHasType(resources, type) {
-    const hasType = resources.some(_.matcher({ _type: type }));
-    return hasType;
-  }
+  const resourceTypes = ['all', 'document', 'media', 'link'];
 
   function resourcesHasMultipleTypes(resources) {
     if (resources.length === 1) return false;
@@ -73,19 +69,14 @@ export default function Resources (props) {
 
           <div className="aria-label" aria-label={_globals._extensions._resources.resources} />
 
-          <templates.resourcesFilterButton {...props} _filter='all' onClick={onFilterClicked} selected={selectedFilter} />
-
-          {resourcesHasType(resources, 'document') &&
-          <templates.resourcesFilterButton {...props} _filter='document' onClick={onFilterClicked} selected={selectedFilter} />
-          }
-
-          {resourcesHasType(resources, 'media') &&
-          <templates.resourcesFilterButton {...props} _filter='media' onClick={onFilterClicked} selected={selectedFilter} />
-          }
-
-          {resourcesHasType(resources, 'link') &&
-          <templates.resourcesFilterButton {...props} _filter='link' onClick={onFilterClicked} selected={selectedFilter} />
-          }
+          {resourceTypes.map((type, index) =>
+            <templates.resourcesFilterButton {...props}
+              key={index}
+              resources={resources}
+              _filter={type}
+              onClick={onFilterClicked}
+              selected={selectedFilter} />
+          )}
 
         </div>
       </div>

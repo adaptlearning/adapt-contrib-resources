@@ -5,12 +5,20 @@ export default function ResourcesFilterButton (props) {
   const {
     model,
     onClick,
+    resources,
     selected,
     _filter
   } = props;
 
   const buttonText = model._filterButtons[_filter];
   const ariaLabel = model._filterAria[`${_filter}Aria`];
+
+  function resourcesHasType(resources, type) {
+    const hasType = resources.some(_.matcher({ _type: type }));
+    return hasType;
+  }
+
+  if (!resourcesHasType(resources, _filter) && _filter !== 'all') return null;
 
   return (
     <button
