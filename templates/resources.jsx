@@ -9,7 +9,7 @@ export default function Resources (props) {
   } = props;
 
   const _globals = Adapt.course.get('_globals');
-  const resourceTypes = ['all', 'document', 'media', 'link'];
+  const resourceTypes = ['all', 'document', 'media', 'link']; // must contain 'all'
 
   function resourcesHasMultipleTypes(resources) {
     if (resources.length === 1) return false;
@@ -19,7 +19,7 @@ export default function Resources (props) {
   }
 
   function resourcesGetColumnCount(resources) {
-    return _.uniq(_.pluck(resources, '_type')).length + 1;// add 1 for the 'All' button column
+    return _.uniq(_.pluck(resources, '_type')).length + 1; // add 1 for the 'All' button column
   }
 
   const [selectedFilter, setSelectedFilter] = useState('all');
