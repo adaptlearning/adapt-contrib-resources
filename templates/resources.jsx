@@ -6,7 +6,6 @@ import { classes, templates } from 'core/js/reactHelpers';
 
 export default function Resources (props) {
   const {
-    model,
     resources
   } = props;
 
@@ -63,7 +62,7 @@ export default function Resources (props) {
     }
   }, [focusFlag]);
 
-  function onFilterClicked(e) {
+  const onFilterClicked = e => {
     if (e && e.preventDefault) e.preventDefault();
 
     const $clickedButton = this.$(e.currentTarget);
@@ -72,9 +71,8 @@ export default function Resources (props) {
 
     setSelectedFilter(filter);
     setSelectedId(id);
-
     setFocusFlag(true);
-  }
+  };
 
   return (
     <div className="component__inner resources__inner">
@@ -90,66 +88,18 @@ export default function Resources (props) {
 
           <div className="aria-label" aria-label={_globals._extensions._resources.resources} />
 
-          <button
-            id="resources__show-all"
-            className={classes([
-              'resources__filter-btn',
-              selectedFilter === 'all' && 'is-selected'
-            ])}
-            onClick={onFilterClicked}
-            data-filter="all"
-            aria-label={model._filterAria.allAria}
-            role="tab"
-            aria-selected={selectedFilter === 'all'}
-            aria-controls="resources"
-            dangerouslySetInnerHTML={{ __html: model._filterButtons.all }} />
+          <templates.resourcesFilterButton {...props} _filter='all' onClick={onFilterClicked} selected={selectedFilter} />
 
           {resourcesHasType(resources, 'document') &&
-          <button
-            id="resources__document"
-            className={classes([
-              'resources__filter-btn',
-              selectedFilter === 'document' && 'is-selected'
-            ])}
-            onClick={onFilterClicked}
-            data-filter="document"
-            aria-label={model._filterAria.documentAria}
-            role="tab"
-            aria-selected={selectedFilter === 'document'}
-            aria-controls="resources"
-            dangerouslySetInnerHTML={{ __html: model._filterButtons.document }} />
+          <templates.resourcesFilterButton {...props} _filter='document' onClick={onFilterClicked} selected={selectedFilter} />
           }
 
           {resourcesHasType(resources, 'media') &&
-          <button
-            id="resources__media"
-            className={classes([
-              'resources__filter-btn',
-              selectedFilter === 'media' && 'is-selected'
-            ])}
-            onClick={onFilterClicked}
-            data-filter="media"
-            aria-label={model._filterAria.mediaAria}
-            role="tab"
-            aria-selected={selectedFilter === 'media'}
-            aria-controls="resources"
-            dangerouslySetInnerHTML={{ __html: model._filterButtons.media }} />
+          <templates.resourcesFilterButton {...props} _filter='media' onClick={onFilterClicked} selected={selectedFilter} />
           }
 
           {resourcesHasType(resources, 'link') &&
-          <button
-            id="resources__link"
-            className={classes([
-              'resources__filter-btn',
-              selectedFilter === 'link' && 'is-selected'
-            ])}
-            onClick={onFilterClicked}
-            data-filter="link"
-            aria-label={model._filterAria.linkAria}
-            role="tab"
-            aria-selected={selectedFilter === 'link'}
-            aria-controls="resources"
-            dangerouslySetInnerHTML={{ __html: model._filterButtons.link }} />
+          <templates.resourcesFilterButton {...props} _filter='link' onClick={onFilterClicked} selected={selectedFilter} />
           }
 
         </div>
