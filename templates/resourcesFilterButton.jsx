@@ -14,8 +14,7 @@ export default function ResourcesFilterButton (props) {
   const ariaLabel = model._filterAria[`${_filter}Aria`];
 
   function resourcesHasType(resources, type) {
-    const hasType = resources.some(_.matcher({ _type: type }));
-    return hasType;
+    return resources.some(_.matcher({ _type: type }));
   }
 
   if (!resourcesHasType(resources, _filter) && _filter !== 'all') return null;
