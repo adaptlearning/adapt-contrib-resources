@@ -46,7 +46,7 @@ export default function Resources (props) {
   const onFilterClicked = e => {
     if (e && e.preventDefault) e.preventDefault();
 
-    const $clickedButton = this.$(e.currentTarget);
+    const $clickedButton = $(e.currentTarget);
     const filter = $clickedButton.data('filter');
     const id = $clickedButton.attr('id');
 
@@ -56,7 +56,7 @@ export default function Resources (props) {
   };
 
   return (
-    <div className="component__inner resources__inner">
+    <div className="resources__inner">
 
       <templates.header {...props} />
 
