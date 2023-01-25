@@ -56,7 +56,7 @@ export default function Resources (props) {
   };
 
   return (
-    <div className="component__inner resources__inner">
+    <div className="resources__inner">
 
       <templates.header {...props} />
 
