@@ -97,7 +97,7 @@ export default function Resources (props) {
               selectedFilter={selectedFilter}
               filename={ filename}
               _forceDownload={_forceDownload} />
-          )};
+          )}
 
         </div>
 
