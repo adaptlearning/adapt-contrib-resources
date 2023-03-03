@@ -23,6 +23,13 @@ class Resources extends Backbone.Controller {
 
     drawer.addItem(drawerObject, 'resources:showResources');
 
+    Object.assign(courseResources, {
+      _isA11yComponentDescriptionEnabled: true,
+      _id: 'resources',
+      _extension: 'resources',
+      _ariaLevel: 1
+    });
+
     this.setupResources(courseResources);
   }
 
