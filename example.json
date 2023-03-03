@@ -4,6 +4,9 @@
         "_drawerOrder": 1,
         "title": "Resources",
         "description": "Select here to view resources for this course",
+        "displayTitle": "",
+        "body": "",
+        "instruction": "",
         "_filterButtons": {
             "all": "All",
             "document": "PDF",
@@ -70,4 +73,12 @@
                 "_forceDownload": false
             }
         ]
+    }
+
+    // Accessibility supported courses require ARIA instruction
+    // apply to _globals in course.json
+    // --------------------------------------------------
+    "_resources": {
+        "ariaRegion": "",
+        "resources": "Resources"
     }
