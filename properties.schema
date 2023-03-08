@@ -4,6 +4,14 @@
   "id": "http://jsonschema.net",
   "required": false,
   "globals": {
+    "ariaRegion": {
+      "type": "string",
+      "required": false,
+      "default": "",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    },
     "resources": {
       "type": "string",
       "required": true,
@@ -54,6 +62,7 @@
                   "title": "",
                   "inputType": "Text",
                   "validators": ["required"],
+                  "help": "The title for the resources button which displays when more than one extension is using the drawer.",
                   "translatable": true
                 },
                 "description": {
@@ -63,6 +72,37 @@
                   "title": "",
                   "inputType": "Text",
                   "validators": [],
+                  "help": "The description text for the resources button which displays when more than one extension is using the drawer.",
+                  "translatable": true
+                },
+                "displayTitle": {
+                  "type": "string",
+                  "default": "",
+                  "required": false,
+                  "title": "",
+                  "inputType": "Text",
+                  "validators": [],
+                  "help": "The title for the resources which displays at the top of the resources drawer.",
+                  "translatable": true
+                },
+                "body": {
+                  "type": "string",
+                  "default": "",
+                  "required": false,
+                  "title": "",
+                  "inputType": "Text",
+                  "validators": [],
+                  "help": "The body text for the resources which displays at the top of the resources drawer.",
+                  "translatable": true
+                },
+                "instruction": {
+                  "type": "string",
+                  "default": "",
+                  "required": false,
+                  "title": "",
+                  "inputType": "Text",
+                  "validators": [],
+                  "help": "The instruction text for the resources which displays at the top of the resources drawer.",
                   "translatable": true
                 },
                 "_filterButtons": {

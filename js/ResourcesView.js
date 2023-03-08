@@ -22,6 +22,7 @@ export default class ResourcesView extends Backbone.View {
     ReactDOM.render(<templates.resources {...data} />, this.el);
 
     _.defer(() => {
+      Adapt.trigger('view:render', this);
       this.listenTo(Adapt, 'drawer:closed', this.remove);
     });
 

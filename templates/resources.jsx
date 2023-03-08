@@ -58,7 +58,7 @@ export default function Resources (props) {
   return (
     <div className="resources__inner">
 
-      <templates.header {...props} />
+      <templates.header {...props.model} />
 
       {resourcesHasMultipleTypes(resources) &&
       <div className={classes([
