@@ -12,24 +12,31 @@
           "type": "object",
           "default": {},
           "properties": {
-            "_resources": {
+            "_extensions": {
               "type": "object",
               "default": {},
               "properties": {
-                "ariaRegion": {
-                  "type": "string",
-                  "title": "Resources: ARIA region",
-                  "default": "",
-                  "_adapt": {
-                    "translatable": true
-                  }
-                },
-                "resources": {
-                  "type": "string",
+                "_resources": {
+                  "type": "object",
                   "title": "Resources",
-                  "default": "Additional resources.",
-                  "_adapt": {
-                    "translatable": true
+                  "default": {},
+                  "properties": {
+                    "ariaRegion": {
+                      "type": "string",
+                      "title": "Resources: ARIA region",
+                      "default": "",
+                      "_adapt": {
+                        "translatable": true
+                      }
+                    },
+                    "resources": {
+                      "type": "string",
+                      "title": "Resources",
+                      "default": "Additional resources.",
+                      "_adapt": {
+                        "translatable": true
+                      }
+                    }
                   }
                 }
               }
