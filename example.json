@@ -7,19 +7,28 @@
         "displayTitle": "",
         "body": "",
         "instruction": "",
-        "_filterButtons": {
-            "all": "All",
-            "document": "PDF",
-            "media": "Media",
-            "link": "Link"
-        },
-        "_comment": "_filterAria is to provide accessibility support for assistive technologies",
-        "_filterAria": {
-            "allAria": "View all resources",
-            "documentAria": "View document resources",
-            "mediaAria": "View media resources",
-            "linkAria": "View resource links"
-        },
+        "_resourcesTypes": [
+            {
+              "buttonText": "All",
+              "ariaLabel": "View all resources",
+              "_type": "all"
+            },
+            {
+              "buttonText": "Media",
+              "ariaLabel": "View media resources",
+              "_type": "media"
+            },
+            {
+              "buttonText": "Document",
+              "ariaLabel": "View document resources",
+              "_type": "document"
+            },
+            {
+              "buttonText": "Link",
+              "ariaLabel": "View resource links",
+              "_type": "link"
+            }
+        ],
         "_resourcesItems": [
             {
                 "_type": "document",
