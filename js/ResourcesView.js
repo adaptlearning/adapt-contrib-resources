@@ -17,7 +17,8 @@ export default class ResourcesView extends Backbone.View {
   render() {
     const data = {
       model: this.model.toJSON(),
-      resources: this.model.get('_resources')
+      resources: this.model.get('_resources'),
+      resourceTypes: this.model.get('_resourceTypes')
     };
     ReactDOM.render(<templates.resources {...data} />, this.el);
 

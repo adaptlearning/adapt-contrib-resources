@@ -46,6 +46,10 @@ class Resources extends Backbone.Controller {
         resources = resources.filter(resource => resource._isGlobal !== false);
       }
       model.set('_resources', resources);
+
+      const resourceTypes = ['all', 'document', 'media', 'link']; // must contain 'all'
+      model.set('_resourceTypes', resourceTypes);
+
       drawer.triggerCustomView(new ResourcesView({ model }).$el);
     });
   }

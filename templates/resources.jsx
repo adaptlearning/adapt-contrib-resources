@@ -5,11 +5,11 @@ import { classes, templates } from 'core/js/reactHelpers';
 
 export default function Resources (props) {
   const {
-    resources
+    resources,
+    resourceTypes
   } = props;
 
   const _globals = Adapt.course.get('_globals');
-  const resourceTypes = ['all', 'document', 'media', 'link']; // must contain 'all'
 
   function resourcesHasMultipleTypes(resources) {
     if (resources.length === 1) return false;
