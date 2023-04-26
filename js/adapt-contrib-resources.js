@@ -54,12 +54,7 @@ class Resources extends Backbone.Controller {
   }
 
   setupTypes(model) {
-    let types = ['all', 'document', 'media', 'link']; // must contain 'all'
-    const resourcesTypes = model.get('_resourcesTypes');
-    if (resourcesTypes) {
-      // Replace types with those defined in _resourcesTypes
-      // types = ['all', 'document', 'media', 'link'];
-    }
+    const types = ['all', 'document', 'media', 'link', 'custom1', 'custom2', 'custom3', 'custom4', 'custom5']; // must contain 'all'
     model.set('_resourceTypes', types);
   }
 }
