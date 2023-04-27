@@ -1,3 +1,4 @@
+import Adapt from 'core/js/adapt';
 import React from 'react';
 import device from 'core/js/device';
 import { classes } from 'core/js/reactHelpers';
@@ -28,6 +29,10 @@ export default function ResourcesItem (props) {
     return (_forceDownload || filename);
   }
 
+  function onClick(event) {
+    Adapt.trigger('resources:itemClicked', event);
+  }
+
   return (
     <div className={classes([
       'resources__item drawer__item',
@@ -40,6 +45,7 @@ export default function ResourcesItem (props) {
       <a href={_link} className="resources__item-btn drawer__item-btn"
         data-type={_type}
         download={resourcesForceDownload(filename, _forceDownload) && filename }
+        onClick={onClick}
         target="_blank"
         rel="noreferrer"
         aria-label={title}>
