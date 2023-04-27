@@ -61,10 +61,13 @@ export default function Resources (props) {
       <templates.header {...props.model} />
 
       {resourcesHasMultipleTypes(resources) &&
-      <div className={classes([
-        'resources__filter',
-        `has-${resourcesGetColumnCount(resources)}-columns`
-      ])}>
+      <div
+        className={classes([
+          'resources__filter',
+          `has-${resourcesGetColumnCount(resources)}-columns`,
+          (resourcesGetColumnCount(resources) > 4) && 'has-extra-types'
+        ])}
+      >
         <div className="resources__filter-inner" role="tablist">
 
           <div className="aria-label" aria-label={_globals._extensions._resources.resources} />
