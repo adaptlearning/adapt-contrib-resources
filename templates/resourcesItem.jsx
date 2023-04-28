@@ -8,6 +8,7 @@ export default function ResourcesItem (props) {
     _isGlobal,
     _link,
     _type,
+    _index,
     description,
     filename,
     selectedFilter,
@@ -40,6 +41,7 @@ export default function ResourcesItem (props) {
 
       <a href={_link} className="resources__item-btn drawer__item-btn"
         data-type={_type}
+        data-index={_index}
         download={resourcesForceDownload(filename, _forceDownload) && filename }
         onClick={onClick}
         target="_blank"

@@ -30,9 +30,10 @@ export default class ResourcesView extends Backbone.View {
     return this;
   }
 
-  onClick(event) {
-    Adapt.trigger('resources:itemClicked', event);
-    console.log(event);
+  onClick(e) {
+    const index = $(e.currentTarget).attr('data-index');
+    const resourceItemData = this.model.get('_resourcesItems')[index];
+    Adapt.trigger('resources:itemClicked', resourceItemData);
   }
 
 }
