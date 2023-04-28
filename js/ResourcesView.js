@@ -15,6 +15,7 @@ export default class ResourcesView extends Backbone.View {
   }
 
   render() {
+    this.onClick = this.onClick.bind(this);
     const data = {
       model: this.model.toJSON(),
       resources: this.model.get('_resources')
@@ -27,6 +28,11 @@ export default class ResourcesView extends Backbone.View {
     });
 
     return this;
+  }
+
+  onClick(event) {
+    Adapt.trigger('resources:itemClicked', event);
+    console.log(event);
   }
 
 }

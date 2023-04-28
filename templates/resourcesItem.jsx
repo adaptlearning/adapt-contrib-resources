@@ -1,4 +1,3 @@
-import Adapt from 'core/js/adapt';
 import React from 'react';
 import device from 'core/js/device';
 import { classes } from 'core/js/reactHelpers';
@@ -12,7 +11,8 @@ export default function ResourcesItem (props) {
     description,
     filename,
     selectedFilter,
-    title
+    title,
+    onClick
   } = props;
 
   /**
@@ -27,10 +27,6 @@ export default function ResourcesItem (props) {
     }
 
     return (_forceDownload || filename);
-  }
-
-  function onClick(event) {
-    Adapt.trigger('resources:itemClicked', event);
   }
 
   return (
