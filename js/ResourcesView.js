@@ -10,14 +10,15 @@ export default class ResourcesView extends Backbone.View {
   }
 
   initialize() {
+    this.onResourceItemClicked = this.onResourceItemClicked.bind(this);
+
     this.listenTo(Adapt, 'remove', this.remove);
     this.render();
-
-    this.onResourcesItemClicked = this.onResourcesItemClicked.bind(this);
   }
 
   render() {
     const data = {
+      ...this,
       model: this.model.toJSON(),
       resources: this.model.get('_resources')
     };
@@ -31,7 +32,7 @@ export default class ResourcesView extends Backbone.View {
     return this;
   }
 
-  onResourcesItemClicked(e) {
+  onResourceItemClicked(e) {
     const index = $(e.currentTarget).attr('data-index');
     const resourceItemData = this.model.get('_resourcesItems')[index];
     Adapt.trigger('resources:itemClicked', resourceItemData);
