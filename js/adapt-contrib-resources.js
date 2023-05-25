@@ -53,18 +53,20 @@ class Resources extends Backbone.Controller {
     });
   }
 
-  setupTypes(model) {
-    const defaultTypes = ['all', 'document', 'media', 'link']; // must contain 'all'
+  setupTypes(model, resourcesData) {
+    const types = ['all']; // must contain 'all'
 
-    const customTypes = [];
-    for (let i = 1; i <= 10; i++) {
-      customTypes.push(`custom${i}`);
-    }
+    resourcesData._filterButtons.forEach((e, i) => {
+      const typeName = i;
 
-    const types = defaultTypes.concat(customTypes);
+      if (typeName !== 'all') {
+        types.push(typeName);
+      }
+    });
 
     model.set('_resourceTypes', types);
   }
+
 }
 
 export default new Resources();
