@@ -53,15 +53,19 @@
                 "_type": "media",
                 "title": "Adapt Learning YouTube Channel",
                 "description": "Fancy catching up on some Adapt material",
-                "_link": "https://www.youtube.com/channel/UCW8SlSFuCc--B66Gf9fAEcQ",
-                "_forceDownload": false
+                "_link": "https://www.youtube.com/channel/UCW8SlSFuCc--B66Gf9fAEcQ"
             },
             {
                 "_type": "link",
                 "title": "Community Site",
                 "description": "Select here to view our community site",
-                "_link": "https://community.adaptlearning.org",
-                "_forceDownload": false
+                "_link": "https://community.adaptlearning.org"
+            },
+            {
+                "_type": "custom1",
+                "title": "GitHub",
+                "description": "Select here to view the Adapt respository on GitHub",
+                "_link": "https://github.com/adaptlearning"
             }
         ]
     }
@@ -82,15 +86,19 @@
                 "_type": "media",
                 "title": "Adapt Learning YouTube Channel",
                 "description": "Fancy catching up on some Adapt material",
-                "_link": "https://www.youtube.com/channel/UCW8SlSFuCc--B66Gf9fAEcQ",
-                "_forceDownload": false
+                "_link": "https://www.youtube.com/channel/UCW8SlSFuCc--B66Gf9fAEcQ"
             },
             {
                 "_type": "link",
                 "title": "Community Site",
                 "description": "Select here to view our community site",
-                "_link": "https://community.adaptlearning.org",
-                "_forceDownload": false
+                "_link": "https://community.adaptlearning.org"
+            },
+            {
+                "_type": "custom1",
+                "title": "GitHub",
+                "description": "Select here to view the Adapt respository on GitHub",
+                "_link": "https://github.com/adaptlearning"
             }
         ]
     }
