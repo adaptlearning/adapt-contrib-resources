@@ -92,6 +92,7 @@ export default function Resources (props) {
           {resources.map(({ title, description, _link, _type, _isGlobal, filename, _forceDownload }, index) =>
             <templates.resourcesItem {...props}
               key={index}
+              _index={index}
               title={title}
               description={description}
               _link={_link}
