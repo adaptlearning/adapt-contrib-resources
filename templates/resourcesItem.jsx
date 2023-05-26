@@ -13,7 +13,7 @@ export default function ResourcesItem (props) {
     filename,
     selectedFilter,
     title,
-    onResourcesItemClicked
+    onResourceItemClicked
   } = props;
 
   /**
@@ -43,7 +43,7 @@ export default function ResourcesItem (props) {
         data-type={_type}
         data-index={_index}
         download={resourcesForceDownload(filename, _forceDownload) && filename }
-        onClick={onResourcesItemClicked}
+        onClick={onResourceItemClicked}
         target="_blank"
         rel="noreferrer"
         aria-label={title}>
