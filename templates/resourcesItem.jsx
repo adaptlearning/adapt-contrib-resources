@@ -8,10 +8,12 @@ export default function ResourcesItem (props) {
     _isGlobal,
     _link,
     _type,
+    _index,
     description,
     filename,
     selectedFilter,
-    title
+    title,
+    onResourceItemClicked
   } = props;
 
   /**
@@ -39,7 +41,9 @@ export default function ResourcesItem (props) {
 
       <a href={_link} className="resources__item-btn drawer__item-btn"
         data-type={_type}
+        data-index={_index}
         download={resourcesForceDownload(filename, _forceDownload) && filename }
+        onClick={onResourceItemClicked}
         target="_blank"
         rel="noreferrer"
         aria-label={title}>
