@@ -47,7 +47,7 @@ class Resources extends Backbone.Controller {
       }
       model.set('_resources', resources);
 
-      this.setupTypes(model);
+      this.setupTypes(model, resourcesData);
 
       drawer.triggerCustomView(new ResourcesView({ model }).$el);
     });
@@ -55,14 +55,15 @@ class Resources extends Backbone.Controller {
 
   setupTypes(model, resourcesData) {
     const types = ['all']; // must contain 'all'
+    const filterButtons = resourcesData._filterButtons;
 
-    resourcesData._filterButtons.forEach((e, i) => {
-      const typeName = i;
+    for (const key in filterButtons) {
+      const typeName = key;
 
       if (typeName !== 'all') {
         types.push(typeName);
       }
-    });
+    };
 
     model.set('_resourceTypes', types);
   }
