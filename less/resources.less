@@ -3,8 +3,13 @@
     display: flex;
   }
 
+  &__filter.has-extra-types &__filter-inner {
+    flex-wrap: wrap;
+  } 
+
   &__filter-btn {
     flex-grow: 1;
+    white-space: nowrap;
   }
 
   html:not(.ie) &__filter-btn {

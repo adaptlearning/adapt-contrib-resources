@@ -46,9 +46,19 @@ class Resources extends Backbone.Controller {
         resources = resources.filter(resource => resource._isGlobal !== false);
       }
       model.set('_resources', resources);
+
+      this.setupTypes(model, resourcesData);
+
       drawer.triggerCustomView(new ResourcesView({ model }).$el);
     });
   }
+
+  setupTypes(model, resourcesData) {
+    const configuredTypes = Object.keys(resourcesData._filterButtons).filter(type => type !== 'all');
+    const allTypes = [ 'all', ...configuredTypes ];
+    model.set('_resourceTypes', allTypes);
+  }
+
 }
 
 export default new Resources();

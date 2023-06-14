@@ -11,14 +11,34 @@
             "all": "All",
             "document": "PDF",
             "media": "Media",
-            "link": "Link"
+            "link": "Link",
+            "custom1": "Custom category 1",
+            "custom2": "Custom category 2",
+            "custom3": "Custom category 3",
+            "custom4": "Custom category 4",
+            "custom5": "Custom category 5",
+            "custom6": "Custom category 6",
+            "custom7": "Custom category 7",
+            "custom8": "Custom category 8",
+            "custom9": "Custom category 9",
+            "custom10": "Custom category 10"
         },
         "_comment": "_filterAria is to provide accessibility support for assistive technologies",
         "_filterAria": {
             "allAria": "View all resources",
             "documentAria": "View document resources",
             "mediaAria": "View media resources",
-            "linkAria": "View resource links"
+            "linkAria": "View resource links",
+            "custom1Aria": "View custom category 1 links",
+            "custom2Aria": "View custom category 2 links",
+            "custom3Aria": "View custom category 3 links",
+            "custom4Aria": "View custom category 4 links",
+            "custom5Aria": "View custom category 5 links",
+            "custom6Aria": "View custom category 6 links",
+            "custom7Aria": "View custom category 7 links",
+            "custom8Aria": "View custom category 8 links",
+            "custom9Aria": "View custom category 9 links",
+            "custom10Aria": "View custom category 10 links"
         },
         "_resourcesItems": [
             {
@@ -33,15 +53,19 @@
                 "_type": "media",
                 "title": "Adapt Learning YouTube Channel",
                 "description": "Fancy catching up on some Adapt material",
-                "_link": "https://www.youtube.com/channel/UCW8SlSFuCc--B66Gf9fAEcQ",
-                "_forceDownload": false
+                "_link": "https://www.youtube.com/channel/UCW8SlSFuCc--B66Gf9fAEcQ"
             },
             {
                 "_type": "link",
                 "title": "Community Site",
                 "description": "Select here to view our community site",
-                "_link": "https://community.adaptlearning.org",
-                "_forceDownload": false
+                "_link": "https://community.adaptlearning.org"
+            },
+            {
+                "_type": "custom1",
+                "title": "GitHub",
+                "description": "Select here to view the Adapt respository on GitHub",
+                "_link": "https://github.com/adaptlearning"
             }
         ]
     }
@@ -62,15 +86,19 @@
                 "_type": "media",
                 "title": "Adapt Learning YouTube Channel",
                 "description": "Fancy catching up on some Adapt material",
-                "_link": "https://www.youtube.com/channel/UCW8SlSFuCc--B66Gf9fAEcQ",
-                "_forceDownload": false
+                "_link": "https://www.youtube.com/channel/UCW8SlSFuCc--B66Gf9fAEcQ"
             },
             {
                 "_type": "link",
                 "title": "Community Site",
                 "description": "Select here to view our community site",
-                "_link": "https://community.adaptlearning.org",
-                "_forceDownload": false
+                "_link": "https://community.adaptlearning.org"
+            },
+            {
+                "_type": "custom1",
+                "title": "GitHub",
+                "description": "Select here to view the Adapt respository on GitHub",
+                "_link": "https://github.com/adaptlearning"
             }
         ]
     }

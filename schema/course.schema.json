@@ -144,6 +144,86 @@
                   "_adapt": {
                     "translatable": true
                   }
+                },
+                "custom1": {
+                  "type": "string",
+                  "title": "Custom category 1",
+                  "default": "Custom category 1",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "custom2": {
+                  "type": "string",
+                  "title": "Custom category 2",
+                  "default": "Custom category 2",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "custom3": {
+                  "type": "string",
+                  "title": "Custom category 3",
+                  "default": "Custom category 3",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "custom4": {
+                  "type": "string",
+                  "title": "Custom category 4",
+                  "default": "Custom category 4",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "custom5": {
+                  "type": "string",
+                  "title": "Custom category 5",
+                  "default": "Custom category 5",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "custom6": {
+                  "type": "string",
+                  "title": "Custom category 6",
+                  "default": "Custom category 6",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "custom7": {
+                  "type": "string",
+                  "title": "Custom category 7",
+                  "default": "Custom category 7",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "custom8": {
+                  "type": "string",
+                  "title": "Custom category 8",
+                  "default": "Custom category 8",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "custom9": {
+                  "type": "string",
+                  "title": "Custom category 9",
+                  "default": "Custom category 9",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "custom10": {
+                  "type": "string",
+                  "title": "Custom category 10",
+                  "default": "Custom category 10",
+                  "_adapt": {
+                    "translatable": true
+                  }
                 }
               }
             },
@@ -180,6 +260,86 @@
                   "type": "string",
                   "title": "Links",
                   "default": "View resource links",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "custom1Aria": {
+                  "type": "string",
+                  "title": "Custom category 1",
+                  "default": "View custom category 1 links",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "custom2Aria": {
+                  "type": "string",
+                  "title": "Custom category 2",
+                  "default": "View custom category 2 links",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "custom3Aria": {
+                  "type": "string",
+                  "title": "Custom category 3",
+                  "default": "View custom category 3 links",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "custom4Aria": {
+                  "type": "string",
+                  "title": "Custom category 4",
+                  "default": "View custom category 4 links",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "custom5Aria": {
+                  "type": "string",
+                  "title": "Custom category 5",
+                  "default": "View custom category 5 links",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "custom6Aria": {
+                  "type": "string",
+                  "title": "Custom category 6",
+                  "default": "View custom category 6 links",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "custom7Aria": {
+                  "type": "string",
+                  "title": "Custom category 7",
+                  "default": "View custom category 7 links",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "custom8Aria": {
+                  "type": "string",
+                  "title": "Custom category 8",
+                  "default": "View custom category 8 links",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "custom9Aria": {
+                  "type": "string",
+                  "title": "Custom category 9",
+                  "default": "View custom category 9 links",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "custom10Aria": {
+                  "type": "string",
+                  "title": "Custom category 10",
+                  "default": "View custom category 10 links",
                   "_adapt": {
                     "translatable": true
                   }
