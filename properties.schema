@@ -143,80 +143,80 @@
                     },
                     "custom1": {
                       "type": "string",
-                      "default": "Custom category 1",
-                      "title": "Custom category 1",
+                      "default": "Custom type 1",
+                      "title": "Custom type 1",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
                     },
                     "custom2": {
                       "type": "string",
-                      "default": "Custom category 2",
-                      "title": "Custom category 2",
+                      "default": "Custom type 2",
+                      "title": "Custom type 2",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
                     },
                     "custom3": {
                       "type": "string",
-                      "default": "Custom category 3",
-                      "title": "Custom category 3",
+                      "default": "Custom type 3",
+                      "title": "Custom type 3",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
                     },
                     "custom4": {
                       "type": "string",
-                      "default": "Custom category 4",
-                      "title": "Custom category 4",
+                      "default": "Custom type 4",
+                      "title": "Custom type 4",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
                     },
                     "custom5": {
                       "type": "string",
-                      "default": "Custom category 5",
-                      "title": "Custom category 5",
+                      "default": "Custom type 5",
+                      "title": "Custom type 5",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
                     },
                     "custom6": {
                       "type": "string",
-                      "default": "Custom category 6",
-                      "title": "Custom category 6",
+                      "default": "Custom type 6",
+                      "title": "Custom type 6",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
                     },
                     "custom7": {
                       "type": "string",
-                      "default": "Custom category 7",
-                      "title": "Custom category 7",
+                      "default": "Custom type 7",
+                      "title": "Custom type 7",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
                     },
                     "custom8": {
                       "type": "string",
-                      "default": "Custom category 8",
-                      "title": "Custom category 8",
+                      "default": "Custom type 8",
+                      "title": "Custom type 8",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
                     },
                     "custom9": {
                       "type": "string",
-                      "default": "Custom category 9",
-                      "title": "Custom category 9",
+                      "default": "Custom type 9",
+                      "title": "Custom type 9",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
                     },
                     "custom10": {
                       "type": "string",
-                      "default": "Custom category 10",
-                      "title": "Custom category 10",
+                      "default": "Custom type 10",
+                      "title": "Custom type 10",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
@@ -261,80 +261,80 @@
                     },
                     "custom1Aria": {
                       "type": "string",
-                      "default": "View custom category 1 links",
-                      "title": "Custom category 1",
+                      "default": "View custom type 1 links",
+                      "title": "Custom type 1",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
                     },
                     "custom2Aria": {
                       "type": "string",
-                      "default": "View custom category 2 links",
-                      "title": "Custom category 2",
+                      "default": "View custom type 2 links",
+                      "title": "Custom type 2",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
                     },
                     "custom3Aria": {
                       "type": "string",
-                      "default": "View custom category 3 links",
-                      "title": "Custom category 3",
+                      "default": "View custom type 3 links",
+                      "title": "Custom type 3",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
                     },
                     "custom4Aria": {
                       "type": "string",
-                      "default": "View custom category 4 links",
-                      "title": "Custom category 4",
+                      "default": "View custom type 4 links",
+                      "title": "Custom type 4",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
                     },
                     "custom5Aria": {
                       "type": "string",
-                      "default": "View custom category 5 links",
-                      "title": "Custom category 5",
+                      "default": "View custom type 5 links",
+                      "title": "Custom type 5",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
                     },
                     "custom6Aria": {
                       "type": "string",
-                      "default": "View custom category 6 links",
-                      "title": "Custom category 6",
+                      "default": "View custom type 6 links",
+                      "title": "Custom type 6",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
                     },
                     "custom7Aria": {
                       "type": "string",
-                      "default": "View custom category 7 links",
-                      "title": "Custom category 7",
+                      "default": "View custom type 7 links",
+                      "title": "Custom type 7",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
                     },
                     "custom8Aria": {
                       "type": "string",
-                      "default": "View custom category 8 links",
-                      "title": "Custom category 1",
+                      "default": "View custom type 8 links",
+                      "title": "Custom type 1",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
                     },
                     "custom9Aria": {
                       "type": "string",
-                      "default": "View custom category 9 links",
-                      "title": "Custom category 9",
+                      "default": "View custom type 9 links",
+                      "title": "Custom type 9",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
                     },
                     "custom10Aria": {
                       "type": "string",
-                      "default": "View custom category 10 links",
-                      "title": "Custom category 10",
+                      "default": "View custom type 10 links",
+                      "title": "Custom type 10",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true

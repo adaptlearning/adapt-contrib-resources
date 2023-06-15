@@ -68,7 +68,7 @@ The attributes listed below are used in *course.json* to configure **Resources**
 
 >**\_resourcesItems** (object):  This object stores properties for each resource item. Multiple resource items may be created. Each contains values for **\_type**, **title**, **description** (optional), **\_link**, **filename** and **\_forceDownload**.
 
->>**\_type** (string):  This text is used to filter resources. If the resource is to be returned in a filtered group, this value must be one of the following: `document`, `media`, or `link`. (Note: There is no file type validation as part of **Resources**.)
+>>**\_type** (string):  This text is used to filter resources. If the resource is to be returned in a filtered group, this value must be one of the following: `document`, `media`, `link`, or one of the ten custom types (ex. `custom1`, `custom2`). (Note: There is no file type validation as part of **Resources**.)
 
 >>**title** (string):  This text appears (along with **description**) as a label on the button that links to the item.
 
