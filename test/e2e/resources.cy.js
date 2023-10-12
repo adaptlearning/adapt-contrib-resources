@@ -1,6 +1,6 @@
 import Course from '../../../src/course/en/course.json'
 
-describe('Drawer', () => {
+describe('Resources', () => {
     const checkDrawerLength = (count) => {
         cy.get('.drawer__item').not('.u-display-none').should('have.length', count)
       }
@@ -38,7 +38,7 @@ describe('Drawer', () => {
         checkDrawerLength(2)
     });
 
-    it('should display the correct drawer items', () => {
+    it('should display the correct resource items', () => {
         cy.get('.drawer__item').each(($item, index) => {
             cy.get($item).within(() => {
                 cy.get('.drawer__item-title').should('contain', Course._resources._resourcesItems[index].title)
