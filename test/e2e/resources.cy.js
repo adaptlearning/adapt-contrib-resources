@@ -1,11 +1,10 @@
-import Course from '../../../src/course/en/course.json'
-
 describe('Resources', () => {
     const checkDrawerLength = (count) => {
         cy.get('.drawer__item').not('.u-display-none').should('have.length', count)
       }
 
     beforeEach(() => {
+        cy.getConfig();
         cy.visit('/');
         cy.get('button[data-event="toggleDrawer"]').click()
     })
@@ -21,7 +20,7 @@ describe('Resources', () => {
         cy.get('.drawer').should('have.css', 'right').and('match', /0px/)
     });
 
-    it(`should show ${Course._resources._resourcesItems.length} items`, () => {
+    it(`should show ${this.config._resources._resourcesItems.length} items`, () => {
         checkDrawerLength(4)
     });
 
@@ -41,23 +40,22 @@ describe('Resources', () => {
     it('should display the correct resource items', () => {
         cy.get('.drawer__item').each(($item, index) => {
             cy.get($item).within(() => {
-                cy.get('.drawer__item-title').should('contain', Course._resources._resourcesItems[index].title)
-                cy.get('.drawer__item-body').should('contain', Course._resources._resourcesItems[index].description)
-                cy.get('a').should('have.attr', 'target', '_blank').should('have.attr', 'href', Course._resources._resourcesItems[index]._link)
+                cy.get('.drawer__item-title').should('contain', this.config._resources._resourcesItems[index].title)
+                cy.get('.drawer__item-body').should('contain', this.config._resources._resourcesItems[index].description)
+                cy.get('a').should('have.attr', 'target', '_blank').should('have.attr', 'href', this.config._resources._resourcesItems[index]._link)
             })
         })
     });
 
     it('should be able to close the drawer by clicking X', () => {
         cy.get('button.drawer__close-btn').click()
-        
+
         cy.get('.drawer').should('have.attr', 'aria-expanded', 'false')
     });
-    
+
     it('should be able to close the drawer by hitting ESC', () => {
         cy.get('.drawer').type('{esc}')
 
         cy.get('.drawer').should('have.attr', 'aria-expanded', 'false')
     });
   });
-  
