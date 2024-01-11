@@ -1,61 +1,62 @@
 describe('Resources', () => {
-    const checkDrawerLength = (count) => {
-        cy.get('.drawer__item').not('.u-display-none').should('have.length', count)
-      }
+  const checkDrawerLength = (count) => {
+    cy.get('.drawer__item').not('.u-display-none').should('have.length', count);
+  };
 
-    beforeEach(() => {
-        cy.getConfig();
-        cy.visit('/');
-        cy.get('button[data-event="toggleDrawer"]').click()
-    })
+  beforeEach(() => {
+    cy.getConfig();
+    this.resourceItems = this.config?._resources?._resourcesItems || [];
+    cy.visit('/');
+    cy.get('button[data-event="toggleDrawer"]').click();
+  });
 
-    it('should appear on the right hand side in menu view', () => {
-        cy.get('.drawer').should('have.css', 'right').and('match', /0px/)
-    });
+  it('should appear on the right hand side in menu view', () => {
+    cy.get('.drawer').should('have.css', 'right').and('match', /0px/);
+  });
 
-    it('should appear on the right hand side in course view', () => {
-        cy.get('button.drawer__close-btn').click()
-        cy.get('.menu-item .menu-item__button-container button').contains('View').first().click()
-        cy.get('button[data-event="toggleDrawer"]').click()
-        cy.get('.drawer').should('have.css', 'right').and('match', /0px/)
-    });
+  it('should appear on the right hand side in course view', () => {
+    cy.get('button.drawer__close-btn').click();
+    cy.get('.menu-item .menu-item__button-container button').contains('View').first().click();
+    cy.get('button[data-event="toggleDrawer"]').click();
+    cy.get('.drawer').should('have.css', 'right').and('match', /0px/);
+  });
 
-    it(`should show ${this.config._resources._resourcesItems.length} items`, () => {
-        checkDrawerLength(4)
-    });
+  it(`should show ${this.resourceItems.length} items`, () => {
+    checkDrawerLength(this.resourceItems.length);
+  });
 
-    it('should display the correct amount of items in each tab', () => {
-        cy.get('button.is-selected[id="resources__show-all"]').should('exist')
+  it('should display the correct amount of items in each tab', () => {
+    cy.get('button.is-selected[id="resources__show-all"]').should('exist');
 
-        cy.get('button[id="resources__show-document"]').should('exist').click()
-        checkDrawerLength(1)
+    cy.get('button[id="resources__show-document"]').should('exist').click();
+    checkDrawerLength(1);
 
-        cy.get('button[id="resources__show-media"]').should('exist').click()
-        checkDrawerLength(1)
+    cy.get('button[id="resources__show-media"]').should('exist').click();
+    checkDrawerLength(1);
 
-        cy.get('button[id="resources__show-link"]').should('exist').click()
-        checkDrawerLength(2)
-    });
+    cy.get('button[id="resources__show-link"]').should('exist').click();
+    checkDrawerLength(2);
+  });
 
-    it('should display the correct resource items', () => {
-        cy.get('.drawer__item').each(($item, index) => {
-            cy.get($item).within(() => {
-                cy.get('.drawer__item-title').should('contain', this.config._resources._resourcesItems[index].title)
-                cy.get('.drawer__item-body').should('contain', this.config._resources._resourcesItems[index].description)
-                cy.get('a').should('have.attr', 'target', '_blank').should('have.attr', 'href', this.config._resources._resourcesItems[index]._link)
-            })
-        })
-    });
+  it('should display the correct resource items', () => {
+    cy.get('.drawer__item').each(($item, index) => {
+      const resourceItem = this.resourceItems[index];
 
-    it('should be able to close the drawer by clicking X', () => {
-        cy.get('button.drawer__close-btn').click()
-
-        cy.get('.drawer').should('have.attr', 'aria-expanded', 'false')
-    });
-
-    it('should be able to close the drawer by hitting ESC', () => {
-        cy.get('.drawer').type('{esc}')
-
-        cy.get('.drawer').should('have.attr', 'aria-expanded', 'false')
+      cy.get($item).within(() => {
+        cy.get('.drawer__item-title').should('contain', resourceItem.title);
+        cy.get('.drawer__item-body').should('contain', resourceItem.description);
+        cy.get('a').should('have.attr', 'target', '_blank').should('have.attr', 'href', resourceItem._link);
+      });
     });
   });
+
+  it('should be able to close the drawer by clicking X', () => {
+    cy.get('button.drawer__close-btn').click();
+    cy.get('.drawer').should('have.attr', 'aria-expanded', 'false');
+  });
+
+  it('should be able to close the drawer by hitting ESC', () => {
+    cy.get('.drawer').type('{esc}');
+    cy.get('.drawer').should('have.attr', 'aria-expanded', 'false');
+  });
+});
