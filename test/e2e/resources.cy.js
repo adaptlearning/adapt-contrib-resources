@@ -1,11 +1,25 @@
 describe('Resources', () => {
+  const ITEM_TYPES = [
+    'document',
+    'link',
+    'media'
+  ];
+
   const checkDrawerLength = (count) => {
     cy.get('.drawer__item').not('.u-display-none').should('have.length', count);
+  };
+
+  const populateItemCounts = () => {
+    ITEM_TYPES.forEach(type => {
+      this.itemsCount[type] = this.resourceItems.filter(item => item?._type === type).count();
+    });
   };
 
   beforeEach(() => {
     cy.getConfig();
     this.resourceItems = this.config?._resources?._resourcesItems || [];
+    populateItemCounts()
+
     cy.visit('/');
     cy.get('button[data-event="toggleDrawer"]').click();
   });
@@ -28,14 +42,12 @@ describe('Resources', () => {
   it('should display the correct amount of items in each tab', () => {
     cy.get('button.is-selected[id="resources__show-all"]').should('exist');
 
-    cy.get('button[id="resources__show-document"]').should('exist').click();
-    checkDrawerLength(1);
-
-    cy.get('button[id="resources__show-media"]').should('exist').click();
-    checkDrawerLength(1);
-
-    cy.get('button[id="resources__show-link"]').should('exist').click();
-    checkDrawerLength(2);
+    ITEM_TYPES.forEach((type) => {
+      it(`should display ${this.itemsCount[type]} items in the '${type}' tab`, () => {
+        cy.get(`button[id="resources__show-${type}"]`).should('exist').click();
+        checkDrawerLength(this.itemsCount[type]);
+      });
+    });
   });
 
   it('should display the correct resource items', () => {
