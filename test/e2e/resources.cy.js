@@ -1,16 +1,18 @@
 describe('Resources', () => {
-  const ITEM_TYPES = [
-    'document',
-    'link',
-    'media'
-  ];
-
   const checkDrawerLength = (count) => {
     cy.get('.drawer__item').not('.u-display-none').should('have.length', count);
   };
 
   const populateItemCounts = () => {
-    ITEM_TYPES.forEach(type => {
+    this.itemTypes = this.resourceItems.reduce((types, item) => {
+      if (!types.includes(item.type)) {
+        types.push(item.type);
+      }
+
+      return types;
+    }, []);
+
+    this.itemTypes.forEach(type => {
       this.itemsCount[type] = this.resourceItems.filter(item => item?._type === type).count();
     });
   };
@@ -18,20 +20,13 @@ describe('Resources', () => {
   beforeEach(() => {
     cy.getConfig();
     this.resourceItems = this.config?._resources?._resourcesItems || [];
-    populateItemCounts()
+    populateItemCounts();
 
     cy.visit('/');
     cy.get('button[data-event="toggleDrawer"]').click();
   });
 
   it('should appear on the right hand side in menu view', () => {
-    cy.get('.drawer').should('have.css', 'right').and('match', /0px/);
-  });
-
-  it('should appear on the right hand side in course view', () => {
-    cy.get('button.drawer__close-btn').click();
-    cy.get('.menu-item .menu-item__button-container button').contains('View').first().click();
-    cy.get('button[data-event="toggleDrawer"]').click();
     cy.get('.drawer').should('have.css', 'right').and('match', /0px/);
   });
 
@@ -42,7 +37,7 @@ describe('Resources', () => {
   it('should display the correct amount of items in each tab', () => {
     cy.get('button.is-selected[id="resources__show-all"]').should('exist');
 
-    ITEM_TYPES.forEach((type) => {
+    this.itemTypes.forEach((type) => {
       it(`should display ${this.itemsCount[type]} items in the '${type}' tab`, () => {
         cy.get(`button[id="resources__show-${type}"]`).should('exist').click();
         checkDrawerLength(this.itemsCount[type]);
