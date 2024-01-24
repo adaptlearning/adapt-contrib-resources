@@ -1,26 +1,10 @@
-describe('Resources', () => {
-  const checkDrawerLength = (count) => {
-    cy.get('.drawer__item').not('.u-display-none').should('have.length', count);
-  };
+import { checkDrawerLength, getItemsDetails } from './helpers'
 
-  const populateItemCounts = () => {
-    this.itemTypes = this.resourceItems.reduce((types, item) => {
-      if (!types.includes(item.type)) {
-        types.push(item.type);
-      }
-
-      return types;
-    }, []);
-
-    this.itemTypes.forEach(type => {
-      this.itemsCount[type] = this.resourceItems.filter(item => item?._type === type).count();
-    });
-  };
-
+describe('Resources - Menu Page', () => {
   beforeEach(() => {
-    cy.getConfig();
-    this.resourceItems = this.config?._resources?._resourcesItems || [];
-    populateItemCounts();
+    cy.getData();
+    this.resourceItems = this.data.course._resources._resourcesItems || [];
+    const { itemTypes, itemsCount } = getItemsDetails(this.resourceItems);
 
     cy.visit('/');
     cy.get('button[data-event="toggleDrawer"]').click();
@@ -43,12 +27,22 @@ describe('Resources', () => {
 
   it('should display the correct resource items', () => {
     cy.get('.drawer__item').each(($item, index) => {
-      const resourceItem = this.resourceItems[index];
+      const { _link, description, title } = this.resourceItems[index];
 
       cy.get($item).within(() => {
-        cy.get('.drawer__item-title').should('contain', resourceItem.title);
-        cy.get('.drawer__item-body').should('contain', resourceItem.description);
-        cy.get('a').should('have.attr', 'target', '_blank').should('have.attr', 'href', resourceItem._link);
+        if (title) {
+          cy.get('.drawer__item-title').should('contain', title);
+        } else {
+          cy.get('.drawer__item-title').should('not.exist');
+        }
+
+        if (description) {
+          cy.get('drawer__item-body').should('contain', description);
+        } else {
+          cy.get('drawer__item-body').should('not.exist');
+        }
+
+        cy.get('a').should('have.attr', 'target', '_blank').should('have.attr', 'href', _link);
       });
     });
   });
