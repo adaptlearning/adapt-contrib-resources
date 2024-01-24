@@ -1,11 +1,9 @@
-import { checkDrawerLength, getItemsDetails } from './helpers'
+import { checkDrawerLength, getItemsCount, getItemsTypes } from './helpers'
 
 describe('Resources - Menu Page', () => {
   beforeEach(() => {
     cy.getData();
     this.resourceItems = this.data.course._resources._resourcesItems || [];
-    const { itemTypes, itemsCount } = getItemsDetails(this.resourceItems);
-
     cy.visit('/');
     cy.get('button[data-event="toggleDrawer"]').click();
   });
@@ -17,10 +15,13 @@ describe('Resources - Menu Page', () => {
   it('should display the correct amount of items in each tab', () => {
     cy.get('button.is-selected[id="resources__show-all"]').should('exist');
 
-    this.itemTypes.forEach((type) => {
-      it(`should display ${this.itemsCount[type]} items in the '${type}' tab`, () => {
+    const itemTypes = getItemsTypes(this.resourceItems);
+    const itemsCount = getItemsCount(this.resourceItems, itemTypes);
+
+    itemTypes.forEach((type) => {
+      it(`should display ${itemsCount[type]} items in the '${type}' tab`, () => {
         cy.get(`button[id="resources__show-${type}"]`).should('exist').click();
-        checkDrawerLength(this.itemsCount[type]);
+        checkDrawerLength(itemsCount[type]);
       });
     });
   });

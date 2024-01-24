@@ -1,4 +1,4 @@
-import { checkDrawerLength, getItemsDetails } from './helpers'
+import { checkDrawerLength, getItemsCount, getItemsTypes } from './helpers'
 
 describe('Resources - Pages', () => {
   beforeEach(() => {
@@ -10,6 +10,8 @@ describe('Resources - Pages', () => {
   it(`should show the correct number of items on each page`, () => {
     this.pages.forEach(page => {
       const resourceItems = page?.get('_resources')?._resourceItems;
+
+      cy.get('button[data-event="toggleDrawer"]').click();
       checkDrawerLength(resourceItems.length);
     });
   });
@@ -17,8 +19,10 @@ describe('Resources - Pages', () => {
   it('should display the correct amount of items in each tab for each page', () => {
     this.pages.forEach(page => {
       const resourceItems = page?.get('_resources')?._resourceItems;
-      const { itemTypes, itemsCount } = getItemsDetails(resourceItems);
+      const itemTypes = getItemsTypes(resourceItems);
+      const itemsCount = getItemsCount(resourceItems, itemTypes);
 
+      cy.get('button[data-event="toggleDrawer"]').click();
       cy.get('button.is-selected[id="resources__show-all"]').should('exist');
 
       itemTypes.forEach((type) => {
@@ -33,6 +37,8 @@ describe('Resources - Pages', () => {
   it('should display the correct resource items on each page', () => {
     this.pages.forEach(page => {
       const resourceItems = page?.get('_resources')?._resourceItems;
+
+      cy.get('button[data-event="toggleDrawer"]').click();
 
       cy.get('.drawer__item').each(($item, index) => {
         const { _link, description, title } = resourceItems[index];
@@ -58,6 +64,7 @@ describe('Resources - Pages', () => {
 
   it('should be able to close the drawer by clicking X on each page', () => {
     this.pages.forEach(page => {
+      cy.get('button[data-event="toggleDrawer"]').click();
       cy.get('button.drawer__close-btn').click();
       cy.get('.drawer').should('have.attr', 'aria-expanded', 'false');
     });
@@ -65,6 +72,7 @@ describe('Resources - Pages', () => {
 
   it('should be able to close the drawer by hitting ESC on each page', () => {
     this.pages.forEach(page => {
+      cy.get('button[data-event="toggleDrawer"]').click();
       cy.get('.drawer').type('{esc}');
       cy.get('.drawer').should('have.attr', 'aria-expanded', 'false');
     });
