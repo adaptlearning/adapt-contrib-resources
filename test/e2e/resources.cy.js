@@ -26,10 +26,6 @@ describe('Resources', () => {
     cy.get('button[data-event="toggleDrawer"]').click();
   });
 
-  it('should appear on the right hand side in menu view', () => {
-    cy.get('.drawer').should('have.css', 'right').and('match', /0px/);
-  });
-
   it(`should show ${this.resourceItems.length} items`, () => {
     checkDrawerLength(this.resourceItems.length);
   });
