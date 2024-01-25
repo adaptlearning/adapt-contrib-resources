@@ -18,7 +18,7 @@ describe('Resources - Pages', function () {
       cy.get('.menu-item__button').eq(index).click();
       cy.get('button[data-event="toggleDrawer"]').click();
 
-      checkDrawerLength('All', resourceItems.length);
+      checkDrawerLength(resourceItems.length, 'All', page.displayTitle);
 
       cy.visit('/');
     });
@@ -38,7 +38,7 @@ describe('Resources - Pages', function () {
 
       itemTypes.forEach((type) => {
         cy.get(`button[id="resources__show-${type}"]`).should('exist').click();
-        checkDrawerLength(type, itemsCount[type]);
+        checkDrawerLength(itemsCount[type], type, page.displayTitle);
       });
 
       cy.visit('/');

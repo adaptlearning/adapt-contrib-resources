@@ -11,7 +11,7 @@ describe('Resources - Menu', function () {
   });
 
   it(`should show the correct number of items`, function () {
-    checkDrawerLength('All', this.courseResourcesItems.length);
+    checkDrawerLength(this.courseResourcesItems.length);
   });
 
   it('should display the correct amount of items in each tab', function () {
@@ -22,7 +22,7 @@ describe('Resources - Menu', function () {
 
     itemTypes.forEach((type) => {
       cy.get(`button[id="resources__show-${type}"]`).should('exist').click();
-      checkDrawerLength(type, itemsCount[type]);
+      checkDrawerLength(itemsCount[type], type);
     });
   });
 

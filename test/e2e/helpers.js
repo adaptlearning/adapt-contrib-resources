@@ -1,5 +1,5 @@
-export const checkDrawerLength = (type, count) => {
-  cy.task('log', ` - Checking '${type}' filter contains ${count} items`);
+export const checkDrawerLength = (count, filter = 'All', title = 'Menu Page') => {
+  cy.task('log', ` - Checking '${filter}' filter contains ${count} items on page '${title}'`);
   cy.get('.drawer__item').not('.u-display-none').should('have.length', count);
 };
 
