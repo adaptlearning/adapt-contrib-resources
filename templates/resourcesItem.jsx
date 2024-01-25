@@ -31,13 +31,14 @@ export default function ResourcesItem (props) {
   }
 
   return (
-    <div className={classes([
-      'resources__item drawer__item',
-      `is-${_type}`,
-      _isGlobal && 'is-global',
-      (!['all', _type].includes(selectedFilter)) && 'u-display-none'
-    ])}
-    role="listitem">
+    <div
+      className={classes([
+        'resources__item drawer__item',
+        `is-${_type}`,
+        _isGlobal && 'is-global',
+        (!['all', _type].includes(selectedFilter)) && 'u-display-none'
+      ])}
+      role="listitem">
 
       <a href={_link} className="resources__item-btn drawer__item-btn"
         data-type={_type}
