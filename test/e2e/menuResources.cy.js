@@ -1,46 +1,46 @@
 import { checkDrawerLength, getItemsCount, getItemsTypes } from './helpers'
 
-describe('Resources - Menu Page', () => {
-  beforeEach(() => {
-    cy.getData();
-    this.resourceItems = this.data.course._resources._resourcesItems || [];
-    cy.visit('/');
-    cy.get('button[data-event="toggleDrawer"]').click();
-  });
+describe('Resources - Menu', function () {
+  beforeEach(function () {
+    cy.getData().then((data) => {
+      this.courseResourcesItems = data.course._resources?._resourcesItems || [];
 
-  it(`should show ${this.resourceItems.length} items`, () => {
-    checkDrawerLength(this.resourceItems.length);
-  });
-
-  it('should display the correct amount of items in each tab', () => {
-    cy.get('button.is-selected[id="resources__show-all"]').should('exist');
-
-    const itemTypes = getItemsTypes(this.resourceItems);
-    const itemsCount = getItemsCount(this.resourceItems, itemTypes);
-
-    itemTypes.forEach((type) => {
-      it(`should display ${itemsCount[type]} items in the '${type}' tab`, () => {
-        cy.get(`button[id="resources__show-${type}"]`).should('exist').click();
-        checkDrawerLength(itemsCount[type]);
-      });
+      cy.visit('/');
+      cy.get('button[data-event="toggleDrawer"]').click();
     });
   });
 
-  it('should display the correct resource items', () => {
-    cy.get('.drawer__item').each(($item, index) => {
-      const { _link, description, title } = this.resourceItems[index];
+  it(`should show the correct number of items`, function () {
+    checkDrawerLength('All', this.courseResourcesItems.length);
+  });
+
+  it('should display the correct amount of items in each tab', function () {
+    cy.get('button.is-selected[id="resources__show-all"]').should('exist');
+
+    const itemTypes = getItemsTypes(this.courseResourcesItems);
+    const itemsCount = getItemsCount(this.courseResourcesItems, itemTypes);
+
+    itemTypes.forEach((type) => {
+      cy.get(`button[id="resources__show-${type}"]`).should('exist').click();
+      checkDrawerLength(type, itemsCount[type]);
+    });
+  });
+
+  it('should display the correct resource items', function () {
+    cy.get('.drawer__item').each(function ($item, index) {
+      const { _link, description, title } = this.courseResourcesItems[index];
 
       cy.get($item).within(() => {
         if (title) {
-          cy.get('.drawer__item-title').should('contain', title);
+          cy.get('.resources__item-title').should('contain', title);
         } else {
-          cy.get('.drawer__item-title').should('not.exist');
+          cy.get('.resources__item-title').should('not.exist');
         }
 
         if (description) {
-          cy.get('drawer__item-body').should('contain', description);
+          cy.get('.resources__item-body').should('contain', description);
         } else {
-          cy.get('drawer__item-body').should('not.exist');
+          cy.get('.resources__item-body').should('not.exist');
         }
 
         cy.get('a').should('have.attr', 'target', '_blank').should('have.attr', 'href', _link);
