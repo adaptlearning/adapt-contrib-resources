@@ -4,12 +4,15 @@ describe('Resources - Pages', () => {
   beforeEach(() => {
     cy.getData();
     this.pages = this.data.contentObjects.filter(item => item._type === 'page');
+    this.courseResourceItems = this.data.course._resources._resourcesItems || [];
+
     cy.visit('/');
   });
 
   it(`should show the correct number of items on each page`, () => {
     this.pages.forEach(page => {
-      const resourceItems = page?.get('_resources')?._resourceItems;
+      const pageResourceItems = page?.get('_resources')?._resourceItems || {};
+      const resourceItems = { ...pageResourceItems, ...this.courseResourceItems };
 
       cy.get('button[data-event="toggleDrawer"]').click();
       checkDrawerLength(resourceItems.length);
@@ -18,7 +21,9 @@ describe('Resources - Pages', () => {
 
   it('should display the correct amount of items in each tab for each page', () => {
     this.pages.forEach(page => {
-      const resourceItems = page?.get('_resources')?._resourceItems;
+      const pageResourceItems = page?.get('_resources')?._resourceItems || {};
+      const resourceItems = { ...pageResourceItems, ...this.courseResourceItems };
+
       const itemTypes = getItemsTypes(resourceItems);
       const itemsCount = getItemsCount(resourceItems, itemTypes);
 
@@ -36,7 +41,8 @@ describe('Resources - Pages', () => {
 
   it('should display the correct resource items on each page', () => {
     this.pages.forEach(page => {
-      const resourceItems = page?.get('_resources')?._resourceItems;
+      const pageResourceItems = page?.get('_resources')?._resourceItems || {};
+      const resourceItems = { ...pageResourceItems, ...this.courseResourceItems };
 
       cy.get('button[data-event="toggleDrawer"]').click();
 
