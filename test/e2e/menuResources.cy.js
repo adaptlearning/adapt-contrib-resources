@@ -2,23 +2,21 @@ import { checkDrawerLength, getItemsCount, getItemsTypes } from './helpers'
 
 describe('Resources - Menu', function () {
   beforeEach(function () {
-    cy.getData().then((data) => {
-      this.courseResourcesItems = data.course._resources?._resourcesItems || [];
+    cy.getData();
 
-      cy.visit('/');
-      cy.get('button[data-event="toggleDrawer"]').click();
-    });
+    cy.visit('/');
+    cy.get('button[data-event="toggleDrawer"]').click();
   });
 
   it(`should show the correct number of items`, function () {
-    checkDrawerLength(this.courseResourcesItems.length);
+    checkDrawerLength(this.data.course._resources?._resourcesItems?.length);
   });
 
   it('should display the correct amount of items in each tab', function () {
     cy.get('button.is-selected[id="resources__show-all"]').should('exist');
 
-    const itemTypes = getItemsTypes(this.courseResourcesItems);
-    const itemsCount = getItemsCount(this.courseResourcesItems, itemTypes);
+    const itemTypes = getItemsTypes(this.data.course._resources?._resourcesItems);
+    const itemsCount = getItemsCount(this.data.course._resources?._resourcesItems, itemTypes);
 
     itemTypes.forEach((type) => {
       cy.get(`button[id="resources__show-${type}"]`).should('exist').click();
@@ -28,20 +26,11 @@ describe('Resources - Menu', function () {
 
   it('should display the correct resource items', function () {
     cy.get('.drawer__item').each(function ($item, index) {
-      const { _link, description, title } = this.courseResourcesItems[index];
+      const { _link, description, title } = this.data.course._resources?._resourcesItems[index];
 
       cy.get($item).within(() => {
-        if (title) {
-          cy.get('.resources__item-title').should('contain', title);
-        } else {
-          cy.get('.resources__item-title').should('not.exist');
-        }
-
-        if (description) {
-          cy.get('.resources__item-body').should('contain', description);
-        } else {
-          cy.get('.resources__item-body').should('not.exist');
-        }
+        cy.testContainsOrNotExists('.resources__item-title', title);
+        cy.testContainsOrNotExists('.resources__item-body', description);
 
         cy.get('a').should('have.attr', 'target', '_blank').should('have.attr', 'href', _link);
       });
