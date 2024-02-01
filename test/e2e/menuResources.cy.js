@@ -5,7 +5,7 @@ describe('Resources - Menu', function () {
     cy.getData();
 
     cy.visit('/');
-    cy.get('button[data-event="toggleDrawer"]').click();
+    cy.get('button.nav__drawer-btn').click();
   });
 
   it(`should show the correct number of items`, function () {
