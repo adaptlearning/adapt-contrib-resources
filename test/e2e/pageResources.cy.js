@@ -9,8 +9,6 @@ describe('Resources - Pages', function () {
     const pages = this.data.contentObjects.filter(item => item._type === 'page');
     pages.forEach((page, index) => {
       cy.visit(`#/id/${page._id}`);
-      cy.wait(1000);
-
       cy.get('button.nav__drawer-btn').click();
 
       const pageResourceItems = page._resources?._resourceItems || [];
@@ -24,8 +22,6 @@ describe('Resources - Pages', function () {
     const pages = this.data.contentObjects.filter(item => item._type === 'page');
     pages.forEach((page, index) => {
       cy.visit(`#/id/${page._id}`);
-      cy.wait(1000);
-
       cy.get('button.nav__drawer-btn').click();
       cy.get('button.is-selected[id="resources__show-all"]').should('exist');
 
@@ -45,8 +41,6 @@ describe('Resources - Pages', function () {
     const pages = this.data.contentObjects.filter(item => item._type === 'page');
     pages.forEach((page, index) => {
       cy.visit(`#/id/${page._id}`);
-      cy.wait(1000);
-
       cy.get('button.nav__drawer-btn').click();
 
       const pageResourceItems = page._resources?._resourceItems || [];
@@ -68,8 +62,6 @@ describe('Resources - Pages', function () {
     const pages = this.data.contentObjects.filter(item => item._type === 'page');
     pages.forEach((page, index) => {
       cy.visit(`#/id/${page._id}`);
-      cy.wait(1000);
-
       cy.get('button.nav__drawer-btn').click();
       cy.get('button.drawer__close-btn').click();
       cy.get('.drawer').should('have.attr', 'aria-expanded', 'false');
@@ -80,8 +72,6 @@ describe('Resources - Pages', function () {
     const pages = this.data.contentObjects.filter(item => item._type === 'page');
     pages.forEach((page, index) => {
       cy.visit(`#/id/${page._id}`);
-      cy.wait(1000);
-
       cy.get('button.nav__drawer-btn').click();
       cy.get('.drawer').type('{esc}');
       cy.get('.drawer').should('have.attr', 'aria-expanded', 'false');
