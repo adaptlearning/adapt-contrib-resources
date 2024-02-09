@@ -12,7 +12,7 @@ export default function Resources (props) {
   const _globals = Adapt.course.get('_globals');
 
   function resourcesHasMultipleTypes(resources) {
-    if (resources.length === 1) return false;
+    if (resources.length < 2) return false;
 
     const allSameType = resources.every(_.matcher({ _type: resources[0]._type }));
     return !allSameType;
