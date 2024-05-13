@@ -19,6 +19,12 @@
               "description": "Controls whether the Resources extension is enabled or disabled",
               "default": true
             },
+            "_enableFilterButtons": {
+              "type": "boolean",
+              "title": "Enable filter buttons",
+              "default": true,
+              "description": "Turns the filter buttons on and off. Note that the filter buttons will be automatically disabled if all resource items have the same Type value."
+            },
             "_resourcesItems": {
               "type": "array",
               "title": "Items",
