@@ -62,19 +62,13 @@ class Resources extends Backbone.Controller {
   }
 
   setupFilters(model, resources) {
-    let showFilters = true;
-    const filterColumnCount = _.uniq(_.pluck(resources, '_type')).length + 1;
+    const hasMultipleResources = resources.length > 1;
+    const hasMultipleTypes = !resources.every(_.matcher({ _type: resources[0]._type }));
 
-    if (resources.length < 2) {
-      showFilters = false;
-    }
-
-    // Check if all types are the same
-    if (resources.every(_.matcher({ _type: resources[0]._type }))) {
-      showFilters = false;
-    }
-
+    const showFilters = hasMultipleResources && hasMultipleTypes;
     model.set('_showFilters', showFilters);
+
+    const filterColumnCount = _.uniq(_.pluck(resources, '_type')).length + 1;
     model.set('_filterColumnCount', filterColumnCount);
   }
 
