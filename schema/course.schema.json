@@ -108,7 +108,7 @@
                 "translatable": true
               }
             },
-            "_enableFilterButtons": {
+            "_enableFilters": {
               "type": "boolean",
               "title": "Enable filter buttons",
               "default": true,

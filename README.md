@@ -47,7 +47,7 @@ Visit the [**Resources** wiki](https://github.com/adaptlearning/adapt-contrib-re
 
 >**instruction** (string): The instruction text for the resources which displays at the top of the resources drawer.
 
->**\_enableFilterButtons** (boolean): Turns the filter buttons on and off. Acceptable values are `true` and `false`. Defaults to `true`. Note that the filter buttons will be automatically disabled if all `_resourcesItems` items have the same `_type` value.
+>**\_enableFilters** (boolean): Turns the filter buttons on and off. Acceptable values are `true` and `false`. Defaults to `true`. Note that the filter buttons will be automatically disabled if all `_resourcesItems` items have the same `_type` value.
 
 >**\_filterButtons** (object):  This attribute group maintains the labels for the four buttons that filter resources by type. It contains values for **all**, **document**, **media**, and **link**.
 

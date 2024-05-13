@@ -19,7 +19,7 @@
               "description": "Controls whether the Resources extension is enabled or disabled",
               "default": true
             },
-            "_enableFilterButtons": {
+            "_enableFilters": {
               "type": "boolean",
               "title": "Enable filter buttons",
               "default": true,

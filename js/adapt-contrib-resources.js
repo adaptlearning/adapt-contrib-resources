@@ -19,7 +19,7 @@ class Resources extends Backbone.Controller {
       description: courseResources.description,
       className: 'is-resources',
       drawerOrder: courseResources._drawerOrder || 0,
-      enableFilterButtons: courseResources._enableFilterButtons || true
+      enableFilters: courseResources._enableFilters || true
     };
 
     drawer.addItem(drawerObject, 'resources:showResources');
@@ -64,8 +64,9 @@ class Resources extends Backbone.Controller {
   setupFilters(model, resources) {
     const hasMultipleResources = resources.length > 1;
     const hasMultipleTypes = !resources.every(_.matcher({ _type: resources[0]._type }));
+    const enableFilters = model.get('_enableFilters') !== undefined ? model.get('_enableFilters') : true;
 
-    const showFilters = hasMultipleResources && hasMultipleTypes;
+    const showFilters = hasMultipleResources && hasMultipleTypes && enableFilters;
     model.set('_showFilters', showFilters);
 
     const filterColumnCount = _.uniq(_.pluck(resources, '_type')).length + 1;

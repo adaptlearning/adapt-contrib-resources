@@ -105,7 +105,7 @@
                   "help": "The instruction text for the resources which displays at the top of the resources drawer.",
                   "translatable": true
                 },
-                "_enableFilterButtons": {
+                "_enableFilters": {
                   "type": "boolean",
                   "required":true,
                   "default": true,
@@ -437,7 +437,7 @@
                   "validators": [],
                   "help": "Controls whether the Resources extension is enabled or disabled."
                 },
-                "_enableFilterButtons": {
+                "_enableFilters": {
                   "type": "boolean",
                   "required":true,
                   "default": true,

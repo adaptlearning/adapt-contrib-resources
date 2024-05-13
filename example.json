@@ -7,7 +7,7 @@
         "displayTitle": "",
         "body": "",
         "instruction": "",
-        "_enableFilterButtons": true,
+        "_enableFilters": true,
         "_filterButtons": {
             "all": "All",
             "document": "PDF",
