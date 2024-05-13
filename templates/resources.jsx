@@ -7,15 +7,11 @@ export default function Resources (props) {
   const {
     resources,
     resourceTypes,
-    showFilters
+    showFilters,
+    filterColumnCount
   } = props;
 
   const _globals = Adapt.course.get('_globals');
-
-  function resourcesGetColumnCount(resources) {
-    return _.uniq(_.pluck(resources, '_type')).length + 1; // add 1 for the 'All' button column
-  }
-
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [selectedId, setSelectedId] = useState('resources__show-all');
   const [focusFlag, setFocusFlag] = useState(false);
@@ -57,8 +53,8 @@ export default function Resources (props) {
       <div
         className={classes([
           'resources__filter',
-          `has-${resourcesGetColumnCount(resources)}-columns`,
-          (resourcesGetColumnCount(resources) > 4) && 'has-extra-types'
+          `has-${filterColumnCount}-columns`,
+          (filterColumnCount > 4) && 'has-extra-types'
         ])}
       >
         <div className="resources__filter-inner" role="tablist">

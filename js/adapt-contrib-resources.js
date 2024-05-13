@@ -63,6 +63,7 @@ class Resources extends Backbone.Controller {
 
   setupFilters(model, resources) {
     let showFilters = true;
+    const filterColumnCount = _.uniq(_.pluck(resources, '_type')).length + 1;
 
     if (resources.length < 2) {
       showFilters = false;
@@ -74,6 +75,7 @@ class Resources extends Backbone.Controller {
     }
 
     model.set('_showFilters', showFilters);
+    model.set('_filterColumnCount', filterColumnCount);
   }
 
 }
