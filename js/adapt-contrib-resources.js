@@ -18,7 +18,8 @@ class Resources extends Backbone.Controller {
       title: courseResources.title,
       description: courseResources.description,
       className: 'is-resources',
-      drawerOrder: courseResources._drawerOrder || 0
+      drawerOrder: courseResources._drawerOrder || 0,
+      enableFilterButtons: courseResources._enableFilterButtons || true
     };
 
     drawer.addItem(drawerObject, 'resources:showResources');
@@ -48,6 +49,7 @@ class Resources extends Backbone.Controller {
       model.set('_resources', resources);
 
       this.setupTypes(model, resourcesData);
+      this.setupFilters(model, resources);
 
       drawer.triggerCustomView(new ResourcesView({ model }).$el);
     });
@@ -57,6 +59,21 @@ class Resources extends Backbone.Controller {
     const configuredTypes = Object.keys(resourcesData._filterButtons).filter(type => type !== 'all');
     const allTypes = [ 'all', ...configuredTypes ];
     model.set('_resourceTypes', allTypes);
+  }
+
+  setupFilters(model, resources) {
+    let showFilters = true;
+
+    if (resources.length < 2) {
+      showFilters = false;
+    }
+
+    // Check if all types are the same
+    if (resources.every(_.matcher({ _type: resources[0]._type }))) {
+      showFilters = false;
+    }
+
+    model.set('_showFilters', showFilters);
   }
 
 }

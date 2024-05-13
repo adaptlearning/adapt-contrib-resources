@@ -6,17 +6,11 @@ import { classes, templates } from 'core/js/reactHelpers';
 export default function Resources (props) {
   const {
     resources,
-    resourceTypes
+    resourceTypes,
+    showFilters
   } = props;
 
   const _globals = Adapt.course.get('_globals');
-
-  function resourcesHasMultipleTypes(resources) {
-    if (resources.length < 2) return false;
-
-    const allSameType = resources.every(_.matcher({ _type: resources[0]._type }));
-    return !allSameType;
-  }
 
   function resourcesGetColumnCount(resources) {
     return _.uniq(_.pluck(resources, '_type')).length + 1; // add 1 for the 'All' button column
@@ -59,8 +53,7 @@ export default function Resources (props) {
     <div className="resources__inner">
 
       <templates.header {...props.model} />
-
-      {resourcesHasMultipleTypes(resources) &&
+      {showFilters &&
       <div
         className={classes([
           'resources__filter',
