@@ -57,8 +57,11 @@ class Resources extends Backbone.Controller {
 
   setupTypes(model, resourcesData) {
     const configuredTypes = Object.keys(resourcesData._filterButtons).filter(type => type !== 'all');
-    const allTypes = [ 'all', ...configuredTypes ];
-    model.set('_resourceTypes', allTypes);
+    const typesWithItems = [...configuredTypes].filter(type => {
+      return resourcesData._resourcesItems.some(_.matcher({ _type: type }));
+    });
+
+    model.set('_resourceTypes', [ 'all', ...typesWithItems ]);
   }
 
   setupFilters(model, resources) {
