@@ -19,8 +19,7 @@ class Resources extends Backbone.Controller {
       title: courseResources.title,
       description: courseResources.description,
       className: 'is-resources',
-      drawerOrder: courseResources._drawerOrder || 0,
-      enableFilters: courseResources._enableFilters || true
+      drawerOrder: courseResources._drawerOrder || 0
     };
 
     drawer.addItem(drawerObject, 'resources:showResources');
