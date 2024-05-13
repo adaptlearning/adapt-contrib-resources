@@ -1,5 +1,6 @@
 import Adapt from 'core/js/adapt';
 import drawer from 'core/js/drawer';
+import device from 'core/js/device';
 import ResourcesView from './ResourcesView';
 
 class Resources extends Backbone.Controller {
@@ -50,6 +51,7 @@ class Resources extends Backbone.Controller {
 
       this.setupTypes(model, resourcesData);
       this.setupFilters(model, resources);
+      this.setupCanDownload(model);
 
       drawer.triggerCustomView(new ResourcesView({ model }).$el);
     });
@@ -74,6 +76,17 @@ class Resources extends Backbone.Controller {
 
     const filterColumnCount = _.uniq(_.pluck(resources, '_type')).length + 1;
     model.set('_filterColumnCount', filterColumnCount);
+  }
+
+  /**
+    * IE doesn't support the 'download' attribute
+    * https://github.com/adaptlearning/adapt_framework/issues/1559
+    * and iOS just opens links with that attribute in the same window
+    * https://github.com/adaptlearning/adapt_framework/issues/1852
+  */
+  setupCanDownload(model) {
+    const canEnableDownloads = device.browser !== 'internet explorer' && device.OS !== 'ios';
+    model.set('_canDownload', canEnableDownloads);
   }
 
 }

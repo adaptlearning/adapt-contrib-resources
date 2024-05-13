@@ -1,10 +1,10 @@
 import React from 'react';
-import device from 'core/js/device';
 import { classes } from 'core/js/reactHelpers';
 
 export default function ResourcesItem (props) {
   const {
     _forceDownload,
+    _canDownload,
     _isGlobal,
     _link,
     _type,
@@ -15,20 +15,6 @@ export default function ResourcesItem (props) {
     title,
     onResourceItemClicked
   } = props;
-
-  /**
-   * IE doesn't support the 'download' attribute
-   * https://github.com/adaptlearning/adapt_framework/issues/1559
-   * and iOS just opens links with that attribute in the same window
-   * https://github.com/adaptlearning/adapt_framework/issues/1852
-   */
-  function resourcesForceDownload(filename, _forceDownload) {
-    if (device.browser === 'internet explorer' || device.OS === 'ios') {
-      return false;
-    }
-
-    return (_forceDownload || filename);
-  }
 
   return (
     <div
@@ -43,7 +29,7 @@ export default function ResourcesItem (props) {
       <a href={_link} className="resources__item-btn drawer__item-btn"
         data-type={_type}
         data-index={_index}
-        download={resourcesForceDownload(filename, _forceDownload) && filename }
+        download={(_canDownload && _forceDownload) && filename }
         onClick={onResourceItemClicked}
         target="_blank"
         rel="noreferrer"

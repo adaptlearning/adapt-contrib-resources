@@ -7,8 +7,8 @@ export default function Resources (props) {
   const {
     resources,
     resourceTypes,
-    showFilters,
-    filterColumnCount
+    _showFilters,
+    _filterColumnCount
   } = props;
 
   const _globals = Adapt.course.get('_globals');
@@ -49,12 +49,12 @@ export default function Resources (props) {
     <div className="resources__inner">
 
       <templates.header {...props.model} />
-      {showFilters &&
+      {_showFilters &&
       <div
         className={classes([
           'resources__filter',
-          `has-${filterColumnCount}-columns`,
-          (filterColumnCount > 4) && 'has-extra-types'
+          `has-${_filterColumnCount}-columns`,
+          (_filterColumnCount > 4) && 'has-extra-types'
         ])}
       >
         <div className="resources__filter-inner" role="tablist">
