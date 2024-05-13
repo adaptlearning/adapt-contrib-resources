@@ -64,7 +64,7 @@ class Resources extends Backbone.Controller {
   setupFilters(model, resources) {
     const hasMultipleResources = resources.length > 1;
     const hasMultipleTypes = !resources.every(_.matcher({ _type: resources[0]._type }));
-    const enableFilters = model.get('_enableFilters') !== undefined ? model.get('_enableFilters') : true;
+    const enableFilters = model.get('_enableFilters') ?? true;
 
     const showFilters = hasMultipleResources && hasMultipleTypes && enableFilters;
     model.set('_showFilters', showFilters);
