@@ -437,15 +437,6 @@
                   "validators": [],
                   "help": "Controls whether the Resources extension is enabled or disabled."
                 },
-                "_enableFilters": {
-                  "type": "boolean",
-                  "required":true,
-                  "default": true,
-                  "title": "Enable filter buttons",
-                  "inputType": "Checkbox",
-                  "validators": [],
-                  "help": "Turns the filter buttons on and off. Note that the filter buttons will be automatically disabled if all resource items have the same Type value."
-                },
                 "_resourcesItems": {
                   "type": "array",
                   "required": false,
