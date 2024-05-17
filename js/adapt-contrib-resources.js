@@ -49,7 +49,7 @@ class Resources extends Backbone.Controller {
 
       this.setupTypes(model, resourcesData);
 
-      drawer.triggerCustomView(new ResourcesView({ model }).$el);
+      drawer.openCustomView(new ResourcesView({ model }).$el);
     });
   }
 
