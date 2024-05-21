@@ -6,22 +6,12 @@ import { classes, templates } from 'core/js/reactHelpers';
 export default function Resources (props) {
   const {
     resources,
-    resourceTypes
+    resourceTypes,
+    _showFilters,
+    _filterColumnCount
   } = props;
 
   const _globals = Adapt.course.get('_globals');
-
-  function resourcesHasMultipleTypes(resources) {
-    if (resources.length < 2) return false;
-
-    const allSameType = resources.every(_.matcher({ _type: resources[0]._type }));
-    return !allSameType;
-  }
-
-  function resourcesGetColumnCount(resources) {
-    return _.uniq(_.pluck(resources, '_type')).length + 1; // add 1 for the 'All' button column
-  }
-
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [selectedId, setSelectedId] = useState('resources__show-all');
   const [focusFlag, setFocusFlag] = useState(false);
@@ -59,13 +49,12 @@ export default function Resources (props) {
     <div className="resources__inner">
 
       <templates.header {...props.model} />
-
-      {resourcesHasMultipleTypes(resources) &&
+      {_showFilters &&
       <div
         className={classes([
           'resources__filter',
-          `has-${resourcesGetColumnCount(resources)}-columns`,
-          (resourcesGetColumnCount(resources) > 4) && 'has-extra-types'
+          `has-${_filterColumnCount}-columns`,
+          (_filterColumnCount > 4) && 'has-extra-types'
         ])}
       >
         <div className="resources__filter-inner" role="tablist">

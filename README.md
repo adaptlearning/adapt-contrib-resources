@@ -26,7 +26,10 @@ With the [Adapt CLI](https://github.com/adaptlearning/adapt-cli) installed, run 
 <div float align=right><a href="#top">Back to Top</a></div>
 
 ## Settings
-The attributes listed below are used in *course.json* to configure **Resources**, and are properly formatted as JSON in [*example.json*](https://github.com/adaptlearning/adapt-contrib-resources/blob/master/example.json). Visit the [**Resources** wiki](https://github.com/adaptlearning/adapt-contrib-resources/wiki) for more information about how they appear in the [authoring tool](https://github.com/adaptlearning/adapt_authoring/wiki).
+
+The attributes listed below are used in *course.json* to configure **Resources**, and are properly formatted as JSON in [*example.json*](https://github.com/adaptlearning/adapt-contrib-resources/blob/master/example.json). Some attributes can also be overridden for each content object in *contentObjects.json* (see [*example.json*](https://github.com/adaptlearning/adapt-contrib-resources/blob/master/example.json)).
+
+Visit the [**Resources** wiki](https://github.com/adaptlearning/adapt-contrib-resources/wiki) for more information about how they appear in the [authoring tool](https://github.com/adaptlearning/adapt_authoring/wiki).
 
 **\_resources** (object): The Resources object that contains values for **title**, **description**, **\_filterButtons**, **\_filterAria**, and **\_resourcesItems**.
 
@@ -43,6 +46,8 @@ The attributes listed below are used in *course.json* to configure **Resources**
 >**body** (string): The body text for the resources which displays at the top of the resources drawer.
 
 >**instruction** (string): The instruction text for the resources which displays at the top of the resources drawer.
+
+>**\_enableFilters** (boolean): Turns the filter buttons on and off. Acceptable values are `true` and `false`. Defaults to `true`. Note that the filter buttons will be automatically disabled if all `_resourcesItems` items have the same `_type` value.
 
 >**\_filterButtons** (object):  This attribute group maintains the labels for the four buttons that filter resources by type. It contains values for **all**, **document**, **media**, and **link**.
 
@@ -91,4 +96,4 @@ No known limitations.
 **Author / maintainer:** Adapt Core Team with [contributors](https://github.com/adaptlearning/adapt-contrib-resources/graphs/contributors)<br>
 **Accessibility support:** WAI AA<br>
 **RTL support:** Yes<br>
-**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 12+13 for macOS/iOS/iPadOS, Opera<br>
+**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, Safari for macOS/iOS/iPadOS, Opera<br>
