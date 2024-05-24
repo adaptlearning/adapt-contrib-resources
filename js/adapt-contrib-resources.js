@@ -52,7 +52,7 @@ class Resources extends Backbone.Controller {
       this.setupFilters(model, resources);
       this.setupCanDownload(model);
 
-      drawer.triggerCustomView(new ResourcesView({ model }).$el);
+      drawer.openCustomView(new ResourcesView({ model }).$el);
     });
   }
 
