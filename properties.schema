@@ -363,7 +363,7 @@
                         "type": "string",
                         "required": true,
                         "title": "Type",
-                        "inputType": { "type": "Select", "options": ["document", "media", "link"]},
+                        "inputType": { "type": "Select", "options": ["document", "media", "link", "custom1", "custom2", "custom3", "custom4", "custom5", "custom6", "custom7", "custom8", "custom9", "custom10"]},
                         "validators": ["required"]
                       },
                       "_forceDownload": {
