@@ -410,7 +410,6 @@
                   },
                   "_link": {
                     "type": "string",
-                    "isObjectId": true,
                     "title": "Source",
                     "_backboneForms": "Asset"
                   },
