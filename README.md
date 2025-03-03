@@ -71,7 +71,7 @@ Visit the [**Resources** wiki](https://github.com/adaptlearning/adapt-contrib-re
 
 >**itemAriaExternal** (string): This text is associated with each resource item. It renders as part of the aria label to tell screen readers that the content will open in an external link.
 
->**\_resourcesItems** (object):  This object stores properties for each resource item. Multiple resource items may be created. Each contains values for **\_type**, **title**, **description** (optional), **\_link**, **filename** and **\_forceDownload**.
+>**\_resourcesItems** (object):  This object stores properties for each resource item. Multiple resource items may be created. Each contains values for **\_type**, **title**, **description** (optional), **\_link**, **filename** and **\_forceDownload**. In *course.json*, **\_isGlobal** is also available.
 
 >>**\_type** (string):  This text is used to filter resources. If the resource is to be returned in a filtered group, this value must be one of the following: `document`, `media`, `link`, or one of the ten custom types (ex. `custom1`, `custom2`). (Note: There is no file type validation as part of **Resources**.)
 
@@ -84,6 +84,8 @@ Visit the [**Resources** wiki](https://github.com/adaptlearning/adapt-contrib-re
 >>**filename** (string): Allows the name of the downloaded file to be different to that of the source filename. Note that this feature only works in browsers that support the [`download` attribute](https://caniuse.com/#search=download) and is mainly intended for Adapt Authoring Tool users.
 
 >>**\_forceDownload** (boolean): Forces the resource to be downloaded rather than opened in a new window. Defaults to `false`. Note that this feature only works in browsers that support the [`download` attribute](https://caniuse.com/#search=download) and only with resources that are part of the course content or available from a [same-origin URL](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)
+
+>>**\_isGlobal** (boolean): If `true`, the item will appear on every page including the menu. When `false`, the item only appears on the menu. Defaults to `true`. Only available in *course.json*.
 
 <div float align=right><a href="#top">Back to Top</a></div>
 
