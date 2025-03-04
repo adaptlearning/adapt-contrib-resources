@@ -10,14 +10,14 @@ describe('Resources - v2.0.1 to v2.0.2', async () => {
     return course?._resources;
   });
 
-  mutateContent('Resources - add _drawerOrder attribute', async (content) => {
-    course._resources._drawerOrder = 0;
+  mutateContent('Resources - add _isEnabled attribute', async (content) => {
+    course._resources._isEnabled = true;
     return true;
   });
 
-  checkContent('Resources - check _drawerOrder attribute', async (content) => {
-    const isValid = _.has(course, '_resources._drawerOrder');
-    if (!isValid) throw new Error('Resources - _drawerOrder attribute not updated');
+  checkContent('Resources - check _isEnabled attribute', async (content) => {
+    const isValid = _.has(course, '_resources._isEnabled');
+    if (!isValid) throw new Error('Resources - _isEnabled attribute not updated');
     return true;
   });
 
