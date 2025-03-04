@@ -63,7 +63,7 @@ describe('Resources - v5.2.1 to v5.3.0', async () => {
 
   checkContent('Resources - check _resourcesItems attribute', async (content) => {
     const isValid = contentObjects.every((contentObject) => _.has(contentObject, '_resources._resourcesItems'));
-    if (!isValid) throw new Error('Resources - _resourcesItems does not exist');
+    if (!isValid) throw new Error('Resources - content objects _resourcesItems does not exist');
     return true;
   });
 
