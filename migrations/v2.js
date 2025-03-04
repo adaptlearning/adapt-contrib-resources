@@ -21,7 +21,7 @@ describe('Resources - v2.0.1 to v2.0.2', async () => {
     return true;
   });
 
-  updatePlugin('Resources - update to v2.0.2', { name: 'adapt-contrib-resources', version: '2.0.2', framework: '>=2.2.0' });
+  updatePlugin('Resources - update to v2.0.2', { name: 'adapt-contrib-resources', version: '2.0.2', framework: '^2.0.0' });
 
   testSuccessWhere('resources with course._resources', {
     fromPlugins: [{ name: 'adapt-contrib-resources', version: '2.0.1' }],
