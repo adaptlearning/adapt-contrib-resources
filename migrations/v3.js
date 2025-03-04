@@ -23,11 +23,7 @@ describe('Resources - v2.1.3 to v3.0.0', async () => {
   });
 
   mutateContent('Resources - replace globals resourcesEnd with resources', async (content) => {
-    if (_.has(courseResourcesGlobals, 'resourcesEnd')) {
-      courseResourcesGlobals.resources = courseResourcesGlobals.resourcesEnd;
-      delete courseResourcesGlobals.resourcesEnd;
-      return true;
-    }
+    if (_.has(courseResourcesGlobals, 'resourcesEnd')) delete courseResourcesGlobals.resourcesEnd;
     courseResourcesGlobals.resources = 'Additional resources.';
     return true;
   });
