@@ -57,7 +57,7 @@ describe('Resources - v5.2.1 to v5.3.0', async () => {
 
   checkContent('Resources - check _isEnabled attribute', async (content) => {
     const isValid = contentObjects.every((contentObject) => _.has(contentObject, '_resources._isEnabled'));
-    if (!isValid) throw new Error('Resources - _isEnabled does not exist');
+    if (!isValid) throw new Error('Resources - content objects _isEnabled does not exist');
     return true;
   });
 
