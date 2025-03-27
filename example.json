@@ -48,25 +48,29 @@
                 "description": "Select here to see a proposed button idea",
                 "_link": "course/en/pdf/adapt-framework-prototypes-buttons.pdf",
                 "filename": "Buttons.pdf",
-                "_forceDownload": true
+                "_forceDownload": true,
+                "_isGlobal": true
             },
             {
                 "_type": "media",
                 "title": "Adapt Learning YouTube Channel",
                 "description": "Fancy catching up on some Adapt material",
-                "_link": "https://www.youtube.com/channel/UCW8SlSFuCc--B66Gf9fAEcQ"
+                "_link": "https://www.youtube.com/channel/UCW8SlSFuCc--B66Gf9fAEcQ",
+                "_isGlobal": true
             },
             {
                 "_type": "link",
                 "title": "Community Site",
                 "description": "Select here to view our community site",
-                "_link": "https://community.adaptlearning.org"
+                "_link": "https://community.adaptlearning.org",
+                "_isGlobal": true
             },
             {
                 "_type": "custom1",
                 "title": "GitHub",
                 "description": "Select here to view the Adapt respository on GitHub",
-                "_link": "https://github.com/adaptlearning"
+                "_link": "https://github.com/adaptlearning",
+                "_isGlobal": true
             }
         ]
     }
