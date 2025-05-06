@@ -327,7 +327,7 @@
                     "custom8Aria": {
                       "type": "string",
                       "default": "View custom type 8 links",
-                      "title": "Custom type 1",
+                      "title": "Custom type 8",
                       "inputType": "Text",
                       "validators": [],
                       "translatable": true
