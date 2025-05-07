@@ -11,6 +11,15 @@ export const checkDrawerLength = (count, filter = 'All', title = 'Menu Page') =>
   cy.get('.drawer__item').not('.u-display-none').should('have.length', count);
 };
 
+export const getIsMultItemDrawer = (data) => {
+  const drawerExtensions = Object.values(data.course).filter(value => {
+    if (!value || typeof value !== 'object') return;
+    return Object.keys(value).some(key => key === '_drawerOrder');
+  });
+
+  return drawerExtensions.length > 1;
+};
+
 export const getItemsTypes = (resourceItems) => {
   return resourceItems.reduce((types, item) => {
     if (!types.includes(item._type)) {
