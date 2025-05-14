@@ -1,11 +1,14 @@
-import { checkDrawerLength, getItemsCount, getItemsTypes } from './helpers'
+import { checkDrawerLength, getIsMultItemDrawer, getItemsCount, getItemsTypes, openResourceDrawer } from './helpers'
 
 describe('Resources - Menu', function () {
   beforeEach(function () {
-    cy.getData();
+    cy.getData().then(data => {
+      const multiDrawer = getIsMultItemDrawer(data);
 
-    cy.visit('/');
-    cy.get('button.nav__drawer-btn').click();
+      cy.visit('/');
+      openResourceDrawer(multiDrawer);
+    });
+
   });
 
   it(`should show the correct number of items`, function () {

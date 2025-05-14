@@ -1,15 +1,17 @@
-import { checkDrawerLength, getItemsCount, getItemsTypes } from './helpers'
+import { checkDrawerLength, getIsMultItemDrawer, getItemsCount, getItemsTypes, openResourceDrawer } from './helpers'
 
 describe('Resources - Pages', function () {
   beforeEach(function () {
-    cy.getData();
+    cy.getData().then(data => {
+      this.multiDrawer = getIsMultItemDrawer(data);
+    });
   });
 
   it(`should show the correct number of items on each page`, function () {
     const pages = this.data.contentObjects.filter(item => item._type === 'page');
     pages.forEach((page, index) => {
       cy.visit(`#/id/${page._id}`);
-      cy.get('button.nav__drawer-btn').click();
+      openResourceDrawer(this.multiDrawer);
 
       const pageResourceItems = page._resources?._resourceItems || [];
       const resourceItems = [ ...this.data.course._resources?._resourcesItems, ...pageResourceItems ];
@@ -22,7 +24,7 @@ describe('Resources - Pages', function () {
     const pages = this.data.contentObjects.filter(item => item._type === 'page');
     pages.forEach((page, index) => {
       cy.visit(`#/id/${page._id}`);
-      cy.get('button.nav__drawer-btn').click();
+      openResourceDrawer(this.multiDrawer);
       cy.get('button.is-selected[id="resources__show-all"]').should('exist');
 
       const pageResourceItems = page._resources?._resourceItems || [];
@@ -41,7 +43,7 @@ describe('Resources - Pages', function () {
     const pages = this.data.contentObjects.filter(item => item._type === 'page');
     pages.forEach((page, index) => {
       cy.visit(`#/id/${page._id}`);
-      cy.get('button.nav__drawer-btn').click();
+      openResourceDrawer(this.multiDrawer);
 
       const pageResourceItems = page._resources?._resourceItems || [];
       const resourceItems = [ ...this.data.course._resources?._resourcesItems, ...pageResourceItems ];
@@ -62,7 +64,8 @@ describe('Resources - Pages', function () {
     const pages = this.data.contentObjects.filter(item => item._type === 'page');
     pages.forEach((page, index) => {
       cy.visit(`#/id/${page._id}`);
-      cy.get('button.nav__drawer-btn').click();
+      openResourceDrawer(this.multiDrawer);
+
       cy.get('button.drawer__close-btn').click();
       cy.get('.drawer').should('have.attr', 'aria-expanded', 'false');
     });
@@ -72,7 +75,8 @@ describe('Resources - Pages', function () {
     const pages = this.data.contentObjects.filter(item => item._type === 'page');
     pages.forEach((page, index) => {
       cy.visit(`#/id/${page._id}`);
-      cy.get('button.nav__drawer-btn').click();
+      openResourceDrawer(this.multiDrawer);
+
       cy.get('.drawer').type('{esc}');
       cy.get('.drawer').should('have.attr', 'aria-expanded', 'false');
     });
