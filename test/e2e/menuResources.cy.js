@@ -1,4 +1,4 @@
-import { openResourceDrawer, checkDrawerLength, getIsMultItemDrawer, getItemsCount, getItemsTypes } from './helpers'
+import { checkDrawerLength, getIsMultItemDrawer, getItemsCount, getItemsTypes, openResourceDrawer } from './helpers'
 
 describe('Resources - Menu', function () {
   beforeEach(function () {
