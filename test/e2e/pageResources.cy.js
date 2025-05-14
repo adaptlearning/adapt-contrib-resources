@@ -10,7 +10,7 @@ describe('Resources - Pages', function () {
   it(`should show the correct number of items on each page`, function () {
     const pages = this.data.contentObjects.filter(item => item._type === 'page');
     pages.forEach((page, index) => {
-      cy.visit(`#/id/${pageId}`);
+      cy.visit(`#/id/${page._id}`);
       openResourceDrawer(this.multiDrawer);
 
       const pageResourceItems = page._resources?._resourceItems || [];
@@ -23,7 +23,7 @@ describe('Resources - Pages', function () {
   it('should display the correct amount of items in each tab for each page', function () {
     const pages = this.data.contentObjects.filter(item => item._type === 'page');
     pages.forEach((page, index) => {
-      cy.visit(`#/id/${pageId}`);
+      cy.visit(`#/id/${page._id}`);
       openResourceDrawer(this.multiDrawer);
       cy.get('button.is-selected[id="resources__show-all"]').should('exist');
 
@@ -42,7 +42,7 @@ describe('Resources - Pages', function () {
   it('should display the correct resource items on each page', function () {
     const pages = this.data.contentObjects.filter(item => item._type === 'page');
     pages.forEach((page, index) => {
-      cy.visit(`#/id/${pageId}`);
+      cy.visit(`#/id/${page._id}`);
       openResourceDrawer(this.multiDrawer);
 
       const pageResourceItems = page._resources?._resourceItems || [];
@@ -63,7 +63,7 @@ describe('Resources - Pages', function () {
   it('should be able to close the drawer by clicking X on each page', function () {
     const pages = this.data.contentObjects.filter(item => item._type === 'page');
     pages.forEach((page, index) => {
-      cy.visit(`#/id/${pageId}`);
+      cy.visit(`#/id/${page._id}`);
       openResourceDrawer(this.multiDrawer);
 
       cy.get('button.drawer__close-btn').click();
@@ -74,7 +74,7 @@ describe('Resources - Pages', function () {
   it('should be able to close the drawer by hitting ESC on each page', function () {
     const pages = this.data.contentObjects.filter(item => item._type === 'page');
     pages.forEach((page, index) => {
-      cy.visit(`#/id/${pageId}`);
+      cy.visit(`#/id/${page._id}`);
       openResourceDrawer(this.multiDrawer);
 
       cy.get('.drawer').type('{esc}');
