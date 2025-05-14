@@ -1,4 +1,4 @@
-import { accessResourcesDrawer, checkDrawerLength, getIsMultItemDrawer, getItemsCount, getItemsTypes } from './helpers'
+import { openResourceDrawer, checkDrawerLength, getIsMultItemDrawer, getItemsCount, getItemsTypes } from './helpers'
 
 describe('Resources - Menu', function () {
   beforeEach(function () {
@@ -6,8 +6,7 @@ describe('Resources - Menu', function () {
       const multiDrawer = getIsMultItemDrawer(data);
 
       cy.visit('/');
-      cy.get('button.nav__drawer-btn').click();
-      accessResourcesDrawer(multiDrawer);
+      openResourceDrawer(multiDrawer);
     });
 
   });

@@ -1,4 +1,5 @@
-export const accessResourcesDrawer = (multiDrawer) => {
+export const openResourceDrawer = (multiDrawer) => {
+  cy.get('button.nav__drawer-btn').click();
   if (!multiDrawer) return;
 
   // Should click into resources if multiple extension/drawer items present
