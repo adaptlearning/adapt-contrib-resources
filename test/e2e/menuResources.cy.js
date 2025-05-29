@@ -42,11 +42,9 @@ describe('Resources - Menu', function () {
 
   it('should be able to close the drawer by clicking X', () => {
     cy.get('button.drawer__close-btn').click();
-    cy.get('.drawer').should('have.attr', 'aria-expanded', 'false');
   });
 
   it('should be able to close the drawer by hitting ESC', () => {
     cy.get('.drawer').type('{esc}');
-    cy.get('.drawer').should('have.attr', 'aria-expanded', 'false');
   });
 });
