@@ -67,6 +67,7 @@ describe('Resources - Pages', function () {
       openResourceDrawer(this.multiDrawer);
 
       cy.get('button.drawer__close-btn').click();
+      cy.get('.drawer').should('have.attr', 'aria-hidden', 'true');
     });
   });
 
@@ -77,6 +78,7 @@ describe('Resources - Pages', function () {
       openResourceDrawer(this.multiDrawer);
 
       cy.get('.drawer').type('{esc}');
+      cy.get('.drawer').should('have.attr', 'aria-hidden', 'true');
     });
   });
 });
