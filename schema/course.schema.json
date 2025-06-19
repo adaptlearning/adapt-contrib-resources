@@ -67,7 +67,7 @@
               "type": "string",
               "title": "Title",
               "default": "Resources",
-              "description": "The title for the resources button which displays when more than one extension is using the drawer.",
+              "description": "The title for the resources button which displays when more than one extension is using the drawer. Also used to label the Resources dialog element for screen readers should the display title not be used.",
               "_adapt": {
                 "translatable": true
               }
@@ -85,7 +85,7 @@
               "type": "string",
               "title": "Display title",
               "default": "",
-              "description": "The title for the resources which displays at the top of the resources drawer.",
+              "description": "The display title text which will appear in the Resources header section within the Drawer. Used to label the Resources dialog element for screen readers.",
               "_adapt": {
                 "translatable": true
               }
@@ -94,16 +94,7 @@
               "type": "string",
               "title": "Body",
               "default": "",
-              "description": "The body text for the resources which displays at the top of the resources drawer.",
-              "_adapt": {
-                "translatable": true
-              }
-            },
-            "instruction": {
-              "type": "string",
-              "title": "Instruction",
-              "default": "",
-              "description": "The instruction text for the resources which displays at the top of the resources drawer.",
+              "description": "The body text which will appear alongside the display title in the Resources header section within the Drawer.",
               "_adapt": {
                 "translatable": true
               }

@@ -41,11 +41,9 @@ Visit the [**Resources** wiki](https://github.com/adaptlearning/adapt-contrib-re
 
 >**description** (string): This text is displayed (along with the **title**) in the [Drawer](https://github.com/adaptlearning/adapt_framework/wiki/Core-modules#drawer) as part of a button that gives access to the resources. This property only shows when more than one extension is using the drawer.
 
->**displayTitle** (string): The title for the resources which displays at the top of the resources drawer.
+>**displayTitle** (string): The display title text which will appear in the Resources header section within the Drawer. Used to label the Resources dialog element for screen readers.
 
->**body** (string): The body text for the resources which displays at the top of the resources drawer.
-
->**instruction** (string): The instruction text for the resources which displays at the top of the resources drawer.
+>**body** (string): The body text which will appear alongside the display title in the Resources header section within the Drawer.
 
 >**\_enableFilters** (boolean): Turns the filter buttons on and off. Acceptable values are `true` and `false`. Defaults to `true`. Note that the filter buttons will be automatically disabled if all `_resourcesItems` items have the same `_type` value.
 

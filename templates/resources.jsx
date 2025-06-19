@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Adapt from 'core/js/adapt';
 import a11y from 'core/js/a11y';
-import { classes, templates } from 'core/js/reactHelpers';
+import { classes, compile, templates } from 'core/js/reactHelpers';
 
 export default function Resources (props) {
   const {
@@ -12,6 +12,7 @@ export default function Resources (props) {
   } = props;
 
   const _globals = Adapt.course.get('_globals');
+  const _resources = Adapt.course.get('_resources');
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [selectedId, setSelectedId] = useState('resources__show-all');
   const [focusFlag, setFocusFlag] = useState(false);
@@ -48,7 +49,42 @@ export default function Resources (props) {
   return (
     <div className="resources__inner">
 
-      <templates.header {...props.model} />
+      <div className='resources__header'>
+        <div className='resources__header-inner'>
+
+          <div
+            id='drawer-heading'
+            className={classes([
+              'resources__title',
+              !_resources.displayTitle && 'aria-label'
+            ])}
+            role='heading'
+            aria-level={a11y.ariaLevel({ level: 'drawer' })}
+          >
+            <div
+              className='resources__title-inner'
+              dangerouslySetInnerHTML={{
+                __html: compile(_resources.displayTitle
+                  ? _resources.displayTitle
+                  : _resources.title)
+              }}
+            />
+          </div>
+
+          <div className="aria-label">{_globals._extensions._resources.resources}</div>
+
+          {_resources.body &&
+          <div className='resources__body'>
+            <div
+              className='resources__body-inner'
+              dangerouslySetInnerHTML={{ __html: compile(_resources.body) }}
+            />
+          </div>
+          }
+
+        </div>
+      </div>
+
       {_showFilters &&
       <div
         className={classes([
@@ -58,8 +94,6 @@ export default function Resources (props) {
         ])}
       >
         <div className="resources__filter-inner" role="tablist">
-
-          <div className="aria-label" aria-label={_globals._extensions._resources.resources} />
 
           {resourceTypes.map((type, index) =>
             <templates.resourcesFilterButton {...props}
