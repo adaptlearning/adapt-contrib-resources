@@ -13,6 +13,7 @@ export default function Resources (props) {
 
   const _globals = Adapt.course.get('_globals');
   const _resources = Adapt.course.get('_resources');
+  const _drawer = _resources._drawer;
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [selectedId, setSelectedId] = useState('resources__show-all');
   const [focusFlag, setFocusFlag] = useState(false);
@@ -49,23 +50,26 @@ export default function Resources (props) {
   return (
     <div className="resources__inner">
 
-      <div className='resources__header'>
-        <div className='resources__header-inner'>
+      <div
+        className={classes([
+          'drawer__header',
+          'resources__header',
+          !_drawer.displayTitle && 'aria-label'
+        ])}
+      >
+        <div className='drawer__header-inner resources__header-inner'>
 
           <div
             id='drawer-heading'
-            className={classes([
-              'resources__title',
-              !_resources.displayTitle && 'aria-label'
-            ])}
+            className='drawer__title resources__title'
             role='heading'
             aria-level={a11y.ariaLevel({ level: 'drawer' })}
           >
             <div
-              className='resources__title-inner'
+              className='drawer__title-inner resources__title-inner'
               dangerouslySetInnerHTML={{
-                __html: compile(_resources.displayTitle
-                  ? _resources.displayTitle
+                __html: compile(_drawer.displayTitle
+                  ? _drawer.displayTitle
                   : _resources.title)
               }}
             />
@@ -73,11 +77,11 @@ export default function Resources (props) {
 
           <div className="aria-label">{_globals._extensions._resources.resources}</div>
 
-          {_resources.body &&
-          <div className='resources__body'>
+          {(_drawer.displayTitle && _drawer.body) &&
+          <div className='drawer__body resources__body'>
             <div
-              className='resources__body-inner'
-              dangerouslySetInnerHTML={{ __html: compile(_resources.body) }}
+              className='drawer__body-inner resources__body-inner'
+              dangerouslySetInnerHTML={{ __html: compile(_drawer.body) }}
             />
           </div>
           }

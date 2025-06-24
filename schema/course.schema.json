@@ -81,22 +81,28 @@
                 "translatable": true
               }
             },
-            "displayTitle": {
-              "type": "string",
-              "title": "Display title",
-              "default": "",
-              "description": "The display title text which will appear in the Resources header section within the Drawer. Used to label the Resources dialog element for screen readers.",
-              "_adapt": {
-                "translatable": true
-              }
-            },
-            "body": {
-              "type": "string",
-              "title": "Body",
-              "default": "",
-              "description": "The body text which will appear alongside the display title in the Resources header section within the Drawer.",
-              "_adapt": {
-                "translatable": true
+            "_drawer": {
+              "type": "object",
+              "title": "Resources Drawer header",
+              "properties": {
+                "displayTitle": {
+                  "type": "string",
+                  "title": "Display title",
+                  "default": "",
+                  "description": "The display title text which will appear in the Resources header section within the Drawer. Used to label the Resources dialog element for screen readers.",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                },
+                "body": {
+                  "type": "string",
+                  "title": "Body text",
+                  "default": "",
+                  "description": "The body text which will appear alongside the display title in the Resources header section within the Drawer.",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                }
               }
             },
             "_enableFilters": {

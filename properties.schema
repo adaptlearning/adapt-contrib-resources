@@ -75,25 +75,32 @@
                   "help": "The description text for the resources button which displays when more than one extension is using the drawer.",
                   "translatable": true
                 },
-                "displayTitle": {
-                  "type": "string",
-                  "default": "",
+                "_drawer": {
+                  "type": "object",
                   "required": false,
-                  "title": "",
-                  "inputType": "Text",
-                  "validators": [],
-                  "help": "The display title text which will appear in the Resources header section within the Drawer. Used to label the Resources dialog element for screen readers.",
-                  "translatable": true
-                },
-                "body": {
-                  "type": "string",
-                  "default": "",
-                  "required": false,
-                  "title": "",
-                  "inputType": "Text",
-                  "validators": [],
-                  "help": "The body text which will appear alongside the display title in the Resources header section within the Drawer.",
-                  "translatable": true
+                  "legend": "Resources Drawer header",
+                  "properties": {
+                    "displayTitle": {
+                      "type": "string",
+                      "required": false,
+                      "title": "Display title",
+                      "default": "",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "The display title text which will appear in the Resources header section within the Drawer. Used to label the Resources dialog element for screen readers.",
+                      "translatable": true
+                    },
+                    "body": {
+                      "type": "string",
+                      "required": false,
+                      "title": "Body text",
+                      "default": "",
+                      "inputType": "Text",
+                      "validators": [],
+                      "help": "The body text which will appear alongside the display title in the Resources header section within the Drawer.",
+                      "translatable": true
+                    }
+                  }
                 },
                 "_enableFilters": {
                   "type": "boolean",
