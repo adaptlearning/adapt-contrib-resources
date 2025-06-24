@@ -4,7 +4,7 @@ export const openResourceDrawer = (multiDrawer) => {
 
   // Should click into resources if multiple extension/drawer items present
   cy.task('log', `Found multiple drawer items. Clicking into resources`);
-  cy.get('button.drawer__menu-btn.drawer__item-btn.is-resources').click();
+  cy.get('button.drawer__menu-btn.drawer__item-btn.is-resources').click({ force: true });
 }
 
 export const checkDrawerLength = (count, filter = 'All', title = 'Menu Page') => {
