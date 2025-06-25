@@ -46,7 +46,7 @@ describe('Resources - Menu', function () {
   });
 
   it('should be able to close the drawer by hitting ESC', () => {
-    cy.get('.drawer').type('{esc}');
+    cy.get('.drawer').type('{esc}', { force: true });
     cy.get('.drawer').should('have.attr', 'aria-hidden', 'true');
   });
 });
