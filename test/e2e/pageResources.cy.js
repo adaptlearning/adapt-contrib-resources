@@ -77,7 +77,7 @@ describe('Resources - Pages', function () {
       cy.visit(`#/id/${page._id}`);
       openResourceDrawer(this.multiDrawer);
 
-      cy.get('.drawer').type('{esc}');
+      cy.get('.drawer').type('{esc}', { force: true });
       cy.get('.drawer').should('have.attr', 'aria-hidden', 'true');
     });
   });
