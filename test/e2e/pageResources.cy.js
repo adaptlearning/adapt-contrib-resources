@@ -77,7 +77,7 @@ describe('Resources - Pages', function () {
       cy.visit(`#/id/${page._id}`);
       openResourceDrawer(this.multiDrawer);
 
-      cy.get('.drawer').trigger('keydown', { key: 'Escape', code: 'Escape' });
+      cy.get('body').type('{esc}');
       cy.get('.drawer').should('have.attr', 'aria-hidden', 'true');
     });
   });
