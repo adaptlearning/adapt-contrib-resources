@@ -48,7 +48,8 @@ export default function Resources (props) {
   return (
     <div className="resources__inner">
 
-      <templates.header {...props.model} />
+      {/* displayTitle is the drawer heading, see drawer.openCustomView */}
+      <templates.header {...props.model} displayTitle={null} />
       {_showFilters &&
       <div
         className={classes([
